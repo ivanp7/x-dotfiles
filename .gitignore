@@ -1,0 +1,15 @@
+*
+
+!.gitignore
+
+!.bash_logout
+!.bash_profile
+!.bashrc
+!.inputrc
+!.xinitrc
+!.xserverrc
+!.Xresources
+
+!.config/
+!.config/*
+
