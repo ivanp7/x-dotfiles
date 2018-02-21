@@ -1,4 +1,4 @@
-g!/bin/sh
+#!/bin/sh
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -32,16 +32,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# twm &
-# xclock -geometry 50x50-1+1 &
-# xterm -geometry 80x50+494+51 &
-# xterm -geometry 80x20+494-0 &
-# exec xterm -geometry 80x66+0+0 -name login
-
-# my window manager
+# my environment customization
 xset r rate 400 25
 compton -b
 [ -x /home/ivanp7/.fehbg ] && /home/ivanp7/.fehbg &
+eval $(ssh-agent)
 
 mkdir -p .i3-logs
 exec i3 -V >> ~/.i3-logs/i3-log-$(date +'%F-%k-%M-%S') 2>&1

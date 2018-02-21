@@ -45,6 +45,10 @@ else
     PS1="$FGRN\u$RS@$FCYN\h$RS:$HC$FBLE\w$RS\$ "
 fi
 
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
+
 # other settings
 source /usr/share/doc/pkgfile/command-not-found.bash
 
@@ -70,6 +74,8 @@ alias man='man -P "less -Q"'
 alias mc='/usr/lib/mc/mc-wrapper.sh'
 
 # variables
+export PATH="${PATH}:/home/ivanp7/scripts"
+
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold
 export LESS_TERMCAP_md=$'\E[1;33m'     # begin blink
