@@ -39,7 +39,7 @@ fi
 # exec xterm -geometry 80x66+0+0 -name login
 
 # my window manager
-xset r rate 250 25
+xset r rate 400 25
 compton -b
 [ -x /home/ivanp7/.fehbg ] && /home/ivanp7/.fehbg &
 
