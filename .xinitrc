@@ -34,6 +34,7 @@ fi
 
 # my environment customization
 xset r rate 400 25
+setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 compton -b
 [ -x /home/ivanp7/.fehbg ] && /home/ivanp7/.fehbg &
 eval $(ssh-agent)
