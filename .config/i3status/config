@@ -1,0 +1,74 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 1
+}
+
+# order += "ipv6"
+# order += "wireless _first_"
+order += "ethernet _first_"
+
+order += "disk /"
+order += "disk /home"
+
+# order += "battery all"
+
+order += "cpu_usage"
+order += "load"
+
+order += "tztime local"
+
+# wireless _first_ {
+#         format_up = "W: (%quality at %essid) %ip"
+#         format_down = "W: down"
+# }
+
+ethernet _first_ {
+        # if you use %speed, i3status requires root privileges
+        format_up = "Eth: %ip"
+        format_down = "Eth: down"
+}
+
+disk "/" {
+    low_threshold = 10
+    threshold_type = percentage_avail
+    format = "(/): %avail / %total"
+    format_below_threshold = "(/): warning: %avail / %total"
+}
+
+disk "/home" {
+    low_threshold = 10
+    threshold_type = percentage_avail
+    format = "(/home): %avail / %total"
+    format_below_threshold = "(/home): warning: %avail / %total"
+}
+
+# battery all {
+#         format = "Battery: %percentage (%status) - %remaining (%consumption)"
+# }
+
+cpu_usage {
+    degraded_threshold = 50
+    max_threshold = 90
+    format = "CPU: %usage"
+    format_above_degraded_threshold = "CPU: %usage"
+    format_above_threshold = "CPU: %usage"
+}
+
+load {
+    max_threshold = "0.2"
+        format = "Load (1m): %1min"
+        format_above_threshold = "Load (1m): %1min"
+}
+
+tztime local {
+    format = "Date: [ %Y-%m-%d ]  Time: [ [ %H:%M:%S ] ]  "
+}
+
