@@ -12,4 +12,5 @@
 !gtk-3.0/*
 !trizen/
 !trizen/*
-
+!dunst/
+!dunst/*

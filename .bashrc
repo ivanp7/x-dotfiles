@@ -54,8 +54,6 @@ source /usr/share/doc/pkgfile/command-not-found.bash
 
 stty -ixon
 
-bind Space:magic-space
-
 # aliases
 alias ls='ls --color=auto'
 alias ll='ls -alF'
@@ -70,6 +68,8 @@ alias diff='diff --color=auto'
 
 alias less='less -Q'
 alias man='man -P "less -Q"'
+
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias mc='/usr/lib/mc/mc-wrapper.sh'
 
