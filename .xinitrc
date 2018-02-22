@@ -33,12 +33,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # my environment customization
+dex -a
 xset r rate 400 25
 setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 compton -b
-[ -x /home/ivanp7/.fehbg ] && /home/ivanp7/.fehbg &
+[ -x $HOME/.fehbg ] && $HOME/.fehbg &
 eval $(ssh-agent)
 
-mkdir -p .i3-logs
-exec i3 -V >> ~/.i3-logs/i3-log-$(date +'%F-%k-%M-%S') 2>&1
+mkdir -p ~/.logs/i3
+exec i3 -V >> ~/.logs/i3/i3-log-$(date +'%F-%k-%M-%S') 2>&1
 

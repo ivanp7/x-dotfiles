@@ -13,7 +13,7 @@ set $mod Mod1+Control
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Anonymous Pro 9
+font pango:Roboto Condensed Light 9
 #font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -154,11 +154,28 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        # status_command $HOME/bin/conky-i3bar
         status_command i3status
+        mode dock
+        position top
+        separator_symbol " | "
+
+        colors {
+            background #454545
+            statusline #ffffff
+            separator #51c4d4
+
+            focused_workspace  #ecedee #ecedee #454545
+            active_workspace   #ecedee #ecedee #454545
+            inactive_workspace #454545 #454545 #ffffff
+            urgent_workspace   #454545 #454545 #ffffff
+        }
 }
 
-# my customization
-focus_follows_mouse no
+client.focused #545454 #545454 #ffffff
+client.unfocused #545454 #2d2d2d #D9D9D9
+client.focused_inactive #545454 #2d2d2d #D9D9D9
+client.urgent #51c4d4 #ecedee #51c4d4
 
-exec --no-startup-id "dex -a"
+focus_follows_mouse no
 

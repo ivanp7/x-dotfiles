@@ -74,7 +74,7 @@ alias man='man -P "less -Q"'
 alias mc='/usr/lib/mc/mc-wrapper.sh'
 
 # variables
-export PATH="${PATH}:/home/ivanp7/scripts"
+export PATH="${PATH}:${HOME}/bin:${HOME}/scripts"
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin bold

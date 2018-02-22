@@ -2,17 +2,32 @@
 
 !.gitignore
 
-!.bash_logout
+!.inputrc
 !.bash_profile
 !.bashrc
-!.inputrc
+!.bash_logout
+
 !.xinitrc
 !.xserverrc
 !.Xresources
 
+!.gitconfig
+!.gitignore_global
+!.sbclrc
 !.ssh/
 !.ssh/config
 
 !.config/
 !.config/*
+
+!bin/
+!bin/*
+!scripts/
+!scripts/*
+
+!.conkyrc
+!.gtkrc-2.0
+!.fehbg
+!wallpapers/
+!wallpapers/*
 
