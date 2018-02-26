@@ -55,6 +55,10 @@ source /usr/share/doc/pkgfile/command-not-found.bash
 stty -ixon
 
 # aliases
+
+alias fucking=sudo
+alias fuck=sudo
+
 alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
@@ -68,6 +72,9 @@ alias diff='diff --color=auto'
 
 alias less='less -Q'
 alias man='man -P "less -Q"'
+
+alias pwd2='printf "%q\n" "$(pwd)"'
+alias xclip2='xclip -selection clipboard'
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 

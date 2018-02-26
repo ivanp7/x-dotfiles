@@ -6,3 +6,5 @@
   (when (probe-file quicklisp-init)
     (load quicklisp-init)))
 
+(setf *print-circle* t) ; enable circular list detection for printing
+
