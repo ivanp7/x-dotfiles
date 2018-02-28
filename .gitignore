@@ -22,8 +22,6 @@
 
 !bin/
 !bin/*
-!scripts/
-!scripts/*
 
 !.conkyrc
 !.gtkrc-2.0

@@ -196,5 +196,5 @@ focus_follows_mouse no
 bindsym Print exec "gnome-screenshot -i"
 
 # Initial layout
-exec '/home/ivanp7/bin/i3-autostart.sh'
+exec '/home/ivanp7/bin/config/i3-autostart.sh'
 
