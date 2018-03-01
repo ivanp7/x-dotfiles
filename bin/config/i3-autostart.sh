@@ -39,17 +39,19 @@
 i3-msg workspace "1:Main"
 
 termite --exec="/usr/lib/mc/mc-wrapper.sh" &
-sleep 0.5
+i3-msg split h
+sleep 0.1
 termite --exec="tty-clock -c -b -n" --title="Clock" &
-sleep 0.5
+sleep 0.7
 i3-msg resize shrink left 25 px or 25 ppt
 i3-msg split v
-sleep 0.1
+sleep 0.3
 termite --exec="vim /home/ivanp7/ToDoList" --title="To-Do List" &
-sleep 0.4
+sleep 0.3
 i3-msg resize grow up 25 px or 25 ppt
 i3-msg focus left
 i3-msg split v
+sleep 0.1
 
 notify-send "The graphical environment has been loaded. Welcome!"
 
