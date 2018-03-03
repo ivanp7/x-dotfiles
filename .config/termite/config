@@ -1,14 +1,14 @@
 [options]
 allow_bold = true
 audible_bell = false
-#clickable_url = true
+clickable_url = false
 dynamic_title = true
 font = Anonymous Pro 11
 # font = InputMonoCompressed-Regular 9
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
-#mouse_autohide = false
+mouse_autohide = false
 #scroll_on_output = false
 #scroll_on_keystroke = true
 # Length of the scrollback buffer, 0 disabled the scrollback buffer
