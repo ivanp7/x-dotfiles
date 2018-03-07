@@ -6,6 +6,8 @@
 !i3/*
 !i3status/
 !i3status/*
+!mc/
+!mc/*
 !termite/
 !termite/*
 !gtk-3.0/
