@@ -5,7 +5,7 @@
 echo
 echo
 echo
-screenfetch
+neofetch
 echo
 echo
 
