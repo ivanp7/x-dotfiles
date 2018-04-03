@@ -38,7 +38,8 @@
 
 i3-msg workspace "1:Main"
 
-termite --exec="/usr/lib/mc/mc-wrapper.sh" &
+# termite --exec="/usr/lib/mc/mc-wrapper.sh" &
+termite --exec="ranger" --title "Ranger" &
 i3-msg split h
 sleep 0.1
 termite --exec="tty-clock -c -b -n" --title="Clock" &

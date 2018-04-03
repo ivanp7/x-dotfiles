@@ -8,6 +8,8 @@
 !i3status/*
 !mc/
 !mc/*
+!ranger/
+!ranger/*
 !termite/
 !termite/*
 !gtk-3.0/
