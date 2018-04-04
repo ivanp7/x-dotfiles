@@ -39,7 +39,7 @@
 i3-msg workspace "1:Main"
 
 # termite --exec="/usr/lib/mc/mc-wrapper.sh" &
-termite --exec="/home/ivanp7/bin/config/delayed-start.sh ranger" --title "Ranger" &
+termite --exec="/home/ivanp7/bin/config/delayed-start.sh r.ranger" --title "Ranger" &
 i3-msg split h
 sleep 0.1
 termite --exec="/home/ivanp7/bin/config/delayed-start.sh tty-clock -c -b -n" --title="Clock" &
