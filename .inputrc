@@ -1,6 +1,1 @@
-set bell-style none
-
-$if Bash
-    Space: magic-space
-$endif
-
+/home/ivanp7/dotfiles/.inputrc

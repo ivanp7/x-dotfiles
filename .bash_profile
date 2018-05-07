@@ -1,12 +1,1 @@
-#
-# ~/.bash_profile
-#
-
-echo
-echo
-echo
-neofetch
-echo
-echo
-
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+/home/ivanp7/dotfiles/.bash_profile
