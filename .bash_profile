@@ -1,1 +1,1 @@
-/home/ivanp7/dotfiles/.bash_profile
+dotfiles/.bash_profile

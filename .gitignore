@@ -2,10 +2,11 @@
 
 !.gitignore
 
-!.inputrc
+!.aliases
+!.bash_logout
 !.bash_profile
 !.bashrc
-!.bash_logout
+!.inputrc
 
 !.xinitrc
 !.xserverrc
