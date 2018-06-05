@@ -54,7 +54,7 @@ hyperlinks = false
 background = rgba(50, 50, 50, 0.85)
 
 # If unset, will reverse foreground and background
-highlight = #2f2f2f
+highlight = #6d6d6d
 
 # Colors from color0 to color254 can be set
 color0 = #3f3f3f
