@@ -2,21 +2,9 @@
 
 !.gitignore
 
-!.aliases
-!.bash_logout
-!.bash_profile
-!.bashrc
-!.inputrc
-
 !.xinitrc
 !.xserverrc
 !.Xresources
-
-!.gitconfig
-!.gitignore_global
-!.sbclrc
-!.ssh/
-!.ssh/config
 
 !.config/
 !.config/*

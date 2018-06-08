@@ -38,7 +38,6 @@ xset r rate 400 25
 setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 compton -b
 [ -x $HOME/.fehbg ] && $HOME/.fehbg &
-eval $(ssh-agent)
 
 mkdir -p ~/.logs/i3
 exec i3 -V >> ~/.logs/i3/i3-log-$(date +'%F-%k-%M-%S') 2>&1

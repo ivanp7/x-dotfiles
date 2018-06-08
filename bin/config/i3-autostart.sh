@@ -38,21 +38,16 @@
 
 i3-msg workspace "1:Main"
 
-# termite --exec="/usr/lib/mc/mc-wrapper.sh" &
-# termite --exec="/home/ivanp7/bin/config/delayed-start.sh r.ranger" --title "Ranger" &
-
 termite --exec "/bin/bash -c 'echo; neofetch; bash'" --title "Terminal" &
 i3-msg split h
-sleep 0.1
+sleep 0.5
 
-# termite --exec="/home/ivanp7/bin/config/delayed-start.sh tty-clock -c -b -n" --title="Clock" &
 termite --exec="tty-clock -c -b -n" --title="Clock" &
-sleep 0.7
+sleep 0.5
 i3-msg resize shrink left 25 px or 25 ppt
 i3-msg split v
-sleep 0.3
+# sleep 0.3
 
-# termite --exec="/home/ivanp7/bin/config/delayed-start.sh vim /home/ivanp7/ToDoList.org" --title="To-Do List" &
 termite --exec="vim /home/ivanp7/ToDoList.org" --title="To-Do List" &
 sleep 0.3
 i3-msg resize grow up 25 px or 25 ppt
