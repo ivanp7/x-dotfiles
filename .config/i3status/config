@@ -15,8 +15,8 @@ general {
 # order += "wireless _first_"
 # order += "ethernet _first_"
 
-order += "disk /"
 order += "disk /home"
+order += "disk /"
 
 # order += "battery all"
 
