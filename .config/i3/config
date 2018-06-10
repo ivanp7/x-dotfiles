@@ -145,16 +145,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -163,6 +163,52 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# resize gaps
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Correct handling of floating windows
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role="menu"] floating enable
+for_window [window_role="Preferences"] floating enable
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -170,26 +216,43 @@ bar {
         status_command i3status
         mode dock
         position top
-        separator_symbol " | "
+        separator_symbol "  |  "
 
         colors {
-            background #454545
+            # background #454545
+            background #303030
             statusline #ffffff
             separator #51c4d4
 
-            focused_workspace  #ecedee #ecedee #454545
-            active_workspace   #ecedee #ecedee #454545
-            inactive_workspace #454545 #454545 #ffffff
-            urgent_workspace   #454545 #454545 #ffffff
+            # focused_workspace  #ecedee #ecedee #454545
+            # active_workspace   #ecedee #ecedee #454545
+            # inactive_workspace #454545 #454545 #ffffff
+            # urgent_workspace   #454545 #454545 #ffffff
+
+            focused_workspace  #2ecc40 #2ecc40 #111111
+            active_workspace   #2ecc40 #2ecc40 #111111
+            inactive_workspace #85144b #85144b #ffffff
+            urgent_workspace   #ff4136 #ff4136 #ffffff
         }
 }
 
 # Other settings
 
-client.focused #545454 #545454 #ffffff
+new_window pixel 3
+
+gaps inner 10
+gaps outer 0
+
+smart_gaps on
+smart_borders no_gaps
+hide_edge_borders smart_no_gaps
+
+# client.focused #545454 #545454 #ffffff
+client.focused #545454 #888888 #ffffff
 client.unfocused #545454 #2d2d2d #D9D9D9
 client.focused_inactive #545454 #2d2d2d #D9D9D9
-client.urgent #51c4d4 #ecedee #51c4d4
+client.urgent #51c4d4 #ffdc00 #51c4d4
+# client.urgent #51c4d4 #ecedee #51c4d4
 
 focus_follows_mouse no
 

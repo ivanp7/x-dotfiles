@@ -13,7 +13,7 @@ general {
 
 # order += "ipv6"
 # order += "wireless _first_"
-order += "ethernet _first_"
+# order += "ethernet _first_"
 
 order += "disk /"
 order += "disk /home"
@@ -23,7 +23,8 @@ order += "disk /home"
 order += "cpu_usage"
 order += "load"
 
-order += "tztime local"
+order += "tztime localdate"
+order += "tztime localtime"
 
 # wireless _first_ {
 #         format_up = "W: (%quality at %essid) %ip"
@@ -39,15 +40,15 @@ ethernet _first_ {
 disk "/" {
     low_threshold = 10
     threshold_type = percentage_avail
-    format = "(/): %avail / %total"
-    format_below_threshold = "(/): warning: %avail / %total"
+    format = "Root: %used of %total used (%percentage_used)"
+    format_below_threshold = "Root: %used of %total used (%percentage_used)"
 }
 
 disk "/home" {
     low_threshold = 10
     threshold_type = percentage_avail
-    format = "(/home): %avail / %total"
-    format_below_threshold = "(/home): warning: %avail / %total"
+    format = "Home: %used of %total used (%percentage_used)"
+    format_below_threshold = "Home: %used of %total used (%percentage_used)"
 }
 
 # battery all {
@@ -57,9 +58,9 @@ disk "/home" {
 cpu_usage {
     degraded_threshold = 50
     max_threshold = 90
-    format = "CPU: %usage"
-    format_above_degraded_threshold = "CPU: %usage"
-    format_above_threshold = "CPU: %usage"
+    format = "CPU usage: %usage"
+    format_above_degraded_threshold = "CPU usage: %usage"
+    format_above_threshold = "CPU usage: %usage"
 }
 
 load {
@@ -68,7 +69,11 @@ load {
         format_above_threshold = "Load (1m): %1min"
 }
 
-tztime local {
-    format = "Date: [ %Y-%m-%d ]  Time: [ [ %H:%M:%S ] ]  "
+tztime localdate {
+    format = "Date: %Y-%m-%d"
+}
+
+tztime localtime {
+    format = "Time: %H:%M:%S  "
 }
 

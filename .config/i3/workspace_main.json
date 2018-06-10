@@ -1,0 +1,86 @@
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.75,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 386,
+               "width": 650,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Terminal",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^Termite$",
+                "instance": "^termite$",
+                "title": "^Terminal$",
+                "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.25,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 386,
+               "width": 650,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Clock",
+            "percent": 0.2,
+            "swallows": [
+               {
+                "class": "^Termite$",
+                "instance": "^termite$",
+                "title": "^Clock$",
+                "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 3,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 386,
+               "width": 650,
+               "x": 0,
+               "y": 0
+            },
+            "name": "To-Do List",
+            "percent": 0.8,
+            "swallows": [
+               {
+                "class": "^Termite$",
+                "instance": "^termite$",
+                "title": "^To\\-Do\\ List$",
+                "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

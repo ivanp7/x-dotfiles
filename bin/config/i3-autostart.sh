@@ -8,7 +8,7 @@
 # |                     |             |
 # |                     |_____________|
 # |                     |             |
-# |          mc         |             |
+# |       termite       |             |
 # |                     |             |
 # |                     |     vim     |
 # |                     |             |
@@ -38,22 +38,12 @@
 
 i3-msg workspace "1:Main"
 
+i3-msg "append_layout ~/.config/i3/workspace_main.json"
 termite --exec "/bin/bash -c 'echo; neofetch; bash'" --title "Terminal" &
-i3-msg split h
-sleep 0.5
-
 termite --exec="tty-clock -c -b -n" --title="Clock" &
-sleep 0.5
-i3-msg resize shrink left 25 px or 25 ppt
-i3-msg split v
-# sleep 0.3
-
 termite --exec="vim /home/ivanp7/ToDoList.org" --title="To-Do List" &
-sleep 0.3
-i3-msg resize grow up 25 px or 25 ppt
-i3-msg focus left
-i3-msg split v
-sleep 0.1
+sleep 0.5
+i3-msg "[title=\"Terminal\"] focus"
 
-notify-send "The graphical environment has been loaded. Welcome!"
+# notify-send "Welcome back! X environment is ready."
 
