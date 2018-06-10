@@ -45,5 +45,7 @@ termite --exec="vim /home/ivanp7/ToDoList.org" --title="To-Do List" &
 sleep 0.5
 i3-msg "[title=\"Terminal\"] focus"
 
+~/.i3-wpd/i3wpd.py "--bg-scale" ~/wallpapers .jpg &
+
 # notify-send "Welcome back! X environment is ready."
 

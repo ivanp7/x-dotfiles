@@ -39,7 +39,6 @@ setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 compton -b
 # feh --bg-scale "$HOME/wallpapers/3.jpg" 
 # [ -x $HOME/.fehbg ] && $HOME/.fehbg &
-$HOME/.i3-wpd/i3wpd.py "--bg-scale" $HOME/wallpapers .jpg &
 
 mkdir -p ~/.logs/i3
 exec i3 -V >> ~/.logs/i3/i3-log-$(date +'%F-%k-%M-%S') 2>&1
