@@ -10,8 +10,8 @@
 !.config/
 !.config/*
 
-!bin/
-!bin/*
+!x/
+!x/*
 
 !.conkyrc
 !.gtkrc-2.0
