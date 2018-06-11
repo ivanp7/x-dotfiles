@@ -2,5 +2,5 @@
 
 i3-msg "restart"
 sleep 1.0
-~/layout/reload-layout.sh
+[ -x ~/layout/reload-layout.sh ] && ~/layout/reload-layout.sh
 
