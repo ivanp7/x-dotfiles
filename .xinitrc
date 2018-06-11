@@ -35,6 +35,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # my environment customization
+export PATH="${PATH}:${HOME}/x:${HOME}/bin"
+
 dex -a
 xset r rate 400 25
 setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
