@@ -126,7 +126,7 @@ conky.config = {
 -- JSON for i3bar
 conky.text = [[
 [
-{ "full_text": "Network - down: ${downspeed ens33}; up: ${upspeed ens33}" , "color": "\#ffffff" },
+{ "full_text": "Network - down: ${downspeed ens33}/s; up: ${upspeed ens33}/s" , "color": "\#ffffff" },
 
 { "full_text": "CPU Usage: $cpu% (@ $freq_g GHz)" , "color": ${if_match ${cpu}<75}"\#ffffff"${else}"\#ff0000"${endif} },
 { "full_text": "RAM Usage: $memperc% ($mem / $memmax)" , "color": ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
