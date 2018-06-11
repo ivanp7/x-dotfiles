@@ -2,6 +2,7 @@
 
 !.gitignore
 
+!.xprofile
 !.xinitrc
 !.xserverrc
 !.Xresources
