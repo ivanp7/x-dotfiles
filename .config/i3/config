@@ -132,7 +132,7 @@ bindsym $mod+Shift+0 move container to workspace $ws0
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec --no-startup-id "~/.config/i3/restart-i3.sh"
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exit
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -212,8 +212,8 @@ for_window [window_role="Preferences"] floating enable
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        # status_command $HOME/bin/conky-i3bar
-        status_command i3status
+        status_command $HOME/.config/i3/conky-i3bar.sh
+        # status_command i3status
         mode dock
         position top
         separator_symbol "  |  "
@@ -256,8 +256,8 @@ client.urgent #51c4d4 #ffdc00 #51c4d4
 
 focus_follows_mouse no
 
-bindsym Print exec "gnome-screenshot -i"
+bindsym Print exec --no-startup-id "gnome-screenshot -i"
 
 # Initial layout
-exec "[ -x $HOME/layout/load-layout.sh ] && $HOME/layout/load-layout.sh"
+exec --no-startup-id "[ -x $HOME/layout/load-layout.sh ] && $HOME/layout/load-layout.sh"
 
