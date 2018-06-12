@@ -126,10 +126,12 @@ conky.config = {
 -- JSON for i3bar
 conky.text = [[
 [
+{ "full_text": "Volume - left: ${exec amixer get Master -M | grep 'Front Left:' | cut -d ' ' -f7,9 | tr -d []}; right: ${exec amixer get Master -M | grep 'Front Right:' | cut -d ' ' -f7,9 | tr -d []}", "color": "\#ffffff" },
+
 { "full_text": "Network - down: ${downspeed ens33}/s; up: ${upspeed ens33}/s" , "color": "\#ffffff" },
 
-{ "full_text": "CPU Usage: $cpu% (@ $freq_g GHz)" , "color": ${if_match ${cpu}<75}"\#ffffff"${else}"\#ff0000"${endif} },
-{ "full_text": "RAM Usage: $memperc% ($mem / $memmax)" , "color": ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
+{ "full_text": "CPU: $cpu% (@ $freq_g GHz)" , "color": ${if_match ${cpu}<75}"\#ffffff"${else}"\#ff0000"${endif} },
+{ "full_text": "RAM: $memperc% ($mem / $memmax)" , "color": ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
 { "full_text": "Processes: $processes  Running: $running_processes" , "color": "\#ffffff" },
 
 { "full_text": "Root: ${fs_used /} used (${fs_size /} total)" , "color": "\#ffffff" },
