@@ -27,5 +27,5 @@ make_links () {
 make_links ~
 
 # Make links in root home directory
-MAKE_LINKS_FUNC=$(declare -f make_links)
-sudo bash -c "CONF_DIR=$CONF_DIR;$MAKE_LINKS_FUNC; make_links /root"
+# MAKE_LINKS_FUNC=$(declare -f make_links)
+# sudo bash -c "CONF_DIR=$CONF_DIR;$MAKE_LINKS_FUNC; make_links /root"
