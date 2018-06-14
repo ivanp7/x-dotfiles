@@ -4,13 +4,15 @@ cd `dirname $0`
 CONF_DIR=$(pwd)
 
 install_links () {
-    ln -sf $CONF_DIR/.conkyrc $HOME/
-    ln -sf $CONF_DIR/.gtkrc-2.0 $HOME/
+    ln -sf $CONF_DIR/.xaliases $HOME/
     ln -sf $CONF_DIR/.xinitrc $HOME/
     ln -sf $CONF_DIR/.xprofile $HOME/
     ln -sf $CONF_DIR/.Xresources $HOME/
     ln -sf $CONF_DIR/.xserverrc $HOME/
     
+    ln -sf $CONF_DIR/.conkyrc $HOME/
+    ln -sf $CONF_DIR/.gtkrc-2.0 $HOME/
+
     ln -sf $CONF_DIR/x $HOME/
     mkdir -p $HOME/scripts/
     ln -sf $CONF_DIR/x/x-desktop.sh $HOME/scripts/

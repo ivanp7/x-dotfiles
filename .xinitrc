@@ -34,14 +34,17 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# my environment customization
+# aliases
+source ${HOME}/.xaliases
+
+# environment customization
 export PATH="${PATH}:${HOME}/x:${HOME}/bin"
 
 dex -a
 xset r rate 400 25
 setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 compton -b
-# feh --bg-scale "$HOME/wallpapers/3.jpg" 
+# feh --bg-scale "$HOME/layout/wallpapers/1.wallpaper"
 # [ -x $HOME/.fehbg ] && $HOME/.fehbg &
 
 mkdir -p ~/.logs/i3
