@@ -256,13 +256,16 @@ client.urgent #51c4d4 #ffdc00 #51c4d4
 
 focus_follows_mouse no
 
-bindsym Print exec --no-startup-id "gnome-screenshot -i"
+bindsym Print exec --no-startup-id gnome-screenshot -i
 
 # Sound control
-bindsym XF86AudioRaiseVolume exec amixer -q -M sset Master 1%+ unmute; exec amixer -q -M sset PCM unmute
-bindsym XF86AudioLowerVolume  exec amixer -q -M sset Master 1%- unmute; exec amixer -q -M sset PCM unmute
-bindsym XF86AudioMute exec amixer -q -M sset Master toggle; exec amixer -q -M sset PCM unmute
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -M sset Master 1%+ unmute; exec amixer -q -M sset PCM unmute
+bindsym XF86AudioLowerVolume  exec --no-startup-id amixer -q -M sset Master 1%- unmute; exec amixer -q -M sset PCM unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q -M sset Master toggle; exec amixer -q -M sset PCM unmute
 
-# Initial layout
+# Show time and date in a notification box
+bindsym $mod+t exec --no-startup-id notify-send "$(date)"
+
+# Exec initial layout
 exec --no-startup-id "[ -x $HOME/layout/load-layout.sh ] && $HOME/layout/load-layout.sh"
 
