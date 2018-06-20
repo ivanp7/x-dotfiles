@@ -126,18 +126,21 @@ conky.config = {
 -- JSON for i3bar
 conky.text = [[
 [
-{ "full_text": "Volume - left: ${exec amixer get Master -M | grep 'Front Left:' | cut -d ' ' -f7,9 | tr -d []}; right: ${exec amixer get Master -M | grep 'Front Right:' | cut -d ' ' -f7,9 | tr -d []}", "color": "\#ffffff" },
+{ "full_text": "${exec echo $'\u2328'} [${exec Status=$(xset -q | grep LED | awk '{ print $10 }'); case ${Status:4:1} in 0) echo ENG ;; 1) echo RUS ;; *) echo ?? ;; esac}]", "color": "\#ffffff" },
 
-{ "full_text": "Network - down: ${downspeed ens33}/s; up: ${upspeed ens33}/s" , "color": "\#ffffff" },
+{ "full_text": "Volume: [${exec amixer get Master -M | grep 'Front Left:' | cut -d ' ' -f7,9 | tr -d []}] ${exec echo $'\u2194'} [${exec amixer get Master -M | grep 'Front Right:' | cut -d ' ' -f7,9 | tr -d []}]", "color": "\#ffffff" },
 
+{ "full_text": "Network: [ ${downspeed ens33}/s ${exec echo $'\u25bc'} ] [ ${upspeed ens33}/s ${exec echo $'\u25b2'} ]" , "color": "\#ffffff" },
+
+{ "full_text": "Processes: $processes (running: $running_processes)" , "color": "\#ffffff" },
 { "full_text": "CPU: $cpu% (@ $freq_g GHz)" , "color": ${if_match ${cpu}<75}"\#ffffff"${else}"\#ff0000"${endif} },
 { "full_text": "RAM: $memperc% ($mem / $memmax)" , "color": ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
-{ "full_text": "Processes: $processes  Running: $running_processes" , "color": "\#ffffff" },
 
-{ "full_text": "Root: ${fs_used /} used (${fs_size /} total)" , "color": "\#ffffff" },
-{ "full_text": "Home: ${fs_used /home} used (${fs_size /home} total)" , "color": "\#ffffff" },
-{ "full_text": "Uptime: $uptime" , "color": "\#ffffff" },
-{ "full_text": "$sysname $kernel @ $nodename" , "color": "\#ffffff" }
+{ "full_text": "</>:  (${fs_used /} / ${fs_size /})" , "color": "\#ffffff" },
+{ "full_text": "<~>:  (${fs_used /home} / ${fs_size /home})" , "color": "\#ffffff" },
+
+{ "full_text": "$uptime @ $nodename" , "color": "\#ffffff" },
+{ "full_text": "${exec date}" , "color": "\#ffffff" }
 ],
 ]]
 

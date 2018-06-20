@@ -263,9 +263,6 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -M sset Master 1%+ u
 bindsym XF86AudioLowerVolume  exec --no-startup-id amixer -q -M sset Master 1%- unmute; exec amixer -q -M sset PCM unmute
 bindsym XF86AudioMute exec --no-startup-id amixer -q -M sset Master toggle; exec amixer -q -M sset PCM unmute
 
-# Show time and date in a notification box
-bindsym $mod+t exec --no-startup-id notify-send "$(date)"
-
 # Exec initial layout
 exec --no-startup-id "[ -x $HOME/layout/load-layout.sh ] && $HOME/layout/load-layout.sh"
 
