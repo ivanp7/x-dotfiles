@@ -34,9 +34,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# aliases
-source ${HOME}/.xaliases
-
 # environment customization
 export PATH="${PATH}:${HOME}/x:${HOME}/bin"
 
