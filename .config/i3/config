@@ -264,5 +264,5 @@ bindsym XF86AudioLowerVolume  exec --no-startup-id amixer -q -M sset PCM 3%- unm
 bindsym XF86AudioMute exec --no-startup-id amixer -q -M sset PCM toggle; exec amixer -q -M sset Master 100% unmute
 
 # Exec initial layout
-exec --no-startup-id "[ -x $HOME/layout/load-layout.sh ] && $HOME/layout/load-layout.sh"
+exec --no-startup-id "[ -x $HOME/scripts/layout/load-layout.sh ] && $HOME/scripts/layout/load-layout.sh"
 
