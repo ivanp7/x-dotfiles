@@ -14,8 +14,8 @@ install_links () {
     ln -sf $CONF_DIR/.gtkrc-2.0 $HOME/
 
     ln -sf $CONF_DIR/x $HOME/
-    mkdir -p $HOME/scripts/
-    ln -sf $CONF_DIR/x/x-desktop.sh $HOME/scripts/
+    mkdir -p $HOME/bin/
+    ln -sf $CONF_DIR/x/x-desktop.sh $HOME/bin/
     
     mkdir -p $HOME/.config/
     ln -sf $CONF_DIR/.config/dunst $HOME/.config/
