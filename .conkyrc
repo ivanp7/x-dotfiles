@@ -124,12 +124,11 @@ conky.config = {
 
 -- Stuff after 'TEXT' will be formatted on screen
 -- JSON for i3bar
+
+-- { "full_text": "Vol: [${exec amixer get PCM -M | grep 'Front Left:' | cut -d ' ' -f7,9 | tr -d []}] ${exec echo $'\u2194'} [${exec amixer get PCM -M | grep 'Front Right:' | cut -d ' ' -f7,9 | tr -d []}]", "color": "\#ffffff" },
+
 conky.text = [[
 [
-{ "full_text": "${exec echo $'\u2328'} [${exec Status=$(xset -q | grep LED | awk '{ print $10 }'); case ${Status:4:1} in 0) echo ENG ;; 1) echo RUS ;; *) echo ?? ;; esac}]", "color": "\#ffffff" },
-
-{ "full_text": "Vol: [${exec amixer get PCM -M | grep 'Front Left:' | cut -d ' ' -f7,9 | tr -d []}] ${exec echo $'\u2194'} [${exec amixer get PCM -M | grep 'Front Right:' | cut -d ' ' -f7,9 | tr -d []}]", "color": "\#ffffff" },
-
 { "full_text": "Net: [ ${downspeed ens33}/s ${exec echo $'\u25bc'} ] [ ${upspeed ens33}/s ${exec echo $'\u25b2'} ]" , "color": "\#ffffff" },
 
 { "full_text": "Proc: $processes (run: $running_processes)" , "color": "\#ffffff" },
@@ -140,7 +139,9 @@ conky.text = [[
 { "full_text": "<~>:  (${fs_used /home} / ${fs_size /home})" , "color": "\#ffffff" },
 
 { "full_text": "$uptime @ $nodename" , "color": "\#ffffff" },
-{ "full_text": "${exec date}" , "color": "\#ffffff" }
+{ "full_text": "${exec date +'%Y-%b-%d %a %H:%M:%S'}" , "color": "\#ffffff" },
+{ "full_text": "[${exec Status=$(xset -q | grep LED | awk '{ print $10 }'); case ${Status:4:1} in 0) echo ENG ;; 1) echo RUS ;; *) echo ?? ;; esac}]", "color": "\#ffffff" }
+
 ],
 ]]
 

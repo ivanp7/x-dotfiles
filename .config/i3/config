@@ -259,9 +259,12 @@ focus_follows_mouse no
 bindsym Print exec --no-startup-id gnome-screenshot -i
 
 # Sound control
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -M sset PCM 3%+ unmute; exec amixer -q -M sset Master 100% unmute
-bindsym XF86AudioLowerVolume  exec --no-startup-id amixer -q -M sset PCM 3%- unmute; exec amixer -q -M sset Master 100% unmute
-bindsym XF86AudioMute exec --no-startup-id amixer -q -M sset PCM toggle; exec amixer -q -M sset Master 100% unmute
+bindsym $mod+u exec --no-startup-id "$HOME/x/show-volume.sh"
+
+set $volume_delta 3%
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q -M sset PCM $volume_delta+ unmute; exec amixer -q -M sset Master 100% unmute & $HOME/x/show-volume.sh"
+bindsym XF86AudioLowerVolume  exec --no-startup-id "amixer -q -M sset PCM $volume_delta- unmute; exec amixer -q -M sset Master 100% unmute & $HOME/x/show-volume.sh"
+bindsym XF86AudioMute exec --no-startup-id "amixer -q -M sset PCM toggle; exec amixer -q -M sset Master 100% unmute & $HOME/x/show-volume.sh"
 
 # Exec initial layout
 exec --no-startup-id "[ -x $HOME/scripts/layout/load-layout.sh ] && $HOME/scripts/layout/load-layout.sh"
