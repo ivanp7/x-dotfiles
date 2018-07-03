@@ -2,12 +2,14 @@
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
+# set keymap
+xset r rate 400 25
+setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
+
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
-
-# merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
@@ -25,8 +27,7 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# start some nice programs
-
+# load config scripts
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
   [ -x "$f" ] && . "$f"
@@ -38,8 +39,6 @@ fi
 export PATH="${PATH}:${HOME}/x"
 
 dex -a
-xset r rate 400 25
-setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 compton -b
 # feh --bg-scale "$HOME/layout/wallpapers/1.wallpaper"
 # [ -x $HOME/.fehbg ] && $HOME/.fehbg &
