@@ -128,11 +128,11 @@ conky.text = [[
 [
 { "full_text": "${exec echo $'\u2328'} [${exec Status=$(xset -q | grep LED | awk '{ print $10 }'); case ${Status:4:1} in 0) echo ENG ;; 1) echo RUS ;; *) echo ?? ;; esac}]", "color": "\#ffffff" },
 
-{ "full_text": "Volume: [${exec amixer get PCM -M | grep 'Front Left:' | cut -d ' ' -f7,9 | tr -d []}] ${exec echo $'\u2194'} [${exec amixer get PCM -M | grep 'Front Right:' | cut -d ' ' -f7,9 | tr -d []}]", "color": "\#ffffff" },
+{ "full_text": "Vol: [${exec amixer get PCM -M | grep 'Front Left:' | cut -d ' ' -f7,9 | tr -d []}] ${exec echo $'\u2194'} [${exec amixer get PCM -M | grep 'Front Right:' | cut -d ' ' -f7,9 | tr -d []}]", "color": "\#ffffff" },
 
-{ "full_text": "Network: [ ${downspeed ens33}/s ${exec echo $'\u25bc'} ] [ ${upspeed ens33}/s ${exec echo $'\u25b2'} ]" , "color": "\#ffffff" },
+{ "full_text": "Net: [ ${downspeed ens33}/s ${exec echo $'\u25bc'} ] [ ${upspeed ens33}/s ${exec echo $'\u25b2'} ]" , "color": "\#ffffff" },
 
-{ "full_text": "Processes: $processes (running: $running_processes)" , "color": "\#ffffff" },
+{ "full_text": "Proc: $processes (run: $running_processes)" , "color": "\#ffffff" },
 { "full_text": "CPU: $cpu% (@ $freq_g GHz)" , "color": ${if_match ${cpu}<75}"\#ffffff"${else}"\#ff0000"${endif} },
 { "full_text": "RAM: $memperc% ($mem / $memmax)" , "color": ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
 
