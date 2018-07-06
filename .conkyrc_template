@@ -129,7 +129,7 @@ conky.config = {
 
 conky.text = [[
 [
-{ "full_text": "Net: [ ${downspeed ens33}/s ${exec echo $'\u25bc'} ] [ ${upspeed ens33}/s ${exec echo $'\u25b2'} ]" , "color": "\#ffffff" },
+{ "full_text": "Net: [ ${downspeed NETWORK_INTERFACE}/s ${exec echo $'\u25bc'} ] [ ${upspeed NETWORK_INTERFACE}/s ${exec echo $'\u25b2'} ]" , "color": "\#ffffff" },
 
 { "full_text": "Proc: $processes (run: $running_processes)" , "color": "\#ffffff" },
 { "full_text": "CPU: $cpu% (@ $freq_g GHz)" , "color": ${if_match ${cpu}<75}"\#ffffff"${else}"\#ff0000"${endif} },
