@@ -11,7 +11,7 @@ install_links () {
     ln -sf $CONF_DIR/.xserverrc $HOME/
     
     cp $CONF_DIR/.conkyrc_template $HOME/.conkyrc
-    sed -i "s/NETWORK_INTERFACE/$(ls /sys/class/net/ | grep '^en')/g" $HOME/.conkyrc
+    sed -i "s/NETWORK_INTERFACE/$(grep 'Interface=' /etc/netctl/network | cut -d'=' -f2)/g" $HOME/.conkyrc
 
     ln -sf $CONF_DIR/.gtkrc-2.0 $HOME/
 
