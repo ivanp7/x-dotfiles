@@ -15,6 +15,7 @@ install_links () {
 
     ln -sf $CONF_DIR/.gtkrc-2.0 $HOME/
 
+    chmod +x $CONF_DIR/x/*
     ln -sf $CONF_DIR/x $HOME/
     mkdir -p $HOME/bin/
     ln -sf $CONF_DIR/x/x-desktop.sh $HOME/bin/
