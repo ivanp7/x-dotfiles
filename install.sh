@@ -24,6 +24,8 @@ install_links () {
     ln -sf $CONF_DIR/.config/dunst $HOME/.config/
     ln -sf $CONF_DIR/.config/gtk-3.0 $HOME/.config/
     ln -sf $CONF_DIR/.config/i3 $HOME/.config/
+    chmod +x $CONF_DIR/.config/i3/conky-i3bar.sh
+    chmod +x $CONF_DIR/.config/i3/restart-i3.sh
     ln -sf $CONF_DIR/.config/i3status $HOME/.config
     ln -sf $CONF_DIR/.config/termite $HOME/.config
 }
