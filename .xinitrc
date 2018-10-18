@@ -39,7 +39,7 @@ fi
 export PATH="${PATH}:${HOME}/x"
 
 dex -a
-compton -b
+compton &
 # feh --bg-scale "$HOME/layout/wallpapers/1.wallpaper"
 # [ -x $HOME/.fehbg ] && $HOME/.fehbg &
 
