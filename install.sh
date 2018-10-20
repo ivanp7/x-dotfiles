@@ -17,7 +17,7 @@ install_links () {
 
     ln -sf $CONF_DIR/.gtkrc-2.0 $HOME/
 
-    chmod +x $CONF_DIR/x/*
+    # chmod +x $CONF_DIR/x/*
     ln -sf $CONF_DIR/x $HOME/
     mkdir -p $HOME/bin/
     ln -sf $CONF_DIR/x/x-desktop.sh $HOME/bin/
@@ -26,8 +26,6 @@ install_links () {
     ln -sf $CONF_DIR/.config/dunst $HOME/.config/
     ln -sf $CONF_DIR/.config/gtk-3.0 $HOME/.config/
     ln -sf $CONF_DIR/.config/i3 $HOME/.config/
-    chmod +x $CONF_DIR/.config/i3/conky-i3bar.sh
-    chmod +x $CONF_DIR/.config/i3/restart-i3.sh
     ln -sf $CONF_DIR/.config/i3status $HOME/.config
     ln -sf $CONF_DIR/.config/termite $HOME/.config
 }
