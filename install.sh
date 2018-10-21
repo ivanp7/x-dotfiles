@@ -28,6 +28,8 @@ install_links () {
     ln -sf $CONF_DIR/.config/i3 $HOME/.config/
     ln -sf $CONF_DIR/.config/i3status $HOME/.config
     ln -sf $CONF_DIR/.config/termite $HOME/.config
+
+    mkdir -p $HOME/wallpapers/
 }
 
 # Make links in our home directory
