@@ -269,6 +269,6 @@ bindsym XF86AudioMute exec --no-startup-id "amixer -q -M sset PCM toggle; exec a
 # Enable wallpaper-per-workspace switcher
 exec --no-startup-id "sh $HOME/.config/i3/wallpapers.sh"
 
-# Construct initial layout
-exec --no-startup-id "[ -f $HOME/scripts/layout/load-layout.sh ] && . $HOME/scripts/layout/load-layout.sh"
+# Construct default layout
+exec --no-startup-id ". $HOME/.config/i3/layout/load-layout.sh"
 
