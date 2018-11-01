@@ -30,8 +30,6 @@ install_links () {
     ln -sf $CONF_DIR/.config/termite $HOME/.config
 
     mkdir -p $HOME/wallpapers/
-
-    (crontab -l 2>/dev/null; echo "01 00 * * * /usr/bin/echo -n '' >> $HOME/Org/calendar") | crontab -
 }
 
 # Make links in our home directory

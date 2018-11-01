@@ -43,15 +43,16 @@
 # Main workspace
 
 i3-msg workspace "1"
+i3-msg "exec termite"
 
-i3-msg "append_layout $HOME/.config/i3/layout/workspace_1.json"
-termite --exec "tty-clock -c -b -n -C 6" --title "Clock" &
-termite --exec "sh $HOME/.config/i3/layout/update_calendar.sh" --title "Calendar" &
-termite --exec "sh $HOME/.config/i3/layout/update_todo.sh" --title "To-Do List" &
-termite --exec "bash -c 'echo; neofetch; bash'" --title "Terminal1" &
+# i3-msg "append_layout $HOME/.config/i3/layout/workspace_1.json"
+# termite --exec "tty-clock -c -b -n -C 6" --title "Clock" &
+# termite --exec "sh $HOME/.config/i3/layout/update_calendar.sh" --title "Calendar" &
+# termite --exec "sh $HOME/.config/i3/layout/update_todo.sh" --title "To-Do List" &
+# termite --exec "bash -c 'echo; neofetch; bash'" --title "Terminal1" &
 
-sleep 1.0
-i3-msg '[con_mark="primary_terminal"] focus'
-sleep 3.0
-i3-msg '[con_mark="primary_terminal"] focus'
+# sleep 1.0
+# i3-msg '[con_mark="primary_terminal"] focus'
+# sleep 3.0
+# i3-msg '[con_mark="primary_terminal"] focus'
 
