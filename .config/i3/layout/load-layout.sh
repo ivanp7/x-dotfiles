@@ -42,7 +42,7 @@
 
 # Main workspace
 
-i3-msg workspace "1"
+i3-msg workspace number 1
 i3-msg "exec termite"
 
 # i3-msg "append_layout $HOME/.config/i3/layout/workspace_1.json"

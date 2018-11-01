@@ -11,5 +11,5 @@ done
 
 windowIds=`wmctrl -lp | egrep "$pids" | awk '{print $1}'`
 
-echo "$windowIds" | xargs -i i3-msg '[id="{}"] move container to workspace '$3
+echo "$windowIds" | xargs -i i3-msg '[id="{}"] move container to workspace number '$3
 
