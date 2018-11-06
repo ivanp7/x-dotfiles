@@ -36,7 +36,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # environment customization
-export PATH="${PATH}:${HOME}/x"
+export PATH="${PATH}:${HOME}/bin/x"
 
 dex -a
 compton &
