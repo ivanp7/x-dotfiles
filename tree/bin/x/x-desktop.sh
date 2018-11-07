@@ -6,7 +6,8 @@ TTY=$(tty | sed 's@/dev/@@; s@/@@')
 touch $HOME/.tmux_tmp/$TTY
 
 startx
-reset
 
 rm $HOME/.tmux_tmp/$TTY
+
+reset
 
