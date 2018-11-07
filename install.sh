@@ -10,7 +10,7 @@ install_tree()
 
 install_special_conky()
 {
-    cp -f $CONF_DIR/special/conky/.conkyrc_template $HOME/.conkyrc
+    cp -f $CONF_DIR/special/conky/.conkyrc $HOME/
     chmod 644 $HOME/.conkyrc
     sed -i "s/NETWORK_INTERFACE/$(grep 'Interface=' /etc/netctl/network | cut -d'=' -f2)/g" $HOME/.conkyrc
 }
