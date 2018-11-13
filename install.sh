@@ -20,9 +20,33 @@ install_special_xdesktop()
     ln -sf $CONF_DIR/tree/bin/x/x-desktop.sh $HOME/bin/
 }
 
-echo Installing configuration...
-install_tree
-install_special_conky
-install_special_xdesktop
-echo Done!
+case $1 in
+    tree)
+        echo "Installing tree only..."
+        install_tree
+        ;;
+
+    conky)
+        echo "Installing conky config only..."
+        install_special_conky
+        echo "Done!"
+        ;;
+
+    xdesktop)
+        echo "Installing x-desktop.sh only..."
+        install_special_xdesktop
+        echo "Done!"
+        ;;
+
+    "")
+        echo "Installing everything..."
+        install_tree
+        install_special_conky
+        install_special_xdesktop
+        echo "Done!"
+        ;;
+
+    *)
+        echo "Error: invalid argument."
+esac
 
