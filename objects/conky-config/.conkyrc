@@ -126,12 +126,12 @@ conky.config = {
 -- JSON for i3bar
 
 -- { "full_text": "Vol: [${exec amixer get PCM -M | grep 'Front Left:' | cut -d ' ' -f7,9 | tr -d []}] ${exec echo $'\u2194'} [${exec amixer get PCM -M | grep 'Front Right:' | cut -d ' ' -f7,9 | tr -d []}]", "color": "\#ffffff" },
+-- { "full_text": "Proc: $processes (run: $running_processes)" , "color": "\#ffffff" },
 
 conky.text = [[
 [
 { "full_text": "Net <NETWORK_INTERFACE>: [ ${downspeed NETWORK_INTERFACE}/s ${exec echo $'\u25bc'} ] [ ${upspeed NETWORK_INTERFACE}/s ${exec echo $'\u25b2'} ]" , "color": "\#ffffff" },
 
-{ "full_text": "Proc: $processes (run: $running_processes)" , "color": "\#ffffff" },
 { "full_text": "CPU: $cpu% (@ $freq_g GHz)" , "color": ${if_match ${cpu}<75}"\#ffffff"${else}"\#ff0000"${endif} },
 { "full_text": "RAM: $memperc% ($mem / $memmax)" , "color": ${if_match ${memperc}<90}"\#ffffff"${else}"\#ff0000"${endif} },
 
