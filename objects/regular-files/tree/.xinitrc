@@ -3,7 +3,7 @@
 [ -f ~/.xprofile ] && . ~/.xprofile
 
 # set keymap
-xset r rate 400 25
+xset r rate 500 20
 setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
 
 userresources=$HOME/.Xresources
