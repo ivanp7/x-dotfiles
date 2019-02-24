@@ -226,7 +226,8 @@ bar {
             # background #454545
             background #303030
             statusline #ffffff
-            separator #51c4d4
+            separator #aaaaaa
+            # separator #51c4d4
 
             # focused_workspace  #ecedee #ecedee #454545
             # active_workspace   #ecedee #ecedee #454545
