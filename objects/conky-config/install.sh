@@ -2,7 +2,6 @@
 
 CONF_DIR=$(realpath `dirname $0`)
 
-cp -f $CONF_DIR/.conkyrc $HOME/
-chmod 644 $HOME/.conkyrc
+install -Dm 644 $CONF_DIR/.conkyrc $HOME/
 sed -i "s/NETWORK_INTERFACE/$(grep 'Interface=' /etc/netctl/network | cut -d'=' -f2)/g" $HOME/.conkyrc
 
