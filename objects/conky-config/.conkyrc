@@ -130,19 +130,17 @@ conky.config = {
 
 conky.text = [[
 [
-{ "full_text": "Net <NETWORK_INTERFACE>: [ ${downspeed NETWORK_INTERFACE}/s ${exec echo $'\u25bc'} ] [ ${upspeed NETWORK_INTERFACE}/s ${exec echo $'\u25b2'} ]" , "color": "\#1e90ff" },
+{ "full_text": "Net <NETWORK_INTERFACE>: [ ${downspeed NETWORK_INTERFACE}/s ${exec echo $'\u25bc'} ] [ ${upspeed NETWORK_INTERFACE}/s ${exec echo $'\u25b2'} ]" , "color": "\#8a2be2" },
 
-{ "full_text": "CPU: $cpu% (@ $freq_g GHz)" , "color": ${if_match ${cpu}<75}"\#32cd32"${else}"\#ffffff"${endif} },
-{ "full_text": "RAM: $memperc% ($mem / $memmax)" , "color": ${if_match ${memperc}<90}"\#32cd32"${else}"\#ffffff"${endif} },
+{ "full_text": "CPU: $cpu% (@ $freq_g GHz)" , "color": ${if_match ${cpu}<75}"\#009cdf"${else}"\#ffffff"${endif} },
+{ "full_text": "RAM: $memperc% ($mem / $memmax)" , "color": ${if_match ${memperc}<90}"\#46f0f0"${else}"\#ffffff"${endif} },
 
-{ "full_text": "root: (${fs_used /} / ${fs_size /})" , "color": "\#ffd700" },
-{ "full_text": "home: (${fs_used /home} / ${fs_size /home})" , "color": "\#ffd700" },
+{ "full_text": "root: (${fs_used /} / ${fs_size /})" , "color": "\#5ebd3e" },
+{ "full_text": "home: (${fs_used /home} / ${fs_size /home})" , "color": "\#ffb900" },
 
-{ "full_text": "↑ $uptime @ $nodename" , "color": "\#ff1493" },
-{ "full_text": "${exec date +'%Y-%b-%d %a %H:%M:%S'}" , "color": "\#ff1493" },
-{ "full_text": "[${exec Status=$(xset -q | grep LED | awk '{ print $10 }'); case ${Status:4:1} in 0) echo ENG ;; 1) echo RUS ;; *) echo ?? ;; esac}]", "color": "\#ffffff" },
-
-{ "full_text": "" , "color": "\#ffffff" }
+{ "full_text": "↑ $uptime @ $nodename" , "color": "\#f78200" },
+{ "full_text": "${exec date +'%Y-%b-%d %a %H:%M:%S'}" , "color": "\#e23838" },
+{ "full_text": "${exec Status=$(xset -q | grep LED | awk '{ print $10 }'); case ${Status:4:1} in 0) echo [ENG] ;; 1) echo \(RUS\) ;; *) echo ?? ;; esac}", "color": "\#ffffff" }
 
 ],
 ]]
