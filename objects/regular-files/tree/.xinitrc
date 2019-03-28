@@ -2,6 +2,8 @@
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
+xrandr --auto
+
 # set keymap
 xset r rate 500 20
 setxkbmap -layout "us,ru" -option "grp:win_space_toggle"
