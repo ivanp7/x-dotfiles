@@ -4,5 +4,6 @@
 # ==========
 
 # Construct user layout
-[ -f $HOME/scripts/layout/load-layout.sh ] && . $HOME/scripts/layout/load-layout.sh
+SCRIPT=$HOME/bin/scripts/layout/load-layout.sh
+[ -f $SCRIPT ] && . $SCRIPT
 
