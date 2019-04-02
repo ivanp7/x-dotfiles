@@ -34,7 +34,7 @@ foreground = ${colors.foreground}
 line-size = 2
 ; line-color = #f00
 
-border-bottom-size = 5
+border-bottom-size = 3
 border-color = #00000000
 
 padding-left = 0
@@ -50,7 +50,7 @@ font-0 = xos4 Terminus:size=10;0
 
 modules-left = i3
 modules-center = xwindow
-modules-right = wireless wired battery cpu temperature memory filesystem date alsa xkeyboard
+modules-right = backlight-acpi alsa xkeyboard date
 
 tray-position = right
 tray-padding = 2
@@ -65,6 +65,19 @@ tray-padding = 2
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[bar/bottom]
+inherit = bar/top
+
+bottom = true
+
+border-bottom-size = 0
+border-top-size = 3
+modules-left = wireless wired
+modules-center = battery 
+modules-right = cpu temperature memory filesystem 
+
+tray-position =
 
 [module/i3]
 type = internal/i3
@@ -105,7 +118,7 @@ label-urgent-padding = 2
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:80:...%
+label = %title:0:100:...%
 ; label = %title:0:50:...%
 
 [module/wireless]
@@ -155,19 +168,25 @@ battery = BAT0
 adapter = ACAD
 full-at = 100
 
-format-charging = <animation-charging><label-charging>
+format-charging = <animation-charging> <ramp-capacity> <label-charging>
 format-charging-underline = #ffb52a
-format-charging-prefix = "Bat. "
+format-charging-prefix = "Battery "
 format-charging-prefix-foreground = ${colors.foreground-alt}
+; label-charging = %percentage%% (%consumption%)
+label-charging = %percentage%%
 
-format-discharging = <animation-discharging><label-discharging>
+format-discharging = <animation-discharging> <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
-format-discharging-prefix = "Bat. "
+format-discharging-prefix = ${self.format-charging-prefix}
 format-discharging-prefix-foreground = ${colors.foreground-alt}
+; label-discharging = %percentage%% (%time%)
+label-discharging = %percentage%%
 
+format-full = <ramp-capacity> <label-full>
 format-full-underline = ${self.format-charging-underline}
-format-full-prefix = "Bat. "
+format-full-prefix = ${self.format-charging-prefix}
 format-full-prefix-foreground = ${colors.foreground-alt}
+label-full = %percentage%%
 
 animation-charging-0 = "↑ "
 animation-charging-foreground = ${colors.foreground}
@@ -177,25 +196,33 @@ animation-discharging-0 =
 animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 2000
 
+ramp-capacity-0 = ▁
+ramp-capacity-1 = ▂
+ramp-capacity-2 = ▃
+ramp-capacity-3 = ▄
+ramp-capacity-4 = ▅
+ramp-capacity-5 = ▆
+ramp-capacity-6 = ▇
+ramp-capacity-7 = █
+
 [module/cpu]
 type = internal/cpu
 interval = 2
-; format = <label> <ramp-coreload>
-format = <label>
+format = <label> <ramp-coreload>
 format-prefix = "CPU "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage:2%%
 
-; ramp-coreload-spacing = 1
-; ramp-coreload-0 = ▁
-; ramp-coreload-1 = ▂
-; ramp-coreload-2 = ▃
-; ramp-coreload-3 = ▄
-; ramp-coreload-4 = ▅
-; ramp-coreload-5 = ▆
-; ramp-coreload-6 = ▇
-; ramp-coreload-7 = █
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
 
 [module/temperature]
 type = internal/temperature
@@ -214,10 +241,20 @@ label-warn-foreground = ${colors.secondary}
 [module/memory]
 type = internal/memory
 interval = 2
+format = <ramp-used> <label>
 format-prefix = "RAM "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #5ebd3e
-label = %percentage_used%% (%gb_used% / %gb_total%)
+label = %percentage_used%% used (%gb_used% / %gb_total%)
+
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
 
 [module/filesystem]
 type = internal/fs
@@ -226,7 +263,7 @@ interval = 10
 mount-0 = /
 mount-1 = /home
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: (%used% / %total%)
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_free%% free (%free% / %total%)
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -241,7 +278,7 @@ date = " %Y-%b-%d %a"
 date-alt = " %Y-%m-%d"
 
 time = %H:%M:%S
-time-alt = %H:%M:%S
+time-alt = %H:%M
 
 format-prefix-foreground = ${colors.foreground-alt}
 
