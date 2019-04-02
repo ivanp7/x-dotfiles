@@ -272,7 +272,7 @@ format-unmounted-underline = ${self.format-mounted-underline}
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date = " %Y-%b-%d %a"
 date-alt = " %Y-%m-%d"
