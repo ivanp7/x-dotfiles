@@ -13,7 +13,7 @@
 background = #222
 background-alt = #444
 foreground = #dfdfdf
-foreground-alt = #555
+foreground-alt = #777
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -75,7 +75,7 @@ border-bottom-size = 0
 border-top-size = 3
 modules-left = wireless wired
 modules-center = battery 
-modules-right = cpu temperature memory filesystem 
+modules-right = cpu cpu-frequency temperature memory filesystem 
 
 tray-position =
 
@@ -129,7 +129,7 @@ interval = 3.0
 format-connected = <label-connected>
 ; format-connected-underline = #9f78e1
 format-connected-underline = #aaa
-label-connected = %ifname% (%essid%): %downspeed% ↓ %upspeed% ↑
+label-connected = %ifname% <%local_ip%> (%essid%): %{F#5ebd3e}%downspeed%%{F-} ↓ %{F#0a81f5}%upspeed%%{F-} ↑
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -137,24 +137,15 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-; ramp-signal-0 = ▁
-; ramp-signal-1 = ▂
-; ramp-signal-2 = ▃
-; ramp-signal-3 = ▄
-; ramp-signal-4 = ▅
-; ramp-signal-5 = ▆
-; ramp-signal-6 = ▇
-; ramp-signal-7 = █
-; ramp-signal-foreground = ${colors.foreground}
-
 [module/wired]
 type = internal/network
 interface = WIRED_NETWORK_INTERFACE
 interval = 3.0
 
 ; format-connected-underline = #55aa55
-format-connected-underline = #aaa
-label-connected = %ifname% (wired): %downspeed% ↓ %upspeed% ↑
+format-connected-underline = ${module/wireless.format-connected-underline}
+label-connected = %ifname% <%local_ip%> [wire]: %{F#5ebd3e}%downspeed%%{F-} ↓ %{F#0a81f5}%upspeed%%{F-} ↑
+; label-connected = ${module/wireless.label-connected}
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -168,22 +159,22 @@ battery = BAT0
 adapter = ACAD
 full-at = 100
 
-format-charging = <animation-charging> <ramp-capacity> <label-charging>
-format-charging-underline = #ffb52a
+format-charging = <animation-charging> <label-charging> <bar-capacity>
+; format-charging-underline = #ffb52a
 format-charging-prefix = "Battery "
 format-charging-prefix-foreground = ${colors.foreground-alt}
 ; label-charging = %percentage%% (%consumption%)
 label-charging = %percentage%%
 
-format-discharging = <animation-discharging> <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging = <animation-discharging> <label-discharging> <bar-capacity>
+; format-discharging-underline = ${self.format-charging-underline}
 format-discharging-prefix = ${self.format-charging-prefix}
 format-discharging-prefix-foreground = ${colors.foreground-alt}
 ; label-discharging = %percentage%% (%time%)
 label-discharging = %percentage%%
 
-format-full = <ramp-capacity> <label-full>
-format-full-underline = ${self.format-charging-underline}
+format-full = <label-full> <bar-capacity>
+; format-full-underline = ${self.format-charging-underline}
 format-full-prefix = ${self.format-charging-prefix}
 format-full-prefix-foreground = ${colors.foreground-alt}
 label-full = %percentage%%
@@ -196,14 +187,15 @@ animation-discharging-0 =
 animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 2000
 
-ramp-capacity-0 = ▁
-ramp-capacity-1 = ▂
-ramp-capacity-2 = ▃
-ramp-capacity-3 = ▄
-ramp-capacity-4 = ▅
-ramp-capacity-5 = ▆
-ramp-capacity-6 = ▇
-ramp-capacity-7 = █
+bar-capacity-width = 10
+bar-capacity-foreground-0 = #ff5555
+bar-capacity-foreground-1 = #f5a70a
+bar-capacity-foreground-2 = #55aa55
+bar-capacity-gradient = false
+bar-capacity-indicator = |
+bar-capacity-fill = ─
+bar-capacity-empty = ─
+bar-capacity-empty-foreground = ${colors.foreground-alt}
 
 [module/cpu]
 type = internal/cpu
@@ -224,13 +216,25 @@ ramp-coreload-5 = ▆
 ramp-coreload-6 = ▇
 ramp-coreload-7 = █
 
+[module/cpu-frequency]
+type = custom/script
+exec = ~/.config/polybar/system-cpu-frequency.sh
+interval = 3
+
+format-prefix = "@ "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+
+label = %output:8%
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
 format = <label>
-format-underline = #f50a4d
+; format-underline = #f50a4d
+format-underline = #f90000
 format-warn = <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -270,6 +274,64 @@ label-unmounted-foreground = ${colors.foreground-alt}
 format-mounted-underline = #0a6cf5
 format-unmounted-underline = ${self.format-mounted-underline}
 
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = %percentage%%
+format-prefix = "Backlight "
+format-prefix-foreground = ${colors.foreground-alt}
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-fill = ─
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+format-volume-prefix = "Volume "
+format-volume-prefix-foreground = ${colors.foreground-alt}
+
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = muted
+format-muted-prefix = ${self.format-volume-prefix}
+format-muted-prefix-foreground = ${colors.foreground-alt}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-fill = ─
+bar-volume-empty = ─
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = "Language "
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-layout = %name:0:7%
+
 [module/date]
 type = internal/date
 interval = 1
@@ -283,61 +345,6 @@ time-alt = %H:%M
 format-prefix-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-label-layout = %name:0:3%
 
 [settings]
 screenchange-reload = true
