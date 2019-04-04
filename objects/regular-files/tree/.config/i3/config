@@ -246,15 +246,15 @@ exec --no-startup-id "polybar bottom"
 bindsym Print exec --no-startup-id "gnome-screenshot -i"
 
 # Dropdown terminal
-bindsym $mod+t exec --no-startup-id "sh $HOME/bin/x/dropdown-terminal.sh"
+bindsym $mod+t exec --no-startup-id "sh $HOME/bin/xdf/dropdown-terminal.sh"
 
 # Sound control
-bindsym $mod+u exec --no-startup-id "sh $HOME/bin/x/set-volume.sh"
+bindsym $mod+u exec --no-startup-id "sh $HOME/bin/xdf/set-volume.sh"
 
 set $volume_delta 3%
-bindsym XF86AudioRaiseVolume exec --no-startup-id "sh $HOME/bin/x/set-volume.sh $volume_delta+"
-bindsym XF86AudioLowerVolume exec --no-startup-id "sh $HOME/bin/x/set-volume.sh $volume_delta-"
-bindsym XF86AudioMute exec --no-startup-id "sh $HOME/bin/x/set-volume.sh toggle"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "sh $HOME/bin/xdf/set-volume.sh $volume_delta+"
+bindsym XF86AudioLowerVolume exec --no-startup-id "sh $HOME/bin/xdf/set-volume.sh $volume_delta-"
+bindsym XF86AudioMute exec --no-startup-id "sh $HOME/bin/xdf/set-volume.sh toggle"
 
 # Enable wallpaper-per-workspace switcher
 exec --no-startup-id "sh $HOME/.config/i3/bin/wallpapers.sh"

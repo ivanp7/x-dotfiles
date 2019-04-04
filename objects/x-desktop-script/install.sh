@@ -2,5 +2,5 @@
 
 CONF_DIR=$(realpath `dirname $0`)
 
-ln -sf $HOME/bin/x/x-desktop.sh $HOME/bin/
+ln -sf $HOME/bin/xdf/x-desktop.sh $HOME/bin/
 
