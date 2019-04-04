@@ -64,7 +64,7 @@
     frame_width = 3
 
     # Defines color of the frame around the notification window.
-    frame_color = "#aaaaaa"
+    frame_color = "#666666"
 
     # Define a color for the separator.
     # possible values are:
@@ -85,7 +85,7 @@
 
     ### Text ###
 
-    font = Roboto Condensed Light 11
+    font = xos4 Terminus 16
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -246,8 +246,8 @@
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#222222"
-    foreground = "#888888"
-    timeout = 10
+    foreground = "#aaaaaa"
+    timeout = 3
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
