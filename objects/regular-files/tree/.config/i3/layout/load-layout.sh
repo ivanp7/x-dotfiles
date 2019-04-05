@@ -7,5 +7,5 @@ sleep 1
 
 # Construct user layout
 SCRIPT=$HOME/bin/layout/load-layout.sh
-[ -f $SCRIPT ] && . $SCRIPT
+[ -f $SCRIPT ] && sh $SCRIPT
 
