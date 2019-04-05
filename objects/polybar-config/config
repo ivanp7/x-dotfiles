@@ -163,27 +163,28 @@ format-charging = <animation-charging> <label-charging> <bar-capacity>
 ; format-charging-underline = #ffb52a
 format-charging-prefix = "Battery "
 format-charging-prefix-foreground = ${colors.foreground-alt}
-; label-charging = %percentage%% (%consumption%)
-label-charging = %percentage%%
+label-charging = %percentage%% (%time%)
+; label-charging = %percentage%%
 
 format-discharging = <animation-discharging> <label-discharging> <bar-capacity>
 ; format-discharging-underline = ${self.format-charging-underline}
 format-discharging-prefix = ${self.format-charging-prefix}
 format-discharging-prefix-foreground = ${colors.foreground-alt}
-; label-discharging = %percentage%% (%time%)
-label-discharging = %percentage%%
+label-discharging = %percentage%% (%time%)
+; label-discharging = %percentage%%
 
 format-full = <label-full> <bar-capacity>
 ; format-full-underline = ${self.format-charging-underline}
 format-full-prefix = ${self.format-charging-prefix}
 format-full-prefix-foreground = ${colors.foreground-alt}
 label-full = %percentage%%
+; label-full = %percentage%%
 
 animation-charging-0 = "↑ "
 animation-charging-foreground = ${colors.foreground}
 animation-charging-framerate = 2000
 
-animation-discharging-0 = 
+animation-discharging-0 = "↓ "
 animation-discharging-foreground = ${colors.foreground}
 animation-discharging-framerate = 2000
 
