@@ -75,7 +75,7 @@ border-bottom-size = 0
 border-top-size = 3
 modules-left = wireless wired
 modules-center = battery 
-modules-right = cpu cpu-frequency temperature memory filesystem 
+modules-right = nvidia-gpu-load cpu cpu-frequency temperature memory filesystem 
 
 tray-position =
 
@@ -198,9 +198,20 @@ bar-capacity-fill = ─
 bar-capacity-empty = ─
 bar-capacity-empty-foreground = ${colors.foreground-alt}
 
+[module/nvidia-gpu-load]
+type = custom/script
+exec = ~/.config/polybar/system-nvidia-smi.sh
+interval = 3
+
+format-prefix = "GPU "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #ff00cc
+
+label = %output:3%%
+
 [module/cpu]
 type = internal/cpu
-interval = 2
+interval = 3
 format = <label> <ramp-coreload>
 format-prefix = "CPU "
 format-prefix-foreground = ${colors.foreground-alt}
