@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 mkdir -p /tmp/tmux-refresh-service-$(whoami)
 

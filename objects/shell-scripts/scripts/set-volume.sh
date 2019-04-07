@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 amixer -q -M sset Headphone 100% unmute
 amixer -q -M sset Speaker 100% unmute
 amixer -q -M sset PCM 100% unmute
 
-if [[ -n $1 ]]; then 
+if [ -n $1 ]; then 
     amixer -q -M sset Master $1 
 fi
 

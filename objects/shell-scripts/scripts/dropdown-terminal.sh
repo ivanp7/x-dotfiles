@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if ! pgrep -f "termite --role dropdown"
 then
