@@ -15,7 +15,7 @@ case $1 in
         ;;
 
     *)
-        if [ ! -x $CONF_DIR/objects/$1/install.sh ]
+        if [ ! -x "$CONF_DIR/objects/$1/install.sh" ]
         then echo "Error: invalid object '$1'."; exit 1
         else
             echo "Installing object '$1'..."
