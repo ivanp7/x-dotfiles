@@ -257,8 +257,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id "sh $HOME/bin/xdf/set-volume.s
 bindsym XF86AudioMute exec --no-startup-id "sh $HOME/bin/xdf/set-volume.sh toggle"
 
 # Enable wallpaper-per-workspace switcher
-exec --no-startup-id "sh $HOME/.config/i3/bin/wallpapers.sh"
+exec --no-startup-id "sh $HOME/scripts/xdf/i3/wallpapers.sh"
 
 # Construct default layout
-exec --no-startup-id ". $HOME/.config/i3/layout/load-layout.sh"
+exec --no-startup-id ". $HOME/scripts/xdf/i3/load-layout.sh"
 

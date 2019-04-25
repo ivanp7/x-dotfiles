@@ -200,7 +200,7 @@ bar-capacity-empty-foreground = ${colors.foreground-alt}
 
 [module/nvidia-gpu-load]
 type = custom/script
-exec = ~/.config/polybar/system-nvidia-smi.sh
+exec = ~/scripts/xdf/polybar/system-nvidia-smi.sh
 interval = 3
 
 format-prefix = "GPU "
@@ -230,7 +230,7 @@ ramp-coreload-7 = █
 
 [module/cpu-frequency]
 type = custom/script
-exec = ~/.config/polybar/system-cpu-frequency.sh
+exec = ~/scripts/xdf/polybar/system-cpu-frequency.sh
 interval = 3
 
 format-prefix = "@ "
@@ -346,7 +346,7 @@ label-layout = %name:0:7%
 
 [module/typespeed]
 type = custom/script
-exec = ~/.config/polybar/info-hackspeed.sh
+exec = ~/scripts/xdf/polybar/info-hackspeed.sh
 tail = true
 
 format-prefix = "@ "
