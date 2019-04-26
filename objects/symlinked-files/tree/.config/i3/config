@@ -32,7 +32,7 @@ font pango:xos4 Terminus 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite --title "Terminal"
+bindsym $mod+Return exec st -t "Terminal"
 
 # kill focused window
 bindsym $mod+q kill
@@ -213,10 +213,10 @@ for_window [window_role="dialog"] floating enable
 for_window [window_role="menu"] floating enable
 for_window [window_role="Preferences"] floating enable
 
-for_window [window_role="dropdown"] floating enable
-for_window [window_role="dropdown"] move scratchpad
-for_window [window_role="dropdown"] scratchpad show
-for_window [window_role="dropdown" title="Dropdown terminal"] resize set width 75 ppt height 75 ppt; move position center
+for_window [title="Dropdown terminal"] floating enable
+for_window [title="Dropdown terminal"] move scratchpad
+for_window [title="Dropdown terminal"] scratchpad show
+for_window [title="Dropdown terminal"] resize set width 75 ppt height 75 ppt; move position center
 
 # Other settings
 

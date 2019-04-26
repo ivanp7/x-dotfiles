@@ -1,9 +1,9 @@
 #!/bin/sh
 
-if ! pgrep -f "termite --role dropdown"
+if ! pgrep -f "st -t Dropdown terminal"
 then
-    i3-msg 'exec --no-startup-id termite --role "dropdown" --title "Dropdown terminal"'
+    i3-msg 'exec --no-startup-id st -t "Dropdown terminal"'
 else
-    i3-msg '[window_role="dropdown"] scratchpad show'
+    i3-msg '[title="Dropdown terminal"] scratchpad show'
 fi
 
