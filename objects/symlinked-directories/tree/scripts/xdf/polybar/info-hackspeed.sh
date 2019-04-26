@@ -1,7 +1,7 @@
 #!/bin/sh
 # shellcheck disable=SC2016,SC2059
 
-KEYBOARD_ID="$(cat $(dirname $0)/kbd_name)"
+KEYBOARD_ID="$(cat $HOME/.config/polybar/kbd_name)"
 
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)
