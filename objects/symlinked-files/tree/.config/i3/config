@@ -32,6 +32,7 @@ font pango:xos4 Terminus 9
 floating_modifier $mod
 
 # start a terminal
+bindsym $mod+Return exec st -t "Terminal"
 bindsym $mod+t exec st -t "Terminal"
 
 # kill focused window
