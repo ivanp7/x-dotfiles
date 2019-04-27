@@ -1,9 +1,9 @@
 #!/bin/sh
 
-if ! pgrep -f "st -t Dropdown terminal"
+if ! pgrep -f "st -c dropdown_terminal"
 then
-    i3-msg 'exec --no-startup-id st -t "Dropdown terminal"'
+    i3-msg 'exec --no-startup-id st -c dropdown_terminal -t "Dropdown terminal"'
 else
-    i3-msg '[title="Dropdown terminal"] scratchpad show'
+    i3-msg '[class="dropdown_terminal"] scratchpad show'
 fi
 
