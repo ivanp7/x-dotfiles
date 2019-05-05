@@ -1,7 +1,5 @@
 #!/bin/sh
 
-CONF_DIR=$(realpath `dirname $0`)
-
 case $1 in
     i)
         install -Dm 644 /etc/xdg/compton.conf $HOME/.compton.conf

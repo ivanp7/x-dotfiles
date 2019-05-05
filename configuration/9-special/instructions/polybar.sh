@@ -1,7 +1,5 @@
 #!/bin/sh
 
-CONF_DIR=$(realpath `dirname $0`)
-
 case $1 in
     i)
         sed -i "s/WIRED_NETWORK_INTERFACE/$(ip link | egrep "^[[:digit:]]*:" | cut -d' ' -f2 | tr -d : | egrep "^en" | head -n1)/g" $HOME/.config/polybar/config
