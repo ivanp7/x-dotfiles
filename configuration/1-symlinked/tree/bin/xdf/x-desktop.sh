@@ -1,14 +1,16 @@
 #!/bin/sh
 
-mkdir -p /tmp/tmux-refresh-service-$(whoami)
+DIR="/tmp/tmux-refresh-service-$(whoami)"
 
-TTY=$(tty | sed 's@/dev/@@; s@/@@')
-touch /tmp/tmux-refresh-service-$(whoami)/$TTY
+mkdir -p $DIR
+
+TTY=$(tty | sed 's,/dev/,,; s,/,,')
+touch $DIR/$TTY
 
 cd $HOME
 startx
 
-rm /tmp/tmux-refresh-service-$(whoami)/$TTY
+rm $DIR/$TTY
 
 reset
 
