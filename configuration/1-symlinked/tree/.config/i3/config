@@ -219,6 +219,10 @@ for_window [class="dropdown_terminal"] move scratchpad
 for_window [class="dropdown_terminal"] scratchpad show
 for_window [class="dropdown_terminal"] resize set width 75 ppt height 75 ppt; move position center
 
+# Status bar
+exec --no-startup-id "polybar top"
+exec --no-startup-id "polybar bottom"
+
 # Other settings
 
 new_window pixel 3
@@ -238,11 +242,6 @@ client.urgent #51c4d4 #ffdc00 #51c4d4
 # client.urgent #51c4d4 #ecedee #51c4d4
 
 focus_follows_mouse no
-
-# Status bar
-
-exec --no-startup-id "polybar top"
-exec --no-startup-id "polybar bottom"
 
 bindsym Print exec --no-startup-id "gnome-screenshot -i"
 
