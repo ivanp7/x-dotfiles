@@ -11,7 +11,7 @@ num_prev=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true) | .num')
 set_wallpaper $num_prev
 
 # xprop -spy -root _NET_CURRENT_DESKTOP | while read -r event; do
-while true
+while xset q > /dev/null 2>&1
 do
     sleep 0.25
     num=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true) | .num')
