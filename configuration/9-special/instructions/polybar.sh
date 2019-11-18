@@ -7,7 +7,6 @@ case $1 in
         ;;
 
     u)
-        rm -rf $HOME/.config/polybar
         ;;
 
     *)
