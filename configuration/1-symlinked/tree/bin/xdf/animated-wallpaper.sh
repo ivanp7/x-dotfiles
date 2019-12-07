@@ -9,6 +9,11 @@ start_wallpaper ()
         exec xwinwrap -ov -fs -- mpv -wid WID $MPV_OPTIONS "$1" > /dev/null 2>&1 &
 }
 
+# kill animated wallpaper, if it is displayed
+pkill xwinwrap
+
+# display random video
+WALLPAPER="$(find $HOME/wallpapers/ -name "*.ani" | shuf -n1)"
 if [ -z "$1" ]; then RAND=0; else RAND=$1; fi
-start_wallpaper "$HOME/wallpapers/animated.wallpaper" "$RAND"
+start_wallpaper "$WALLPAPER" "$RAND"
 

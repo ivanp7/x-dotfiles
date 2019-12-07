@@ -38,7 +38,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 dex -a
-picom --config ~/.picom.conf &
+picom --config $HOME/.picom.conf &
 
+$HOME/bin/xdf/classic-wallpaper.sh
 exec dwm
 
