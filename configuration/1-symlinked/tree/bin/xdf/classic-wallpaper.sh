@@ -4,6 +4,6 @@
 pkill xwinwrap
 
 # display random picture
-WALLPAPER="$(find $HOME/wallpapers/ -name "*.pic" | shuf -n1)"
+WALLPAPER="$(find -L $HOME/wallpapers/ -name "*.pic" | shuf -n1)"
 [ -n "$WALLPAPER" ] && feh --no-fehbg --bg-scale "$WALLPAPER"
 

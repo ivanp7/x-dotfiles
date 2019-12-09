@@ -13,7 +13,7 @@ start_wallpaper ()
 pkill xwinwrap
 
 # display random video
-WALLPAPER="$(find $HOME/wallpapers/ -name "*.ani" | shuf -n1)"
+WALLPAPER="$(find -L $HOME/wallpapers/ -name "*.ani" | shuf -n1)"
 if [ -z "$1" ]; then RAND=0; else RAND=$1; fi
 start_wallpaper "$WALLPAPER" "$RAND"
 
