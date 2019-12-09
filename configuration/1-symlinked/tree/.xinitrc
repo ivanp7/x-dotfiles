@@ -40,6 +40,8 @@ fi
 dex -a
 picom --config $HOME/.picom.conf &
 
+$HOME/.scripts/xdf/dwm_status.sh &
+
 $HOME/bin/xdf/classic-wallpaper.sh
 exec dwm
 
