@@ -6,8 +6,8 @@ SEPARATOR="|"
 ###############################################################################
 
 PING_INTERVAL=3
-PING_RESULT="pinging"
 PING_RESULT_FILE=$(mktemp)
+echo -n "pinging" > $PING_RESULT_FILE
 ping_internet ()
 {
     if ping -c 1 -w $PING_INTERVAL "archlinux.org" > /dev/null 2>&1
@@ -35,8 +35,8 @@ datetime ()
 
 ###############################################################################
 
-while sleep $INTERVAL
-do
+update_indicators ()
+{
     if [ -f "$PING_RESULT_FILE" ]
     then
         PING_RESULT="$(cat $PING_RESULT_FILE)"
@@ -44,7 +44,14 @@ do
         ping_internet &
     fi
 
-    xsetroot -name "$PING_RESULT $SEPARATOR $(volume.sh) $SEPARATOR $(language) $SEPARATOR $(datetime)"
+    DWM_INDICATORS="$PING_RESULT $SEPARATOR $(volume.sh) $SEPARATOR $(language) $SEPARATOR $(datetime)"
+}
+
+update_indicators
+while xsetroot -name "$DWM_INDICATORS"
+do 
+    sleep $INTERVAL
+    update_indicators
 done
 
 rm "$PING_RESULT_FILE"
