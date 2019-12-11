@@ -5,7 +5,7 @@ SEPARATOR="|"
 
 ###############################################################################
 
-PING_INTERVAL=1
+PING_INTERVAL=3
 PING_RESULT="pinging"
 PING_RESULT_FILE=$(mktemp)
 ping_internet ()
