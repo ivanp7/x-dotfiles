@@ -1,0 +1,375 @@
+;==========================================================
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;==========================================================
+
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #777
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/top]
+; monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 15
+;offset-x = 1%
+;offset-y = 1%
+; radius = 5.0
+radius = 0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+; line-color = #f00
+
+border-bottom-size = 3
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = xos4 Terminus:size=10;0
+; font-0 = fixed:pixelsize=10;1
+; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+; font-2 = siji:pixelsize=10;1
+
+modules-left = bspwm
+modules-center = xwindow
+modules-right = backlight-acpi alsa xkeyboard typespeed date
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+; override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/bottom]
+inherit = bar/top
+
+bottom = true
+
+border-bottom-size = 0
+border-top-size = 3
+modules-left = wireless wired
+modules-center = battery 
+modules-right = nvidia-gpu-load cpu cpu-frequency temperature memory filesystem 
+
+tray-position =
+
+[module/bspwm]
+type = internal/bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+format = <label-state> <label-mode>
+label-monitor = %name%
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:100:...%
+; label = %title:0:50:...%
+
+[module/wireless]
+type = internal/network
+interface = WIRELESS_NETWORK_INTERFACE
+interval = 3.0
+
+format-connected = <label-connected>
+; format-connected-underline = #9f78e1
+format-connected-underline = #aaa
+label-connected = %ifname% <%local_ip%> (%essid%): %{F#5ebd3e}%downspeed%%{F-} ↓ %{F#0a81f5}%upspeed%%{F-} ↑
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/wired]
+type = internal/network
+interface = WIRED_NETWORK_INTERFACE
+interval = 3.0
+
+; format-connected-underline = #55aa55
+format-connected-underline = ${module/wireless.format-connected-underline}
+label-connected = %ifname% <%local_ip%> [wire]: %{F#5ebd3e}%downspeed%%{F-} ↓ %{F#0a81f5}%upspeed%%{F-} ↑
+; label-connected = ${module/wireless.label-connected}
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ACAD
+full-at = 100
+
+format-charging = <animation-charging> <label-charging> <bar-capacity>
+; format-charging-underline = #ffb52a
+format-charging-prefix = "Battery "
+format-charging-prefix-foreground = ${colors.foreground-alt}
+label-charging = %percentage%% (%time%)
+; label-charging = %percentage%%
+
+format-discharging = <animation-discharging> <label-discharging> <bar-capacity>
+; format-discharging-underline = ${self.format-charging-underline}
+format-discharging-prefix = ${self.format-charging-prefix}
+format-discharging-prefix-foreground = ${colors.foreground-alt}
+label-discharging = %percentage%% (%time%)
+; label-discharging = %percentage%%
+
+format-full = <label-full> <bar-capacity>
+; format-full-underline = ${self.format-charging-underline}
+format-full-prefix = ${self.format-charging-prefix}
+format-full-prefix-foreground = ${colors.foreground-alt}
+label-full = %percentage%%
+; label-full = %percentage%%
+
+animation-charging-0 = "↑ "
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 2000
+
+animation-discharging-0 = "↓ "
+animation-discharging-foreground = ${colors.foreground}
+animation-discharging-framerate = 2000
+
+bar-capacity-width = 10
+bar-capacity-foreground-0 = #ff5555
+bar-capacity-foreground-1 = #f5a70a
+bar-capacity-foreground-2 = #55aa55
+bar-capacity-gradient = false
+bar-capacity-indicator = |
+bar-capacity-fill = ─
+bar-capacity-empty = ─
+bar-capacity-empty-foreground = ${colors.foreground-alt}
+
+[module/nvidia-gpu-load]
+type = custom/script
+exec = ~/.scripts/xdf/polybar/system-nvidia-smi.sh
+interval = 3
+
+format-prefix = "GPU "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #ff00cc
+
+label = %output:3%%
+
+[module/cpu]
+type = internal/cpu
+interval = 3
+format = <label> <ramp-coreload>
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+label = %percentage:2%%
+
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/cpu-frequency]
+type = custom/script
+exec = ~/.scripts/xdf/polybar/system-cpu-frequency.sh
+interval = 3
+
+format-prefix = "@ "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+
+label = %output:8%
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <label>
+; format-underline = #f50a4d
+format-underline = #f90000
+format-warn = <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format = <ramp-used> <label>
+format-prefix = "RAM "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #5ebd3e
+label = %percentage_used%% used (%gb_used% / %gb_total%)
+
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+[module/filesystem]
+type = internal/fs
+interval = 10
+
+mount-0 = /
+mount-1 = /home
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_free%% free (%free% / %total%)
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+format-mounted-underline = #0a6cf5
+format-unmounted-underline = ${self.format-mounted-underline}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = %percentage%%
+format-prefix = "Backlight "
+format-prefix-foreground = ${colors.foreground-alt}
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-fill = ─
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+format-volume-prefix = "Volume "
+format-volume-prefix-foreground = ${colors.foreground-alt}
+
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = muted
+format-muted-prefix = ${self.format-volume-prefix}
+format-muted-prefix-foreground = ${colors.foreground-alt}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-fill = ─
+bar-volume-empty = ─
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = "Language "
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-layout = %name:0:7%
+
+[module/typespeed]
+type = custom/script
+exec = ~/.scripts/xdf/polybar/info-hackspeed.sh
+tail = true
+
+format-prefix = "@ "
+format-prefix-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = " %Y-%b-%d %a"
+date-alt = " %Y-%m-%d"
+
+time = %H:%M:%S
+time-alt = %H:%M
+
+format-prefix-foreground = ${colors.foreground-alt}
+
+label = %date% %time%
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
