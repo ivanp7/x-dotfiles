@@ -1,9 +1,5 @@
 #! /bin/sh
 
-sxhkd &
-polybar top &
-polybar bottom &
-
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
 bspc config border_width         2
@@ -12,4 +8,12 @@ bspc config window_gap          10
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
+
+sxhkd &
+polybar top & polybar bottom &
+
+bspc rule -a scratchpad sticky=on state=floating hidden=on
+st -c scratchpad -t scratchpad &
+sleep 1
+bspc query -N -n .floating > /tmp/scratchid
 
