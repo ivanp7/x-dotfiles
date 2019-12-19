@@ -164,3 +164,6 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
     sudo brightness.sh down
 
+super + Pause
+    sudo systemctl suspend
+
