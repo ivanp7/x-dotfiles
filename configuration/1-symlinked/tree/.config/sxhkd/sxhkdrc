@@ -157,3 +157,10 @@ alt + Print
 ctrl + alt + Print
     screen2file.sh -u -s
 
+# monitor brightness control (needs sudoers permission on brightness.sh)
+XF86MonBrightnessUp
+    sudo brightness.sh up
+
+XF86MonBrightnessDown
+    sudo brightness.sh down
+
