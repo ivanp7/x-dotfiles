@@ -141,3 +141,19 @@ XF86AudioMute
 ctrl + XF86AudioMute
     volume-notify.sh
 
+# copy selected area
+ctrl + Print
+    screen2clip.sh -u -s
+
+# save screen to file
+Print
+    screen2file.sh -u
+
+# copy screen
+alt + Print
+    screen2clip.sh -u
+
+# save selected area to file
+ctrl + alt + Print
+    screen2file.sh -u -s
+
