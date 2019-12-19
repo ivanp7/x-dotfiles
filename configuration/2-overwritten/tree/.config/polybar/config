@@ -79,7 +79,7 @@ type = internal/bspwm
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
-format = <label-state> <label-mode>
+format = <label-state> [<label-mode>]
 label-monitor = %name%
 
 label-mode-padding = 2
@@ -106,6 +106,17 @@ label-visible-padding = ${self.label-focused-padding}
 label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
+
+label-monocle = m
+label-tiled = t
+
+label-pseudotiled = T
+label-floating = s
+label-fullscreen = f
+label-locked = x
+label-sticky = y
+label-private = z
+label-marked = M
 
 ; Separator in between workspaces
 ; label-separator = |
@@ -369,7 +380,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini
