@@ -11,8 +11,15 @@ bspc config gapless_monocle      true
 
 bspc rule -a scratchpad sticky=on state=floating hidden=on
 
+dex -a
+
+picom --config $HOME/.picom.conf &
+
+unclutter &
 sxhkd &
-polybar top & polybar bottom &
 
 $HOME/bin/xdf/enable-scratchpad.sh
+polybar top & polybar bottom &
+
+$HOME/bin/xdf/classic-wallpaper.sh
 
