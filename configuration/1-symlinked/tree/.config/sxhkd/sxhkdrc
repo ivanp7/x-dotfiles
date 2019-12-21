@@ -39,9 +39,11 @@ super + m
 super + y
     bspc node newest.marked.local -n newest.!automatic.local
 
-# swap the current node and the biggest node
+# swap the current node and the newest marked node
 super + g
-    bspc node -s biggest
+    bspc node -s newest.marked.local; \
+    bspc node -f newest.marked.local; \
+    bspc node -g marked
 
 #
 # state/flags
