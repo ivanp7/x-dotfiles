@@ -138,8 +138,41 @@ XF86AudioLowerVolume
 XF86AudioMute
     volume-notify.sh toggle
 
+ctrl + XF86AudioRaiseVolume
+    volume-notify.sh
+
+ctrl + XF86AudioLowerVolume
+    volume-notify.sh
+
 ctrl + XF86AudioMute
     volume-notify.sh
+
+#
+# monitor brightness control (needs sudoers permission on brightness.sh)
+#
+
+XF86MonBrightnessUp
+    brightness-notify.sh up
+
+XF86MonBrightnessDown
+    brightness-notify.sh down
+
+ctrl + XF86MonBrightnessUp
+    brightness-notify.sh
+
+ctrl + XF86MonBrightnessDown
+    brightness-notify.sh
+
+#
+# power control
+#
+
+super + Pause
+    sudo systemctl suspend
+
+#
+# screenshots
+#
 
 # copy selected area
 ctrl + Print
@@ -156,14 +189,4 @@ alt + Print
 # save selected area to file
 ctrl + alt + Print
     screen2file.sh -u -s
-
-# monitor brightness control (needs sudoers permission on brightness.sh)
-XF86MonBrightnessUp
-    sudo brightness.sh up
-
-XF86MonBrightnessDown
-    sudo brightness.sh down
-
-super + Pause
-    sudo systemctl suspend
 
