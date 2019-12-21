@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-    st -t terminal
+    $TERMINAL -t terminal
 
 # terminal emulator: scratchpad
 super + ctrl + Return
@@ -129,38 +129,20 @@ super + {Left,Down,Up,Right}
 # volume control
 #
 
-XF86AudioRaiseVolume
-    volume-notify.sh up
+{XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
+    volume-notify.sh {up,down,toggle}
 
-XF86AudioLowerVolume
-    volume-notify.sh down
-
-XF86AudioMute
-    volume-notify.sh toggle
-
-ctrl + XF86AudioRaiseVolume
-    volume-notify.sh
-
-ctrl + XF86AudioLowerVolume
-    volume-notify.sh
-
-ctrl + XF86AudioMute
+ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
     volume-notify.sh
 
 #
 # monitor brightness control (needs sudoers permission on brightness.sh)
 #
 
-XF86MonBrightnessUp
-    brightness-notify.sh up
+{XF86MonBrightnessUp,XF86MonBrightnessDown}
+    brightness-notify.sh {up,down}
 
-XF86MonBrightnessDown
-    brightness-notify.sh down
-
-ctrl + XF86MonBrightnessUp
-    brightness-notify.sh
-
-ctrl + XF86MonBrightnessDown
+ctrl + {XF86MonBrightnessUp,XF86MonBrightnessDown}
     brightness-notify.sh
 
 #
@@ -171,22 +153,10 @@ super + Pause
     sudo systemctl suspend
 
 #
-# screenshots
+# miscellaneous
 #
 
-# copy selected area
-ctrl + Print
-    screen2clip.sh -u -s
-
-# save screen to file
-Print
-    screen2file.sh -u
-
-# copy screen
-alt + Print
-    screen2clip.sh -u
-
-# save selected area to file
-ctrl + alt + Print
-    screen2file.sh -u -s
+# make screenshot
+{_,alt + }{_,ctrl + }{_,shift + } Print
+    {screen2clip.sh,screen2file.sh} { ,-s} {-u, }
 
