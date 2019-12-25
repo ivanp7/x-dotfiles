@@ -2,6 +2,10 @@
 # wm independent hotkeys
 #
 
+# make sxhkd reload its configuration files:
+super + Escape
+    pkill -USR1 -x sxhkd
+
 # terminal emulator
 super + Return
     $TERMINAL -t terminal
@@ -11,13 +15,13 @@ super + ctrl + Return
     id=$(cat /tmp/scratchid);   \
     bspc node $id --flag hidden; bspc node -f $id
 
+# surf
+super + backslash
+    surf
+
 # program launcher
 super + @d
     dmenu_run.sh
-
-# make sxhkd reload its configuration files:
-super + Escape
-    pkill -USR1 -x sxhkd
 
 #
 # bspwm hotkeys
