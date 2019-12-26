@@ -10,13 +10,17 @@ super + Escape
 super + Return
     $TERMINAL -t terminal
 
-# terminal emulator: scratchpad
+# scratchpad: terminal emulator
 super + ctrl + Return
-    scratchpad.sh
+    scratchpad.sh dropdown_terminal
 
 # surf
 super + backslash
-    surf
+    $BROWSER
+
+# scratchpad: surf
+super + ctrl + backslash
+    scratchpad.sh dropdown_browser
 
 # program launcher
 super + @d

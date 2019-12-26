@@ -1,8 +1,8 @@
 #!/bin/sh
 
-CLASS=dropdown
-if [ -n "$1" ]
-then CLASS=$1
+CLASS=$1
+if [ -z "$CLASS" ]
+then exit 1
 fi
 
 pids=$(xdotool search --class $CLASS)
