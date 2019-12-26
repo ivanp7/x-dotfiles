@@ -1,7 +1,10 @@
 #!/bin/sh
 
 if [ -r "$HOME/.default_font" ]
-then cat $HOME/.default_font | xargs -I {} dmenu -fn "{}" "$@"
-else dmenu -fn "$DEFAULT_FONT" "$@"
+then 
+    FONT=$(cat $HOME/.default_font)
+    dmenu -fn "$FONT" "$@"
+else 
+    dmenu -fn "$DEFAULT_FONT" "$@"
 fi
 
