@@ -172,6 +172,10 @@ super + Pause
 # miscellaneous
 #
 
+# WM status report
+super + F1
+    wm-report.sh
+
 # make screenshot
 {_,alt + }{_,ctrl + }{_,shift + } Print
     {screen2clip.sh,screen2file.sh} { ,-s} {-u, }
