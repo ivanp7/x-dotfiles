@@ -29,7 +29,7 @@ FLOATING_Y=$(( ($SCREEN_HEIGHT - $FLOATING_HEIGHT) / 2 ))
 bspc rule -a Surf state=floating \
     rectangle="$FLOATING_WIDTH"x"$FLOATING_HEIGHT"+"$FLOATING_X"+"$FLOATING_Y"
 
-bspc rule -a scratchpad sticky=on state=floating hidden=on \
+bspc rule -a dropdown sticky=on state=floating hidden=on \
     rectangle="$FLOATING_WIDTH"x"$FLOATING_HEIGHT"+"$FLOATING_X"+"$FLOATING_Y"
 
 #

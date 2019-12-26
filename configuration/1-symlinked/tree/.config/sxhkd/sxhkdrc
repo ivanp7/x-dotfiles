@@ -12,8 +12,7 @@ super + Return
 
 # terminal emulator: scratchpad
 super + ctrl + Return
-    id=$(cat /tmp/scratchid);   \
-    bspc node $id --flag hidden; bspc node -f $id
+    scratchpad.sh
 
 # surf
 super + backslash
