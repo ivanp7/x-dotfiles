@@ -45,8 +45,8 @@ picom --config $HOME/.picom.conf &
 unclutter &
 sxhkd &
 
-$HOME/bin/xdf/launch-dropdown-terminal.sh
-$HOME/bin/xdf/launch-dropdown-browser.sh
+$HOME/.scripts/xdf/dropdown-terminal.sh &
+$HOME/.scripts/xdf/dropdown-browser.sh &
 polybar top & polybar bottom &
 
 $HOME/bin/xdf/classic-wallpaper.sh
