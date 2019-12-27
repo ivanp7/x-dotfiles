@@ -16,7 +16,7 @@ super + ctrl + Return
 
 # surf
 super + backslash
-    $BROWSER
+    tabbed-surf.sh
 
 # scratchpad: surf
 super + ctrl + backslash
