@@ -7,19 +7,19 @@ super + Escape
     pkill -USR1 -x sxhkd
 
 # terminal emulator
-super + Return
+super + ctrl + Return
     tabbed-st.sh
 
 # scratchpad: terminal emulator
-super + ctrl + Return
+super + Return
     scratchpad.sh dropdown_terminal
 
 # surf
-super + backslash
+super + ctrl + backslash
     tabbed-surf.sh
 
 # scratchpad: surf
-super + ctrl + backslash
+super + backslash
     scratchpad.sh dropdown_browser
 
 # program launcher
