@@ -5,5 +5,6 @@ DMENU_PROMPT="${2:-Bookmark}"
 
 cat "$HOME/.surf/bookmarks.txt" $(find "$HOME/.surf/bookmarks/" -type f) | 
     sed -E 's/\s*".*//; /^\s*$/d' | sed -E 's/^([^ ]*) *(.*)/\2 <\1>/' |
-    dmenu.sh -p "$DMENU_PROMPT" -l 10 -i -w $SURF_WINDOW | cut -d' ' -f1
+    dmenu.sh -p "$DMENU_PROMPT" -l 10 -i -w $SURF_WINDOW | 
+    sed -E 's/.*<([^ ]*)>$/\1/'
 
