@@ -49,7 +49,8 @@ sxhkd &
 
 $HOME/.scripts/xdf/dropdown-terminal.sh &
 $HOME/.scripts/xdf/dropdown-browser.sh &
-polybar top & polybar bottom &
+$HOME/.scripts/xdf/polybar.sh top &
+$HOME/.scripts/xdf/polybar.sh bottom &
 
 $HOME/bin/xdf/classic-wallpaper.sh
 
