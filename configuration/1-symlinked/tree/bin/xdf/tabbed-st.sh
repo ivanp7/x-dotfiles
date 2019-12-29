@@ -1,7 +1,4 @@
 #!/bin/sh
-#
-# See the LICENSE file for copyright and license details. 
-#
 
 CLASS="tabbed-st"
 if [ -n "$1" ]
@@ -14,7 +11,7 @@ fi
 xidfile=$(mktemp "/tmp/tabbed-st-XXXXXX.xid")
 
 runtabbed() {
-    tabbed -dw $CLASS -r 2 st -w '' $OPTIONS > "$xidfile" 2>/dev/null &
+    tabbed -cdw $CLASS -r 2 st -w '' $OPTIONS > "$xidfile" 2>/dev/null &
 }
 
 if [ ! -r "$xidfile" ];

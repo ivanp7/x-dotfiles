@@ -1,7 +1,4 @@
 #!/bin/sh
-#
-# See the LICENSE file for copyright and license details. 
-#
 
 CLASS="tabbed-surf"
 if [ -n "$1" ]
@@ -11,7 +8,7 @@ fi
 xidfile=$(mktemp "/tmp/tabbed-surf-XXXXXX.xid")
 
 runtabbed() {
-    tabbed -w $CLASS -r 2 surf -e '' > "$xidfile" 2>/dev/null &
+    tabbed -cw $CLASS -r 2 surf -e '' > "$xidfile" 2>/dev/null &
 }
 
 if [ ! -r "$xidfile" ];

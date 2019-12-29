@@ -4,7 +4,7 @@ cd ~
 
 xidfile=$(mktemp "/tmp/tabbed-st-XXXXXX.xid")
 runtabbed() {
-    tabbed -w dropdown_terminal -r 2 st -w '' -t "dropdown terminal" > "$xidfile" 2>/dev/null
+    tabbed -cw dropdown_terminal -r 2 st -w '' -t "dropdown terminal" > "$xidfile" 2>/dev/null
 }
 
 while xhost > /dev/null 2>&1

@@ -84,6 +84,10 @@ super + {_,shift + }c
 super + bracket{left,right}
     bspc desktop -f {prev,next}.local
 
+# change the number of desktops
+super + alt + bracket{left,right}
+    desktops.sh {dec,inc}
+
 # focus the last node/desktop
 super + {grave,Tab}
     bspc {node,desktop} -f last

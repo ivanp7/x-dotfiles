@@ -4,14 +4,15 @@
 # Bspwm configuration
 #
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+desktops.sh 2
 
 bspc config border_width         2
 bspc config window_gap          10
 
-bspc config split_ratio          0.5
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config split_ratio        0.5
+bspc config borderless_monocle true
+bspc config gapless_monocle    true
+bspc config single_monocle     true
 
 #
 # Window rules
@@ -21,36 +22,35 @@ SCREEN_DIMENSIONS=$(xdpyinfo | grep dimensions | awk '{print $2}')
 SCREEN_WIDTH=$(echo "$SCREEN_DIMENSIONS" | cut -d'x' -f1)
 SCREEN_HEIGHT=$(echo "$SCREEN_DIMENSIONS" | cut -d'x' -f2)
 
-FLOATING_WIDTH=$(($SCREEN_WIDTH * 3 / 4))
-FLOATING_HEIGHT=$(($SCREEN_HEIGHT * 3 / 4))
+FLOATING_WIDTH=$(($SCREEN_WIDTH * 7 / 8))
+FLOATING_HEIGHT=$(($SCREEN_HEIGHT * 7 / 8))
 FLOATING_X=$(( ($SCREEN_WIDTH - $FLOATING_WIDTH) / 2 ))
 FLOATING_Y=$(( ($SCREEN_HEIGHT - $FLOATING_HEIGHT) / 2 ))
+FLOATING_RECTANGLE="$FLOATING_WIDTH"x"$FLOATING_HEIGHT"+"$FLOATING_X"+"$FLOATING_Y"
 
 bspc rule -a dropdown_terminal sticky=on state=floating hidden=on \
-    rectangle="$FLOATING_WIDTH"x"$FLOATING_HEIGHT"+"$FLOATING_X"+"$FLOATING_Y"
+    rectangle=$FLOATING_RECTANGLE
 bspc rule -a dropdown_browser sticky=on state=floating hidden=on \
-    rectangle="$FLOATING_WIDTH"x"$FLOATING_HEIGHT"+"$FLOATING_X"+"$FLOATING_Y"
+    rectangle=$FLOATING_RECTANGLE
 
-bspc rule -a Surf state=floating \
-    rectangle="$FLOATING_WIDTH"x"$FLOATING_HEIGHT"+"$FLOATING_X"+"$FLOATING_Y"
-bspc rule -a Zathura state=floating \
-    rectangle="$FLOATING_WIDTH"x"$FLOATING_HEIGHT"+"$FLOATING_X"+"$FLOATING_Y"
+bspc rule -a Sxiv state=fullscreen
+bspc rule -a Zathura state=fullscreen
 
 #
 # Starting applications
 #
 
-dex -a
-
 picom --config $HOME/.picom.conf &
-
-unclutter &
-sxhkd &
 
 $HOME/.scripts/xdf/dropdown-terminal.sh &
 $HOME/.scripts/xdf/dropdown-browser.sh &
+
+sxhkd &
+
+unclutter &
 $HOME/.scripts/xdf/polybar.sh top &
 $HOME/.scripts/xdf/polybar.sh bottom &
+classic-wallpaper.sh
 
-$HOME/bin/xdf/classic-wallpaper.sh
+dex -a
 
