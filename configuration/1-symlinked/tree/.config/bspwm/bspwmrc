@@ -34,6 +34,7 @@ bspc rule -a dropdown_browser sticky=on state=floating hidden=on \
     rectangle=$FLOATING_RECTANGLE
 
 bspc rule -a Sxiv state=fullscreen
+bspc rule -a mpv state=fullscreen
 bspc rule -a Zathura state=fullscreen
 
 #
