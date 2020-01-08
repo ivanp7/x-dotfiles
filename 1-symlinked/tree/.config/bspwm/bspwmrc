@@ -49,6 +49,7 @@ $HOME/.scripts/xdf/dropdown-browser.sh &
 sxhkd &
 
 unclutter &
+$HOME/.scripts/xdf/keyboard-layout-notifications.sh &
 $HOME/.scripts/xdf/polybar.sh top &
 $HOME/.scripts/xdf/polybar.sh bottom &
 classic-wallpaper.sh
