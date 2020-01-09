@@ -72,9 +72,9 @@ bottom = true
 
 border-bottom-size = 0
 border-top-size = 3
-modules-left = wireless wired
-modules-center = battery 
-modules-right = nvidia-gpu-load cpu cpu-frequency temperature memory filesystem 
+modules-left = wired wireless
+modules-center = 
+modules-right = battery nvidia-gpu-load cpu cpu-frequency temperature memory filesystem 
 
 tray-position =
 
@@ -83,7 +83,7 @@ type = internal/bspwm
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
-format = <label-state> [<label-mode>]
+format = <label-state> :: <label-mode>>
 label-monitor = %name%
 
 label-mode-padding = 2
@@ -111,16 +111,16 @@ label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-monocle = m
-label-tiled = t
+label-monocle = "mono < "
+label-tiled = "tile < "
 
-label-pseudotiled = T
-label-floating = s
-label-fullscreen = f
-label-locked = x
-label-sticky = y
-label-private = z
-label-marked = M
+label-pseudotiled = "pse "
+label-floating = "flo "
+label-fullscreen = "ful "
+label-locked = "lck "
+label-sticky = "sti "
+label-private = "pri "
+label-marked = "### "
 
 ; Separator in between workspaces
 ; label-separator = |
@@ -286,7 +286,6 @@ type = internal/fs
 interval = 10
 
 mount-0 = /
-mount-1 = /home
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_free%% free (%free% / %total%)
 label-unmounted = %mountpoint% not mounted
