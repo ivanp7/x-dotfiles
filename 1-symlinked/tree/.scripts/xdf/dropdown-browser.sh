@@ -9,6 +9,8 @@ runtabbed() {
 
 while xhost > /dev/null 2>&1
 do 
+    surf-history-remove-duplicates.sh
+
     if [ ! -r "$xidfile" ];
     then runtabbed
     else

@@ -11,6 +11,8 @@ runtabbed() {
     tabbed -cw $CLASS -r 2 surf -e '' > "$xidfile" 2>/dev/null &
 }
 
+surf-history-remove-duplicates.sh
+
 if [ ! -r "$xidfile" ];
 then runtabbed
 else
