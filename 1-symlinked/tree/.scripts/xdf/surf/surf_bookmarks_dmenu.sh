@@ -9,9 +9,9 @@ DMENU_LINES=10
 
 cd $HOME/.bookmarks
 
-find . | dmenu.sh -p "$DMENU_PROMPT_PATHS" -l $DMENU_LINES -i $WINDOW_ARG | 
+find . | sort | dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_PATHS" -l $DMENU_LINES -i $WINDOW_ARG | 
     xargs -I {} find {} -type f | xargs -I {} cat {} | 
     sed -E 's/\s*".*//; /^\s*$/d' | sed -E 's/^([^ ]*) *(.*)/\2 <\1>/' |
-    ifne dmenu.sh -p "$DMENU_PROMPT_URLS" -l $DMENU_LINES -i $WINDOW_ARG | 
+    ifne dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_URLS" -l $DMENU_LINES -i $WINDOW_ARG | 
     sed -E 's/.*<([^ ]*)>$/\1/'
 

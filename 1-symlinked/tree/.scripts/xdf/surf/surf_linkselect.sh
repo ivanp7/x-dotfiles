@@ -7,7 +7,10 @@
 #     link selection via dmenu. Given HTML stdin, extracts links one per line
 #     Selected link is normalized based on current URI and printed to STDOUT.
 #     Pipe the result to a new surf or xprop _SURF_URI accordingly.
-SURF_WINDOW="${1:-$(xprop -root | sed -n '/^_NET_ACTIVE_WINDOW/ s/.* //p')}"
+
+if [ -n "$1" ]
+then WINDOW_ARG="-w $1"; fi
+
 DMENU_PROMPT="${2:-Link}"
 
 function dump_links_with_titles() {
@@ -68,7 +71,7 @@ function link_select() {
     dump_links_with_titles |
     awk '!x[$0]++' |
     # sort | uniq
-    dmenu.sh -p "$DMENU_PROMPT" -l 10 -i -w $SURF_WINDOW |
+    dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT" -l 10 -i $WINDOW_ARG |
     awk -F' ' '{print $NF}' |
     link_normalize $(xprop -id $SURF_WINDOW _SURF_URI | cut -d '"' -f 2)
 }

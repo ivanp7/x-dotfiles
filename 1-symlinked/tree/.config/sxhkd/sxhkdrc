@@ -24,7 +24,7 @@ super + backslash
 
 # program launcher
 super + @d
-    dmenu_run.sh
+    dmenu_run -fn "$DEFAULT_FONT"
 
 #
 # bspwm hotkeys
