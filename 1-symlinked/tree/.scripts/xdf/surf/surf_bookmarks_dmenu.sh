@@ -1,18 +1,17 @@
 #!/bin/sh
 
-if [ -n "$1" ]
-then WINDOW_ARG="-w $1"; fi
+if [ -n "$1" ]; then WINDOW_ARG="-w $1"; fi
+DMENU_PROMPT_BOOKMARK="${2:-Bookmark}"
+DMENU_PROMPT_CATEGORY="${3:-Category}"
 
-DMENU_PROMPT_PATHS="Category"
-DMENU_PROMPT_URLS="Bookmark"
 DMENU_LINES=10
 
 cd $HOME/.bookmarks
 
 find . -path "./.git" -prune -o \! -name ".gitignore" -print | sed 's,^\./,,' | sort | 
-    dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_PATHS" -l $DMENU_LINES -i $WINDOW_ARG | 
+    dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_CATEGORY" -l $DMENU_LINES -i $WINDOW_ARG | 
     xargs -I {} find {} -type f | xargs -I {} cat {} | 
     sed -E 's/\s*".*//; /^\s*$/d' | sed -E 's/^([^ ]*) *(.*)/\2 <\1>/' |
-    ifne dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_URLS" -l $DMENU_LINES -i $WINDOW_ARG | 
+    ifne dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_BOOKMARK" -l $DMENU_LINES -i $WINDOW_ARG | 
     sed -E 's/.*<([^ ]*)>$/\1/'
 
