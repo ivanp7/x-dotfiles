@@ -6,6 +6,7 @@ DMENU_PROMPT_CATEGORY="${3:-Category}"
 
 DMENU_LINES=10
 
+[ ! -d "$HOME/.bookmarks" ] && exit 1
 cd $HOME/.bookmarks
 
 find . -path "./.git" -prune -o \! -name ".gitignore" -print | sed 's,^\./,,' | sort | 
