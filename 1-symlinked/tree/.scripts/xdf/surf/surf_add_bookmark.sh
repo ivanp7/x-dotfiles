@@ -15,5 +15,6 @@ BOOKMARK_FILE=$(find . -path "./.git" -prune -o \! -name ".gitignore" \( -type f
     sed 's,^\./,,' | sort | dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_CATEGORY" -l 10 -i $WINDOW_ARG)
 
 [ -z "$BOOKMARK_FILE" ] && exit 1
+mkdir -p "$(dirname "$BOOKMARK_FILE")"
 echo "$URI" >> "$BOOKMARK_FILE"
 
