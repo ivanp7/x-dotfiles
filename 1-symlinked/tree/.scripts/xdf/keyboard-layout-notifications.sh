@@ -4,7 +4,7 @@ prev_layout="English"
 while xhost > /dev/null 2>&1
 do 
     polybar -s keyboard_layout_only | 
-        stdbuf -oL sed -E 's/ ?%\{.}$//; s/%\{.*\}//' | 
+        perl -pe '$|=1; s/%{.*?}//g; s/Language //' | 
         while read layout
         do 
             if [ "$layout" != "$prev_layout" ]
