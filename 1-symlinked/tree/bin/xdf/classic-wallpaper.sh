@@ -11,7 +11,7 @@ WALLPAPER="$(find -L . -type f -o -type l |
         if xdg-mime query filetype "$file" | grep -q "^image/"
         then echo "$file"
         fi
-    done | dmenu -fn "$DEFAULT_FONT" -l 10 -i)"
+    done | sxiv -tio | head -n 1)"
 [ -z "$WALLPAPER" ] && exit 1
 
 feh --no-fehbg --bg-scale "$WALLPAPER"
