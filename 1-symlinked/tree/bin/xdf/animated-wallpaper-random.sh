@@ -18,14 +18,13 @@ start_wallpaper ()
 pkill xwinwrap
 
 # display random video
-cd $HOME/wallpapers
-WALLPAPER="$(find -L . -type f -o -type l | 
+WALLPAPER="$(find -L $HOME/wallpapers/ -type f -o -type l | 
     while read file
     do
         if xdg-mime query filetype "$file" | grep -q "^video/"
         then echo "$file"
         fi
-    done | dmenu -fn "$DEFAULT_FONT" -l 10 -i)"
+    done | shuf -n1)"
 [ -z "$WALLPAPER" ] && exit 1
 
 start_wallpaper "$WALLPAPER" $1
