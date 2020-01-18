@@ -17,14 +17,11 @@ start_wallpaper ()
 # kill animated wallpaper, if it is displayed
 pkill xwinwrap
 
-# display random video
+# select video
 cd $HOME/wallpapers
 WALLPAPER="$(find -L . -type f -o -type l | 
     while read file
-    do
-        if xdg-mime query filetype "$file" | grep -q "^video/"
-        then echo "$file"
-        fi
+    do file -b -i "$file" | grep -q "^video/" && echo "$file"
     done | dmenu -fn "$DEFAULT_FONT" -l 10 -i)"
 [ -z "$WALLPAPER" ] && exit 1
 
