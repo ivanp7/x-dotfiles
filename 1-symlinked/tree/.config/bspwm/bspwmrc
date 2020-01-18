@@ -53,7 +53,7 @@ unclutter &
 $HOME/.scripts/xdf/keyboard-layout-notifications.sh &
 $HOME/.scripts/xdf/polybar.sh top &
 $HOME/.scripts/xdf/polybar.sh bottom &
-classic-wallpaper-random.sh
+$HOME/.scripts/xdf/random-wallpaper.sh
 
 dex -a
 

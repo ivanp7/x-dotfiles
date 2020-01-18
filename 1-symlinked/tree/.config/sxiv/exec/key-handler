@@ -25,7 +25,7 @@ rotate() {
 case "$1" in
 "C-x")      xclip -in -selection clipboard ;;
 
-"w")        set-wallpaper.sh "$(shuf -n 1)" ;;
+"w")        wallpaper.sh "$(shuf -n 1)" ;;
 
 "C-comma")  rotate 270 ;;
 "C-period") rotate  90 ;;

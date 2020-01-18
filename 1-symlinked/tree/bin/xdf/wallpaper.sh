@@ -1,6 +1,21 @@
 #!/bin/sh
 
-start_wallpaper ()
+# kill animated wallpaper, if it is displayed
+pkill xwinwrap
+
+FILE=$1
+START=$2
+
+if [ -z "$FILE" ]
+then exit 1
+fi
+
+set_classic_wallpaper ()
+{
+    feh --no-fehbg --bg-scale "$1" 
+}
+
+start_animated_wallpaper ()
 {
     if [ -z "$2" ]
     then RAND=$(shuf -i 0-99 -n 1)
@@ -14,16 +29,9 @@ start_wallpaper ()
     fi
 }
 
-# kill animated wallpaper, if it is displayed
-pkill xwinwrap
-
-# select video
-cd $HOME/wallpapers
-WALLPAPER="$(find -L . -type f -o -type l | 
-    while read file
-    do file -b -i "$file" | grep -q "^video/" && echo "$file"
-    done | dmenu -fn "$DEFAULT_FONT" -l 10 -i)"
-[ -z "$WALLPAPER" ] && exit 1
-
-start_wallpaper "$WALLPAPER" $1
+case $(file -b -i "$FILE") in
+    image/*) set_classic_wallpaper "$FILE" ;;
+    video/*) start_animated_wallpaper "$FILE" $START ;;
+    *) exit 1 ;;
+esac
 
