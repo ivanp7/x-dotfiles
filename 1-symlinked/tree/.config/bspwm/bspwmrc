@@ -47,7 +47,7 @@ picom --config $HOME/.picom.conf &
 $HOME/.scripts/xdf/dropdown-terminal.sh &
 $HOME/.scripts/xdf/dropdown-browser.sh &
 
-sxhkd &
+$HOME/.scripts/xdf/sxhkd.sh &
 
 unclutter &
 $HOME/.scripts/xdf/keyboard-layout-notifications.sh &
