@@ -103,6 +103,16 @@ super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}'
 
 #
+# flip/rotate
+#
+
+super + {underscore,bar}
+    bspc node -F {horizontal,vertical}
+
+super + {less,greater}
+    bspc node -R {90,270}
+
+#
 # preselect
 #
 
@@ -142,8 +152,8 @@ super + {Left,Down,Up,Right}
 # gap control
 #
 
-super + {equal,minus,plus,underscore}
-    gaps.sh {up,down, ,10}
+super + {plus,minus,equal}
+    gaps.sh {up,down, }
 
 #
 # volume control
