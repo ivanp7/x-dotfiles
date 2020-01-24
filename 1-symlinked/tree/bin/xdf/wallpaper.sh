@@ -21,7 +21,7 @@ start_animated_wallpaper ()
     then RAND=$(shuf -i 0-99 -n 1)
     else RAND=$(($2 % 100))
     fi
-    MPV_OPTIONS="--osc=no --osd-level=0 --no-input-default-bindings --vo=vdpau --hwdec=vdpau --loop=inf --start=$RAND%"
+    MPV_OPTIONS="--osc=no --osd-level=0 --no-input-default-bindings --vo=gpu --hwdec=auto --loop=inf --start=$RAND%"
 
     # dependency: shantz-xwinwrap-bzr from AUR
     if [ -f "$1" ]
