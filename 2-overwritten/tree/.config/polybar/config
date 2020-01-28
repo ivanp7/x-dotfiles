@@ -59,7 +59,7 @@ tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
-wm-restack = true
+; wm-restack = true
 ; override-redirect = true
 
 cursor-click = pointer
