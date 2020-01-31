@@ -11,8 +11,8 @@ cd $HOME/.bookmarks
 
 find . -path "./.git" -prune -o \! -name ".gitignore" -print | sed 's,^\./,,' | sort | 
     dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_CATEGORY" -l $DMENU_LINES -i $WINDOW_ARG | 
-    xargs -I {} find {} -type f | xargs -I {} cat {} | 
-    sed -E 's/\s*".*//; /^\s*$/d' | sed -E 's/^([^ ]*) *(.*)/\2 <\1>/' |
+    xargs -I {} find {} -path "./.git" -prune -o \! -name ".gitignore" -type f -print |
+    xargs -I {} cat {} | sed -E 's/\s*".*//; /^\s*$/d' | sed -E 's/^([^ ]*) *(.*)/\2 <\1>/' |
     ifne dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_BOOKMARK" -l $DMENU_LINES -i $WINDOW_ARG | 
     sed -E 's/.*<([^ ]*)>$/\1/'
 
