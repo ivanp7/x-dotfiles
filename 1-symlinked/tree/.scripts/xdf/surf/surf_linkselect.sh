@@ -8,7 +8,8 @@
 #     Selected link is normalized based on current URI and printed to STDOUT.
 #     Pipe the result to a new surf or xprop _SURF_URI accordingly.
 
-if [ -n "$1" ]; then WINDOW_ARG="-w $1"; fi
+SURF_WINDOW=$1
+if [ -n "$SURF_WINDOW" ]; then WINDOW_ARG="-w $SURF_WINDOW"; fi
 DMENU_PROMPT="${2:-Link}"
 
 function dump_links_with_titles() {
