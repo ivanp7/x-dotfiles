@@ -25,6 +25,8 @@ super + backslash
 # program launcher
 super + @d
     dmenu_run -fn "$DEFAULT_FONT"
+super + @Cyrillic_ve
+    dmenu_run -fn "$DEFAULT_FONT"
 
 #
 # bspwm hotkeys
@@ -33,13 +35,19 @@ super + @d
 # quit/restart bspwm
 super + alt + {q,r}
     bspc {quit,wm -r}
+super + alt + {Cyrillic_shorti,Cyrillic_ka}
+    bspc {quit,wm -r}
 
 # close and kill
 super + {_,shift + }w
     bspc node -{c,k}
+super + {_,shift + }Cyrillic_tse
+    bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 super + m
+    bspc desktop -l next
+super + Cyrillic_softsign
     bspc desktop -l next
 
 #
@@ -49,9 +57,13 @@ super + m
 # set the window state
 super + {t,shift + t,s,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {Cyrillic_ie,shift + Cyrillic_ie,Cyrillic_yeru,Cyrillic_a}
+    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
+    bspc node -g {marked,locked,sticky,private}
+super + ctrl + {Cyrillic_softsign,Cyrillic_che,Cyrillic_en,Cyrillic_ya}
     bspc node -g {marked,locked,sticky,private}
 
 #
@@ -61,9 +73,15 @@ super + ctrl + {m,x,y,z}
 # send the newest marked node to the newest preselected node
 super + y
     bspc node newest.marked.local -n newest.!automatic.local
+super + Cyrillic_en
+    bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the newest marked node
 super + g
+    bspc node -s newest.marked.local; \
+    bspc node -f newest.marked.local; \
+    bspc node -g marked
+super + Cyrillic_pe
     bspc node -s newest.marked.local; \
     bspc node -f newest.marked.local; \
     bspc node -g marked
@@ -71,29 +89,45 @@ super + g
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
+super + {_,shift + }{Cyrillic_er,Cyrillic_o,Cyrillic_el,Cyrillic_de}
+    bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
+    bspc node -f @{parent,brother,first,second}
+super + {Cyrillic_ze,Cyrillic_i,Cyrillic_be,Cyrillic_yu}
     bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
     bspc node -f {next,prev}.local
+super + {_,shift + }Cyrillic_es
+    bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
+    bspc desktop -f {prev,next}.local
+super + {Cyrillic_ha,Cyrillic_hardsign}
     bspc desktop -f {prev,next}.local
 
 # change the number of desktops
 super + alt + bracket{left,right}
     desktops.sh {dec,inc}
+super + alt + {Cyrillic_ha,Cyrillic_hardsign}
+    desktops.sh {dec,inc}
 
 # focus the last node/desktop
 super + {grave,Tab}
     bspc {node,desktop} -f last
+super + {Cyrillic_io,Tab}
+    bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
+    bspc wm -h off; \
+    bspc node {older,newer} -f; \
+    bspc wm -h on
+super + {Cyrillic_shcha,Cyrillic_sha}
     bspc wm -h off; \
     bspc node {older,newer} -f; \
     bspc wm -h on
@@ -111,6 +145,8 @@ super + {underscore,bar}
 
 super + {less,greater}
     bspc node -R {90,270}
+super + shift + {Cyrillic_be,Cyrillic_yu}
+    bspc node -R {90,270}
 
 #
 # preselect
@@ -118,6 +154,8 @@ super + {less,greater}
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
+super + ctrl + {Cyrillic_er,Cyrillic_o,Cyrillic_el,Cyrillic_de}
     bspc node -p {west,south,north,east}
 
 # preselect the ratio
@@ -139,9 +177,13 @@ super + ctrl + shift + BackSpace
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
     bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+super + alt + {Cyrillic_er,Cyrillic_o,Cyrillic_el,Cyrillic_de}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
+    bspc node -z {left 20 0,bottom 0 -20,top 0 20,right -20 0}
+super + alt + shift + {Cyrillic_er,Cyrillic_o,Cyrillic_el,Cyrillic_de}
     bspc node -z {left 20 0,bottom 0 -20,top 0 20,right -20 0}
 
 # move a floating window
