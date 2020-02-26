@@ -23,12 +23,16 @@ rotate() {
 }
 
 case "$1" in
-"C-x")      xclip -in -selection clipboard ;;
+# C-x
+"C-53")      xclip -in -selection clipboard ;;
+# w
+"25")        wallpaper.sh "$(shuf -n 1)" ;;
 
-"w")        wallpaper.sh "$(shuf -n 1)" ;;
-
-"C-comma")  rotate 270 ;;
-"C-period") rotate  90 ;;
-"C-slash")  rotate 180 ;;
+# comma
+"C-59")  rotate 270 ;;
+# period
+"C-60") rotate  90 ;;
+# slash
+"C-61")  rotate 180 ;;
 esac
 
