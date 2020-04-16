@@ -12,27 +12,28 @@
 # where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
 # keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
 
-rotate() {
-	degree="$1"
-	tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
-		case "$(file -b -i "$file")" in
-		image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
-		*)           mogrify  -rotate "$degree" "$file" ;;
-		esac
-	done
+rotate() 
+{
+    degree="$1"
+    tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
+        case "$(file -b -i "$file")" in
+            image/jpeg*) jpegtran -rotate "$degree" -copy all -outfile "$file" "$file" ;;
+            *)           mogrify  -rotate "$degree" "$file" ;;
+        esac
+    done
 }
 
 case "$1" in
-# C-x
-"C-53")      xclip -in -selection clipboard ;;
-# w
-"25")        wallpaper.sh "$(shuf -n 1)" ;;
+    # C-x
+    "C-53")  xclip -r -in -selection clipboard ;;
+    # w
+    "25")    wallpaper.sh "$(shuf -n 1)" ;;
 
-# comma
-"C-59")  rotate 270 ;;
-# period
-"C-60") rotate  90 ;;
-# slash
-"C-61")  rotate 180 ;;
+    # comma
+    "C-59")  rotate 270 ;;
+    # period
+    "C-60")  rotate  90 ;;
+    # slash
+    "C-61")  rotate 180 ;;
 esac
 
