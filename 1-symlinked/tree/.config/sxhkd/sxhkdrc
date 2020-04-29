@@ -192,6 +192,14 @@ super + alt + shift + {Cyrillic_er,Cyrillic_o,Cyrillic_el,Cyrillic_de}
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# make split ratios equal
+super + ctrl + equal
+    bspc node @/ --equalize
+
+# make split ratios balanced
+super + ctrl + minus
+    bspc node @/ --balance
+
 # 
 # gap control
 #
