@@ -29,7 +29,8 @@ start_animated_wallpaper ()
     fi
 }
 
-case $(file -b -i "$FILE") in
+mime_type=$(file --mime-type "$FILE" -bLE) || mime_type=""
+case $mime_type in
     image/*) set_classic_wallpaper "$FILE" ;;
     video/*) start_animated_wallpaper "$FILE" $START ;;
     *) exit 1 ;;
