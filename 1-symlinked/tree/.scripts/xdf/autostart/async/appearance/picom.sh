@@ -1,6 +1,6 @@
 #!/bin/sh
 
 while xhost > /dev/null 2>&1
-do picom --config $HOME/.picom.conf
+do picom --config $XDG_CONFIG_HOME/picom/picom.conf
 done
 
