@@ -16,7 +16,7 @@ install()
 echo '
 delete_copied_file ()
 {
-    [ -f "$1" ] && rm "$1"
+    [ -f "$1" ] && rm -f "$1"
     delete_empty_directory_of "$1"
 }
 ' >> $UNINST_SCRIPT
