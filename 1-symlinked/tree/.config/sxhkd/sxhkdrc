@@ -1,10 +1,4 @@
-#
-# wm independent hotkeys
-#
-
-# make sxhkd reload its configuration files:
-super + Escape
-    pkill -USR1 -x sxhkd
+# launch programs {{{
 
 # terminal emulator
 super + ctrl + Return
@@ -28,9 +22,12 @@ super + @d
 super + @Cyrillic_ve
     dmenu_run -fn "$DEFAULT_FONT"
 
-#
-# bspwm hotkeys
-#
+# }}}
+# bspwm & sxhkd hotkeys {{{
+
+# make sxhkd reload its configuration files:
+super + Escape
+    pkill -USR1 -x sxhkd
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -50,9 +47,8 @@ super + m
 super + Cyrillic_softsign
     bspc desktop -l next
 
-#
-# state/flags
-#
+# }}}
+# state/flags {{{
 
 # set the window state
 super + {t,shift + t,s,f}
@@ -66,9 +62,8 @@ super + ctrl + {m,x,y,z}
 super + ctrl + {Cyrillic_softsign,Cyrillic_che,Cyrillic_en,Cyrillic_ya}
     bspc node -g {marked,locked,sticky,private}
 
-#
-# focus/swap
-#
+# }}}
+# focus/swap {{{
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -138,9 +133,8 @@ super + {Cyrillic_shcha,Cyrillic_sha}
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}'
 
-#
-# flip/rotate
-#
+# }}}
+# flip/rotate {{{
 
 super + {underscore,bar}
     bspc node -F {horizontal,vertical}
@@ -150,9 +144,8 @@ super + {less,greater}
 super + shift + {Cyrillic_be,Cyrillic_yu}
     bspc node -R {90,270}
 
-#
-# preselect
-#
+# }}}
+# preselect {{{
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
@@ -172,9 +165,8 @@ super + ctrl + BackSpace
 super + ctrl + shift + BackSpace
     bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-#
-# move/resize
-#
+# }}}
+# move/resize {{{
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
@@ -200,16 +192,15 @@ super + ctrl + equal
 super + ctrl + minus
     bspc node @/ --balance
 
-# 
+# }}}
+# miscellaneous {{{
+
 # gap control
-#
 
 super + {plus,minus,equal}
     gaps.sh {up,down, }
 
-#
 # volume control
-#
 
 {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
     volume-notify.sh {up,down,toggle}
@@ -217,9 +208,7 @@ super + {plus,minus,equal}
 ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
     volume-notify.sh
 
-#
 # monitor brightness control (needs sudoers permission on brightness.sh)
-#
 
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
     brightness-notify.sh {up,down}
@@ -227,22 +216,19 @@ ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
 ctrl + {XF86MonBrightnessUp,XF86MonBrightnessDown}
     brightness-notify.sh
 
-#
 # power control
 #
-
 super + Pause
     sudo systemctl suspend
-
-#
-# miscellaneous
-#
-
-# WM status report
-super + F1
-    wm-report.sh
 
 # make screenshot
 {_,alt + }{_,ctrl + }{_,shift + } Print
     {screen2clip.sh,screen2file.sh} { ,-s} {-u, }
 
+# WM status report
+super + F1
+    wm-report.sh
+
+# }}}
+
+# vim: foldmethod=marker:

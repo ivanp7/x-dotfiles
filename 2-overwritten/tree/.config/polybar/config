@@ -386,4 +386,4 @@ screenchange-reload = true
 margin-top = 0
 margin-bottom = 0
 
-; vim:ft=dosini
+; vim: ft=dosini
