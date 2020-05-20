@@ -9,6 +9,23 @@
 ;
 ;==========================================================
 
+; global/wm {{{
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; }}}
+; settings {{{
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+; }}}
+; colors {{{
 [colors]
 background = #222
 background-alt = #444
@@ -18,9 +35,14 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+; }}}
+; bar/keyboard_layout_only {{{
 [bar/keyboard_layout_only]
 modules-left = xkeyboard
 
+; }}}
+; bar/top {{{
+; bar/top {{{
 [bar/top]
 ; monitor = ${env:MONITOR:HDMI-1}
 width = 100%
@@ -65,19 +87,8 @@ tray-padding = 2
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/bottom]
-inherit = bar/top
-
-bottom = true
-
-border-bottom-size = 0
-border-top-size = 3
-modules-left = wired wireless
-modules-center = 
-modules-right = battery nvidia-gpu-load cpu cpu-frequency temperature memory filesystem 
-
-tray-position =
-
+; }}}
+; module/bspwm {{{
 [module/bspwm]
 type = internal/bspwm
 
@@ -125,11 +136,122 @@ label-marked = "### "
 ; Separator in between workspaces
 ; label-separator = |
 
+; }}}
+; module/xwindow {{{
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:100:...%
 ; label = %title:0:50:...%
 
+; }}}
+; module/backlight-acpi {{{
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = %percentage%%
+format-prefix = "Backlight "
+format-prefix-foreground = ${colors.foreground-alt}
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-fill = ─
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-foreground = ${colors.foreground-alt}
+
+; }}}
+; module/alsa {{{
+[module/alsa]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+format-volume-prefix = "Volume "
+format-volume-prefix-foreground = ${colors.foreground-alt}
+
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = muted
+format-muted-prefix = ${self.format-volume-prefix}
+format-muted-prefix-foreground = ${colors.foreground-alt}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-fill = ─
+bar-volume-empty = ─
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+; }}}
+; module/xkeyboard {{{
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = "Language "
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-layout = %name:0:7%
+
+; }}}
+; module/typespeed {{{
+[module/typespeed]
+type = custom/script
+exec = ~/.scripts/xdf/polybar/info-hackspeed.sh
+tail = true
+
+format-prefix = "@ "
+format-prefix-foreground = ${colors.foreground-alt}
+
+; }}}
+; module/date {{{
+[module/date]
+type = internal/date
+interval = 1
+
+date = " %Y-%b-%d %a"
+date-alt = " %Y-%m-%d"
+
+time = %H:%M:%S
+time-alt = %H:%M
+
+format-prefix-foreground = ${colors.foreground-alt}
+
+label = %date% %time%
+
+; }}}
+; }}}
+; bar/bottom {{{
+; bar/bottom {{{
+[bar/bottom]
+inherit = bar/top
+
+bottom = true
+
+border-bottom-size = 0
+border-top-size = 3
+modules-left = wired wireless
+modules-center = 
+modules-right = battery nvidia-gpu-load cpu cpu-frequency temperature memory filesystem 
+
+tray-position =
+
+; }}}
+; module/wireless {{{
 [module/wireless]
 type = internal/network
 interface = WIRELESS_NETWORK_INTERFACE
@@ -146,6 +268,8 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
+; }}}
+; module/wired {{{
 [module/wired]
 type = internal/network
 interface = WIRED_NETWORK_INTERFACE
@@ -162,6 +286,8 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
+; }}}
+; module/battery {{{
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -207,6 +333,8 @@ bar-capacity-fill = ─
 bar-capacity-empty = ─
 bar-capacity-empty-foreground = ${colors.foreground-alt}
 
+; }}}
+; module/nvidia-gpu-load {{{
 [module/nvidia-gpu-load]
 type = custom/script
 exec = ~/.scripts/xdf/polybar/system-nvidia-smi.sh
@@ -218,6 +346,8 @@ format-underline = #ff00cc
 
 label = %output:3%%
 
+; }}}
+; module/cpu {{{
 [module/cpu]
 type = internal/cpu
 interval = 3
@@ -237,6 +367,8 @@ ramp-coreload-5 = ▆
 ramp-coreload-6 = ▇
 ramp-coreload-7 = █
 
+; }}}
+; module/cpu-frequency {{{
 [module/cpu-frequency]
 type = custom/script
 exec = ~/.scripts/xdf/polybar/system-cpu-frequency.sh
@@ -263,6 +395,8 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
+; }}}
+; module/memory {{{
 [module/memory]
 type = internal/memory
 interval = 2
@@ -281,6 +415,8 @@ ramp-used-5 = ▆
 ramp-used-6 = ▇
 ramp-used-7 = █
 
+; }}}
+; module/filesystem {{{
 [module/filesystem]
 type = internal/fs
 interval = 10
@@ -294,96 +430,7 @@ label-unmounted-foreground = ${colors.foreground-alt}
 format-mounted-underline = #0a6cf5
 format-unmounted-underline = ${self.format-mounted-underline}
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+; }}}
+; }}}
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = %percentage%%
-format-prefix = "Backlight "
-format-prefix-foreground = ${colors.foreground-alt}
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-fill = ─
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = %percentage%%
-label-volume-foreground = ${root.foreground}
-format-volume-prefix = "Volume "
-format-volume-prefix-foreground = ${colors.foreground-alt}
-
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = muted
-format-muted-prefix = ${self.format-volume-prefix}
-format-muted-prefix-foreground = ${colors.foreground-alt}
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-fill = ─
-bar-volume-empty = ─
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = "Language "
-format-prefix-foreground = ${colors.foreground-alt}
-
-label-layout = %name:0:7%
-
-[module/typespeed]
-type = custom/script
-exec = ~/.scripts/xdf/polybar/info-hackspeed.sh
-tail = true
-
-format-prefix = "@ "
-format-prefix-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-interval = 1
-
-date = " %Y-%b-%d %a"
-date-alt = " %Y-%m-%d"
-
-time = %H:%M:%S
-time-alt = %H:%M
-
-format-prefix-foreground = ${colors.foreground-alt}
-
-label = %date% %time%
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-[global/wm]
-margin-top = 0
-margin-bottom = 0
-
-; vim: ft=dosini
+; vim: ft=dosini: foldmethod=marker:
