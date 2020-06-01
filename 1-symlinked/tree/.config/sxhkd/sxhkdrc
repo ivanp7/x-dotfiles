@@ -219,7 +219,7 @@ ctrl + {XF86MonBrightnessUp,XF86MonBrightnessDown}
 # power control
 #
 super + Pause
-    sudo systemctl suspend
+    sudo pm-suspend
 
 # make screenshot
 {_,alt + }{_,ctrl + }{_,shift + } Print
