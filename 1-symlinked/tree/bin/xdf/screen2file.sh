@@ -1,7 +1,12 @@
 #!/bin/sh
 
-DIRECTORY="$HOME/data/media/pictures/screenshots"
-mkdir -p $DIRECTORY
+DIRECTORY="$HOME/screenshots"
 
-maim "$@" "$DIRECTORY/screenshot_$(date "+%F_%T").png"
+SUBDIR="full"
+for arg in "$@"
+do [ "$arg" = "-s" ] && { SUBDIR="area"; break; }
+done
+
+mkdir -p $DIRECTORY/$SUBDIR
+maim "$@" "$DIRECTORY/$SUBDIR/screenshot_$(date "+%F_%T").png"
 
