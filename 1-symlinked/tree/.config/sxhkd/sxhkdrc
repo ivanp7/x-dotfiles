@@ -196,30 +196,28 @@ super + ctrl + minus
 # miscellaneous {{{
 
 # gap control
-
 super + {plus,minus,equal}
     gaps.sh {up,down, }
 
 # volume control
-
 {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
     volume-notify.sh {up,down,toggle}
-
 ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
     volume-notify.sh
 
 # monitor brightness control (needs sudoers permission on brightness.sh)
-
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
     brightness-notify.sh {up,down}
-
 ctrl + {XF86MonBrightnessUp,XF86MonBrightnessDown}
     brightness-notify.sh
 
+# lock screen
+super + Home
+    lock-screen.sh
+
 # power control
-#
 super + Pause
-    sudo pm-suspend
+    lock-screen.sh sudo pm-suspend
 
 # make screenshot
 {_,alt + }{_,ctrl + }{_,shift + } Print
