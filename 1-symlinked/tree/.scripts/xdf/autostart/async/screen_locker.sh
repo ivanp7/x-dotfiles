@@ -4,19 +4,14 @@ CHECK_INTERVAL=60
 
 while xhost > /dev/null 2>&1
 do
-    if [ "$(xssstate -s)" = "disabled" ]
+    LOCK_ENABLED=""; [ -f "/tmp/no-screen-lock_$USER" ] || LOCK_ENABLED="yes"
+
+    if [ -n "$LOCK_ENABLED" ] && [ "$(xssstate -t)" -eq 0 ]
     then
-        sleep $CHECK_INTERVAL
-        continue
+        date >> /tmp/screen-lock_$USER.log
+        slock
     fi
 
-    TO_WAIT=$(($(xssstate -t) / 1000))
-    if [ "$TO_WAIT" -gt 0 ]
-    then
-        sleep $TO_WAIT
-        continue
-    fi
-
-    slock
+    sleep $CHECK_INTERVAL
 done
 

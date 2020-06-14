@@ -1,10 +1,10 @@
 #!/bin/sh
 
-STATE=$(xssstate -s)
+STATUS_FILE="/tmp/no-screen-lock_$USER"
 case "$1" in
-    -on) xset s on ;;
-    -off) xset s off ;;
-    -*) [ "$STATE" = "disabled" ] && echo disabled || echo enabled ;;
-    *) [ "$(xssstate -s)" != "disabled" ] && slock & $@
+    -on) rm $STATUS_FILE ;;
+    -off) touch $STATUS_FILE ;;
+    -*) [ -f "$STATUS_FILE" ] && echo disabled || echo enabled ;;
+    *) [ -f "$STATUS_FILE" ] || slock & $@
 esac
 
