@@ -2,7 +2,7 @@
 
 cd ~
 
-xidfile=$(mktemp "/tmp/tabbed-surf-XXXXXX.xid")
+xidfile=$(mktemp "/tmp/dropdown-surf-XXXXXX.xid")
 runtabbed() {
     tabbed -cw dropdown_browser -r 2 surf -e '' > "$xidfile" 2>/dev/null
 }
