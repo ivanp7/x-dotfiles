@@ -224,8 +224,12 @@ super + Pause
     {screen2clip.sh,screen2file.sh} { ,-s}
 
 # make screencast
-{_,ctrl + } alt + Print
+alt + {_,ctrl + } Print
     screencast-async.sh { ,-a}
+
+# record sound
+alt + shift + ctrl + Print
+    record-microphone-async.sh
 
 # WM status report
 super + F1
