@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DIRECTORY="$HOME/record"
+DIRECTORY="$HOME/capture/microphone"
 mkdir -p $DIRECTORY
 
 FILENAME="record_$(date "+%F_%T").aac"

@@ -9,9 +9,9 @@ then
     sleep 1
     setsid -f screencast.sh "$@" > /dev/null 2>&1 &
 else
+    sleep 1
     PID=$(pstree -cpT $PID | sed 's/.*ffmpeg(\([0-9]\+\)).*/\1/')
     kill -INT $PID
-    sleep 1
     notify-send -t 1000 "Screen recording is stopped."
 fi
 

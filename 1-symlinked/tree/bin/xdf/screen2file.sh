@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DIRECTORY="$HOME/screen/shot"
+DIRECTORY="$HOME/capture/screenshot"
 
 SUBDIR="full"
 for arg in "$@"

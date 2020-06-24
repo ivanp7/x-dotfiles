@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DIRECTORY="$HOME/screen/cast"
+DIRECTORY="$HOME/capture/screencast"
 mkdir -p $DIRECTORY
 
 SCREEN_SIZE="1920x1080"
