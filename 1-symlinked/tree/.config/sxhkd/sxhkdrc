@@ -207,9 +207,9 @@ ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
 
 # monitor brightness control (needs sudoers permission on brightness.sh)
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
-    brightness-notify.sh {up,down}
+    backlight-notify.sh {up,down}
 ctrl + {XF86MonBrightnessUp,XF86MonBrightnessDown}
-    brightness-notify.sh
+    backlight-notify.sh
 
 # lock screen
 super + Home
