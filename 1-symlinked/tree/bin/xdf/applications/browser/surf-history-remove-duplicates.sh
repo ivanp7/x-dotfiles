@@ -1,8 +1,8 @@
 #!/bin/sh
 
-HISTORY_FILE="$HOME/.surf/history.txt"
-REVERSE_HISTORY_FILE="$HOME/.surf/history.rev.txt"
-NEW_REVERSE_HISTORY_FILE="$HOME/.surf/history.rev2.txt"
+HISTORY_FILE="$XDG_CACHE_HOME/surf/history.txt"
+REVERSE_HISTORY_FILE="$XDG_CACHE_HOME/surf/history.rev.txt"
+NEW_REVERSE_HISTORY_FILE="$XDG_CACHE_HOME/surf/history.rev2.txt"
 MAX_HISTORY_LENGTH=10000
 
 tac "$HISTORY_FILE" > "$REVERSE_HISTORY_FILE"

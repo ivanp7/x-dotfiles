@@ -6,8 +6,8 @@ DMENU_PROMPT_CATEGORY="${3:-Category}"
 
 DMENU_LINES=10
 
-[ ! -d "$HOME/.bookmarks" ] && exit 1
-cd $HOME/.bookmarks
+BOOKMARKS_DIR=$XDG_DATA_HOME/bookmarks
+cd "$BOOKMARKS_DIR" || exit 1
 
 find . -path "./.git" -prune -o \! -name ".gitignore" -print | sed 's,^\./,,' | sort | 
     dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_CATEGORY" -l $DMENU_LINES -i $WINDOW_ARG | 

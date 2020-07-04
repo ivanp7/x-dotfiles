@@ -221,7 +221,7 @@ super + Pause
 
 # make screenshot
 {_,shift + }{_,ctrl + } Print
-    {screen2clip.sh,screen2file.sh} { ,-s}
+    {screen2clip.sh,screen2file.sh} { ,-s -u}
 
 # make screencast
 alt + {_,ctrl + } Print
