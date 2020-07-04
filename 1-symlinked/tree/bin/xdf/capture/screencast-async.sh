@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID=$(pgrep -U $USER "screencast.sh" | head -n 1)
+PID=$(pgrep -U $USER "screencast.sh" | head -1)
 
 if [ -z "$PID" ]
 then
