@@ -1,11 +1,8 @@
 #!/bin/sh
 
-if [ -n "$1" ]
-then URI=$1
-else exit 1
-fi
+[ -n "$1" ] && URI=$1 || exit 1
 
-if [ -n "$2" ]; then WINDOW_ARG="-w $2"; fi
+[ -n "$2" ] && WINDOW_ARG="-w $2"
 DMENU_PROMPT_CATEGORY="${3:-Category}"
 
 BOOKMARKS_DIR=$XDG_DATA_HOME/bookmarks

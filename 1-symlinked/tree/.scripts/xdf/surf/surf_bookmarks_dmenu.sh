@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -n "$1" ]; then WINDOW_ARG="-w $1"; fi
+[ -n "$1" ] && WINDOW_ARG="-w $1"
 DMENU_PROMPT_BOOKMARK="${2:-Bookmark}"
 DMENU_PROMPT_CATEGORY="${3:-Category}"
 

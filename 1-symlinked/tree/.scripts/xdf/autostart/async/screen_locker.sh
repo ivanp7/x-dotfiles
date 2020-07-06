@@ -14,7 +14,7 @@ do
         xhost > /dev/null 2>&1 || exit
     done
 
-    if [ ! -f "$STATUS_FILE" ] && [ "$(xssstate -t)" -eq 0 ]
+    if [ ! -f "$STATUS_FILE" -a "$(xssstate -t)" -eq 0 ]
     then
         date >> /tmp/screen-lock_$USER.log
         slock
