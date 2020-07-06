@@ -4,18 +4,7 @@ N=$(xdotool get_num_desktops)
 
 to_name ()
 {
-    cat | sed '
-s/10/X/;
-s/1/I/;
-s/2/II/;
-s/3/III/;
-s/4/IV/;
-s/5/V/;
-s/6/VI/;
-s/7/VII/;
-s/8/VIII/;
-s/9/IX/;
-    '
+    sed 's/10/X/;s/1/I/;s/2/II/;s/3/III/;s/4/IV/;s/5/V/;s/6/VI/;s/7/VII/;s/8/VIII/;s/9/IX/'
 }
 
 case $1 in
