@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID=$(pgrep -U $USER "record-micropho" | head -1)
+PID=$(pgrep -u $USER -f "/sh .*/record-microphone.sh" | head -1)
 
 if [ -z "$PID" ]
 then
