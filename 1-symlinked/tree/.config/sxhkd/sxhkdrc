@@ -235,6 +235,10 @@ alt + shift + ctrl + Print
 super + F1
     wm-report.sh
 
+# XKill
+super + x
+    xkillthis.sh
+
 # }}}
 
 # vim: foldmethod=marker:

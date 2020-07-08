@@ -1,4 +1,5 @@
 #!/bin/sh
 
-set -o errexit
-xkill -id $(xprop -root _NET_ACTIVE_WINDOW | cut -d '#' -f 2)
+ID=$(xdotool selectwindow 2> /dev/null)
+[ -n "$ID" ] && xkill -id $ID
+
