@@ -220,8 +220,8 @@ super + Pause
     lock-screen.sh sudo pm-suspend
 
 # make screenshot
-{_,shift + }{_,ctrl + } Print
-    {screen2clip.sh,screen2file.sh} { ,-s -u}
+{_,ctrl + }{_,shift + } Print
+    screenshot.sh { ,-s -u} {| clip.sh image/png, }
 
 # make screencast
 alt + {_,ctrl + } Print
