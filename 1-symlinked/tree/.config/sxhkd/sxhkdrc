@@ -224,12 +224,12 @@ super + Pause
     screenshot.sh { ,-s -u} {| clip.sh image/png, }
 
 # make screencast
-alt + {_,ctrl + } Print
-    screencast-async.sh { ,-a}
+alt + {_,shift + }{_,ctrl + } Print
+    capture-async.sh {screen,screen/mic} {"#","+"}
 
-# record sound
-alt + shift + ctrl + Print
-    record-microphone-async.sh
+# make mic record
+alt + Scroll_Lock
+    capture-async.sh mic
 
 # WM status report
 super + F1
