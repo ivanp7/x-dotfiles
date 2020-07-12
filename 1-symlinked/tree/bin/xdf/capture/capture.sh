@@ -15,6 +15,8 @@ case $TYPE in
             "#")
                 SIZE=$(resolution.sh)
                 DISPL=""
+
+                DIRECTORY="screencast/full"
                 ;;
             *)
                 [ "$AREA" = "+" ] && AREA=$(slop)
@@ -22,14 +24,15 @@ case $TYPE in
                 SIZE=${AREA%%+*}
                 AREA=${AREA#*+}
                 DISPL="+${AREA%+*},${AREA#*+}"
+
+                DIRECTORY="screencast/area"
         esac
+
+        FILENAME_EXT="mp4"
 
         if command -v nvidia-smi > /dev/null && [ "$(nvidia-smi -L | wc -l)" -gt 0 ]
         then VIDEO_CODEC=h264_nvenc
         fi
-
-        DIRECTORY="screencast"
-        FILENAME_EXT="mp4"
 
         VIDEO_FLAGS="-f x11grab -r 30 -s $SIZE -i :0.0$DISPL -vcodec ${VIDEO_CODEC:-libx264}"
         ;;
