@@ -2,7 +2,8 @@
 
 TYPE="image" # also may be 'video'
 
-WALLPAPER="$(find -L $HOME/wallpapers -type f -o -type l | 
+cd $HOME/wallpapers
+WALLPAPER="$(find -L . -path "./.git" -prune -o -type f -o -type l | 
     while read file
     do file -b -i "$file" | grep -q "^$TYPE/" && echo "$file"
     done | shuf -n 1)"
