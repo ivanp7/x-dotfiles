@@ -4,7 +4,8 @@
 pkill xwinwrap
 
 FILE=$1
-START=$2
+MODE=$2
+START=$3
 
 if [ -z "$FILE" ]
 then exit 1
@@ -29,10 +30,19 @@ start_animated_wallpaper ()
     fi
 }
 
-mime_type=$(file --mime-type "$FILE" -bLE) || mime_type=""
-case $mime_type in
-    image/*) set_classic_wallpaper "$FILE" ;;
-    video/*) start_animated_wallpaper "$FILE" $START ;;
-    *) exit 1 ;;
-esac
+if [ -z "$MODE" ]
+then
+    mime_type=$(file --mime-type "$FILE" -bLE) || mime_type=""
+    case $mime_type in
+        video/*) start_animated_wallpaper "$FILE" $START ;;
+        image/*) set_classic_wallpaper "$FILE" ;;
+        *) exit 1 ;;
+    esac
+else
+    case "$MODE" in
+        animated) start_animated_wallpaper "$FILE" $START ;;
+        classic) set_classic_wallpaper "$FILE" ;;
+        *) exit 1 ;;
+    esac
+fi
 
