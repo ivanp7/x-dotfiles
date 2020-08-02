@@ -1,9 +1,7 @@
 #!/bin/sh
 
 CLASS=$1
-if [ -z "$CLASS" ]
-then exit 1
-fi
+[ -n "$CLASS" ] || exit 1
 
 pids=$(xdotool search --class $CLASS)
 for pid in $pids

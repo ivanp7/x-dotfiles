@@ -7,9 +7,7 @@ FILE=$1
 MODE=$2
 START=$3
 
-if [ -z "$FILE" ]
-then exit 1
-fi
+[ -n "$FILE" ] || exit 1
 
 set_classic_wallpaper ()
 {
@@ -18,16 +16,11 @@ set_classic_wallpaper ()
 
 start_animated_wallpaper ()
 {
-    if [ -z "$2" ]
-    then RAND=$(shuf -i 0-99 -n 1)
-    else RAND=$(($2 % 100))
-    fi
+    [ -z "$2" ] && RAND=$(shuf -i 0-99 -n 1) || RAND=$(($2 % 100))
     MPV_OPTIONS="--osc=no --osd-level=0 --no-input-default-bindings --vo=gpu --hwdec=auto --loop=inf --start=$RAND%"
 
     # dependency: shantz-xwinwrap-bzr from AUR
-    if [ -f "$1" ]
-    then exec xwinwrap -ov -fs -- mpv -wid WID $MPV_OPTIONS "$1" > /dev/null 2>&1 &
-    fi
+    [ -f "$1" ] && exec xwinwrap -ov -fs -- mpv -wid WID $MPV_OPTIONS "$1" > /dev/null 2>&1 &
 }
 
 if [ -z "$MODE" ]

@@ -14,10 +14,7 @@ do
     else
         xid=$(cat "$xidfile")
         xprop -id "$xid" > /dev/null 2>&1
-        if [ $? -gt 0 ];
-        then runtabbed
-        else surf -e "$xid" > /dev/null 2>&1
-        fi
+        [ $? -gt 0 ] && runtabbed || surf -e "$xid" > /dev/null 2>&1
     fi
 done
 

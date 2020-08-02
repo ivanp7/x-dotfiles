@@ -11,10 +11,7 @@ opentab ()
     else
         xid=$(cat "$xidfile")
         xprop -id "$xid" > /dev/null 2>&1
-        if [ $? -gt 0 ];
-        then runtabbed "$1"
-        else setsid surf -e "$xid" "$1" > /dev/null 2>&1 &
-        fi
+        [ $? -gt 0 ] && runtabbed "$1" || setsid surf -e "$xid" "$1" > /dev/null 2>&1 &
     fi
 }
 

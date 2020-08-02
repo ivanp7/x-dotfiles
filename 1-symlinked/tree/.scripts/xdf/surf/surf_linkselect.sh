@@ -9,7 +9,7 @@
 #     Pipe the result to a new surf or xprop _SURF_URI accordingly.
 
 SURF_WINDOW=$1
-if [ -n "$SURF_WINDOW" ]; then WINDOW_ARG="-w $SURF_WINDOW"; fi
+[ -n "$SURF_WINDOW" ] && WINDOW_ARG="-w $SURF_WINDOW"
 DMENU_PROMPT="${2:-Link}"
 
 function dump_links_with_titles() {
