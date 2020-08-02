@@ -12,7 +12,7 @@
 # where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
 # keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
 
-rotate() 
+rotate()
 {
     degree="$1"
     tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
@@ -24,16 +24,26 @@ rotate()
 }
 
 case "$1" in
-    # C-x
-    "C-53")  xclip -r -in -selection clipboard ;;
-    # w
-    "25")    wallpaper.sh "$(shuf -n 1)" ;;
+    "C-54") # C-c
+        xclip -r -in -selection clipboard
+        notify-send -t 1000 "Path to the image(s) has been copied to clipboard."
+        ;;
 
-    # comma
-    "C-59")  rotate 270 ;;
-    # period
-    "C-60")  rotate  90 ;;
-    # slash
-    "C-61")  rotate 180 ;;
+    "25") # w
+        wallpaper.sh "$(shuf -n 1)" &&
+            notify-send -t 1000 "Wallpaper has been set."
+        ;;
+
+    "C-59") # comma
+        rotate 270
+        ;;
+
+    "C-60") # period
+        rotate  90
+        ;;
+
+    "C-61") # slash
+        rotate 180
+        ;;
 esac
 
