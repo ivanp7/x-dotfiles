@@ -20,6 +20,7 @@ super + backslash
 super + @d
     dmenu_run
 super + @Cyrillic_ve
+    xkb-switch -s us; \
     dmenu_run
 
 # }}}
