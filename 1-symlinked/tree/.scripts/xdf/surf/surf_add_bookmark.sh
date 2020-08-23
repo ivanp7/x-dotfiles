@@ -11,7 +11,7 @@ mkdir -p "$BOOKMARKS_DIR"
 cd "$BOOKMARKS_DIR"
 
 BOOKMARK_FILE=$(find . -path "./.git" -prune -o \! -name ".gitignore" \( -type f -o -type l \) -print | 
-    sed 's,^\./,,' | sort | dmenu -fn "$DEFAULT_FONT" -p "$DMENU_PROMPT_CATEGORY" -l 10 -i $WINDOW_ARG)
+    sed 's,^\./,,' | sort | dmenu -p "$DMENU_PROMPT_CATEGORY" -l 10 -i $WINDOW_ARG)
 
 [ -z "$BOOKMARK_FILE" ] && exit 1
 mkdir -p "$(dirname "$BOOKMARK_FILE")"

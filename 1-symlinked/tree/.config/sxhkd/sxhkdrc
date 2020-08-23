@@ -18,9 +18,9 @@ super + backslash
 
 # program launcher
 super + @d
-    dmenu_run -fn "$DEFAULT_FONT"
+    dmenu_run
 super + @Cyrillic_ve
-    dmenu_run -fn "$DEFAULT_FONT"
+    dmenu_run
 
 # }}}
 # bspwm & sxhkd hotkeys {{{
