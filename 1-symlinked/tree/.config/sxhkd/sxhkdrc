@@ -16,6 +16,10 @@ super + ctrl + backslash
 super + backslash
     scratchpad.sh dropdown_browser
 
+# pass.sh
+super + question
+    pass.sh
+
 # program launcher
 super + @d
     dmenu_run
@@ -96,9 +100,9 @@ super + {Cyrillic_ze,Cyrillic_i,Cyrillic_be,Cyrillic_yu}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
-    bspc node -f {next,prev}.local
+    bspc node -f {next,prev}.local.leaf
 super + {_,shift + }Cyrillic_es
-    bspc node -f {next,prev}.local
+    bspc node -f {next,prev}.local.leaf
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
