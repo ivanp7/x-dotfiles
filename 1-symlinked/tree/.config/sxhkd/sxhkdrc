@@ -1,11 +1,11 @@
 # launch programs {{{
 
 # terminal emulator
-super + ctrl + Return
+super + ctrl + grave
     tabbed-st.sh
 
 # scratchpad: terminal emulator
-super + Return
+super + grave
     scratchpad.sh dropdown_terminal
 
 # surf
@@ -16,14 +16,24 @@ super + ctrl + backslash
 super + backslash
     scratchpad.sh dropdown_browser
 
-# pass.sh
+# password.sh
 super + question
-    pass.sh
+    password.sh
+
+# bookmark.sh
+super + slash
+    bookmark.sh
+
+# calculator.sh
+super + equal
+    calculator.sh
+
+# dictionary.sh
+super + d
+    dictionary.sh
 
 # program launcher
-super + @d
-    dmenu_run
-super + @Cyrillic_ve
+super + Return
     xkb-switch -s us; \
     dmenu_run
 
@@ -119,7 +129,7 @@ super + alt + {Cyrillic_ha,Cyrillic_hardsign}
     desktops.sh {dec,inc}
 
 # focus the last node/desktop
-super + {grave,Tab}
+super + {ctrl + ,_}Tab
     bspc {node,desktop} -f last
 super + {Cyrillic_io,Tab}
     bspc {node,desktop} -f last
@@ -201,8 +211,8 @@ super + ctrl + minus
 # miscellaneous {{{
 
 # gap control
-super + {plus,minus,equal}
-    gaps.sh {up,down, }
+super + {KP_Add,KP_Subtract}
+    gaps.sh {up,down}
 
 # volume control
 {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
@@ -235,6 +245,10 @@ alt + {_,shift + }{_,ctrl + } Print
 # make mic record
 alt + Scroll_Lock
     capture-async.sh mic
+
+# change wallpaper
+super + {_,shift + }KP_Enter
+    {wallpaper-choose-picture.sh,wallpaper-choose-animation.sh}
 
 # WM status report
 super + F1

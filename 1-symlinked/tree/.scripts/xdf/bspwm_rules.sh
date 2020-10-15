@@ -29,6 +29,10 @@ case $CLASS_NAME in
         echo "sticky=on state=floating hidden=on rectangle=$FLOATING_RECTANGLE"
         ;;
 
+    info_*)
+        echo "sticky=on state=floating rectangle=$FLOATING_RECTANGLE"
+        ;;
+
     Surf|Sxiv|mpv|Zathura)
         echo "state=fullscreen"
         ;;
