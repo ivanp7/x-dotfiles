@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DMENU_PROMPT=Subject
+DMENU_PROMPT="Man page"
 DMENU_LINES=10
 DMENU_COLUMNS=10
 
