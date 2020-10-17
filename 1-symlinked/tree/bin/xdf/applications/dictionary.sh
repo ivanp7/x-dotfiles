@@ -9,8 +9,8 @@ HISTORY_FILE="$SDCV_HISTFILE"
 INPUT=$(tac "$HISTORY_FILE" | uniq | dmenu -p "$DMENU_PROMPT" -l $DMENU_LINES -g $DMENU_COLUMNS)
 [ -z "$INPUT" ] && exit
 
-OUTPUT_FILE=$(mktemp -p /tmp --suffix=.html dictionary.XXXXXXXX)
-sdcv.sh "$INPUT" > "$OUTPUT_FILE"
+OUTPUT_FILE=$(mktemp -p /tmp dictionary.XXXXXXXX)
+dict.sh "$INPUT" > "$OUTPUT_FILE"
 
-tabbed-st.sh info_dictionary -e less "$OUTPUT_FILE"
+tabbed-st.sh info_dictionary -e less -mr "$OUTPUT_FILE"
 

@@ -4,16 +4,19 @@ DMENU_PROMPT=Expression
 DMENU_LINES=10
 DMENU_COLUMNS=4
 
+NOTIFY_TIME=3000
+
 HISTORY_FILE=$XDG_CACHE_HOME/calculator-history
 
 INPUT=$(tac "$HISTORY_FILE" | dmenu.sh -p "$DMENU_PROMPT" -l $DMENU_LINES -g $DMENU_COLUMNS)
 [ -z "$INPUT" ] && exit
-RESULT=$(calc.sh "$INPUT")
+
+TYPE="normal"
+RESULT=$(calc.sh "$INPUT" 2>&1)
+[ "$?" -ne 0 ] && TYPE="critical"
 [ -z "$RESULT" ] && exit 1
 
-notify-send "Calculation result" "$RESULT"
+notify-send -t $NOTIFY_TIME -u $TYPE "Calculator" "$RESULT"
 
-{ grep -Fv "$INPUT" "$HISTORY_FILE"; echo "$INPUT"; } > "$HISTORY_FILE.new"
-rm "$HISTORY_FILE"
-mv "$HISTORY_FILE.new" "$HISTORY_FILE"
+[ "$TYPE" = "normal" ] && { grep -Fv "$INPUT" "$HISTORY_FILE"; echo "$INPUT"; } | sponge "$HISTORY_FILE"
 
