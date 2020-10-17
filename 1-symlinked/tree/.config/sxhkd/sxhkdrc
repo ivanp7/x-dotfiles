@@ -32,6 +32,10 @@ super + equal
 super + d
     dictionary.sh
 
+# man.sh
+super + a
+    man.sh
+
 # program launcher
 super + Return
     xkb-switch -s us; \
