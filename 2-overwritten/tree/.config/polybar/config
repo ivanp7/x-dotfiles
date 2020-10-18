@@ -36,11 +36,6 @@ secondary = #e60053
 alert = #bd2c40
 
 ; }}}
-; bar/keyboard_layout_only {{{
-[bar/keyboard_layout_only]
-modules-left = xkeyboard
-
-; }}}
 ; bar/top {{{
 ; bar/top {{{
 [bar/top]
