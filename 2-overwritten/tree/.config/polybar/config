@@ -27,7 +27,7 @@ screenchange-reload = true
 ; }}}
 ; colors {{{
 [colors]
-background = #222
+background = #aa111111
 background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #777
