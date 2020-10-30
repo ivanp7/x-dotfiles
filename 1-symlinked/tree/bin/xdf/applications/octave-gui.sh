@@ -1,4 +1,4 @@
 #!/bin/sh
 
-octave --force-gui
+exec octave --force-gui
 

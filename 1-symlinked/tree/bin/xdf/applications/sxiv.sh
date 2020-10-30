@@ -2,11 +2,12 @@
 
 if command -v sxiv > /dev/null 2>&1
 then
-    [ -d "${@:-.}" -o -L "${@:-.}" ] && sxiv -t "${@:-.}" || sxiv "$@"
+    [ -d "${@:-.}" -o -L "${@:-.}" ] && exec sxiv -t "${@:-.}" || exec sxiv "$@"
 elif command -v feh > /dev/null 2>&1
 then
-    feh "${@:-.}"
+    exec feh "${@:-.}"
 else
     echo "Please install SXIV or FEH!"
+    exit 1
 fi
 

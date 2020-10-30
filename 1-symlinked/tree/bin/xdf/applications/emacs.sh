@@ -1,4 +1,4 @@
 #!/bin/sh
 
-[ "$(pidof emacs)" ] && emacsclient "$@" || emacs "$@"
+[ "$(pidof emacs)" ] && exec emacsclient "$@" || exec emacs "$@"
 

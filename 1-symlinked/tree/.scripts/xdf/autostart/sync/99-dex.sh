@@ -1,4 +1,4 @@
 #!/bin/sh
 
-dex -a
+exec dex -a
 
