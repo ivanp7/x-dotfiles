@@ -25,8 +25,8 @@ central_rectangle ()
 # Auxiliary variables
 #
 
-DROPDOWN_WIDTH=$(($SCREEN_WIDTH * 7 / 8))
-DROPDOWN_HEIGHT=$(($SCREEN_HEIGHT * 7 / 8))
+DROPDOWN_WIDTH=$(($SCREEN_WIDTH - 25))
+DROPDOWN_HEIGHT=$(($SCREEN_HEIGHT - 50))
 DROPDOWN_RECTANGLE=$(central_rectangle $DROPDOWN_WIDTH $DROPDOWN_HEIGHT)
 
 INFO_WIDTH=$(($SCREEN_WIDTH * 3 / 4))
@@ -42,7 +42,7 @@ DICTIONARY_RECTANGLE=$(central_rectangle $DICTIONARY_WIDTH $DICTIONARY_HEIGHT)
 #
 
 case $CLASS_NAME in
-    dropdown_*) echo "sticky=on state=floating hidden=on rectangle=$DROPDOWN_RECTANGLE" ;;
+    dropdown_*) echo "sticky=on locked=on state=floating hidden=on rectangle=$DROPDOWN_RECTANGLE" ;;
 
     info_dictionary) echo "state=floating rectangle=$DICTIONARY_RECTANGLE" ;;
     info_*) echo "state=floating rectangle=$INFO_RECTANGLE" ;;
