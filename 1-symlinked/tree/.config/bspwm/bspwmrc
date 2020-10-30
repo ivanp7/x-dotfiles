@@ -6,7 +6,7 @@ SCRIPTS_DIR="$HOME/.scripts/xdf"
 # Bspwm configuration
 #
 
-desktops.sh 2
+desktops.sh 3
 
 bspc config border_width        2
 bspc config window_gap          10
@@ -15,6 +15,8 @@ bspc config split_ratio         0.5
 bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config single_monocle      true
+
+bspc config focus_follows_pointer true
 
 bspc config pointer_modifier    mod4
 bspc config pointer_action1     move
@@ -32,7 +34,7 @@ AUTOSTART="$SCRIPTS_DIR/autostart"
 # asynchronous
 find "$AUTOSTART/async" -type f -name "*.sh" | 
     while read script
-    do sh $script &
+    do sh "$script" &
     done
 
 # synchronous
