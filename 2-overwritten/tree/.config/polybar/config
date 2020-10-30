@@ -126,17 +126,18 @@ label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-monocle = "   "
-label-tiled   = "▞  "
+label-monocle = "[ ]  "
+label-tiled   = "[▞]  "
 
-label-pseudotiled = "₧  "
-label-floating    = "≈  "
-label-fullscreen  = "█  "
+label-fullscreen  = "[█]  "
+label-pseudotiled = "[₧]  "
+label-floating    = "[≈]  "
 
-label-locked  = ""
-label-sticky  = "♥"
-label-private = "∅"
-label-marked  = "  ✓"
+label-sticky  = "(♥)"
+label-private = "(®)"
+label-locked  = "()"
+
+label-marked  = "  <✓>"
 
 ; Separator in between workspaces
 ; label-separator = |
