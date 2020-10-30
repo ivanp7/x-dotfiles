@@ -37,6 +37,14 @@ DICTIONARY_WIDTH=500
 DICTIONARY_HEIGHT=$(($SCREEN_HEIGHT * 19 / 20))
 DICTIONARY_RECTANGLE=$(central_rectangle $DICTIONARY_WIDTH $DICTIONARY_HEIGHT)
 
+CALENDAR_WIDTH=400
+CALENDAR_HEIGHT=120
+CALENDAR_X=$(($SCREEN_WIDTH - $CALENDAR_WIDTH - 10))
+CALENDAR_Y=20
+CALENDAR_RECTANGLE="${CALENDAR_WIDTH}x${CALENDAR_HEIGHT}+${CALENDAR_X}+${CALENDAR_Y}"
+
+MEDIA_RECTANGLE=$DROPDOWN_RECTANGLE
+
 #
 # Rules
 #
@@ -44,9 +52,10 @@ DICTIONARY_RECTANGLE=$(central_rectangle $DICTIONARY_WIDTH $DICTIONARY_HEIGHT)
 case $CLASS_NAME in
     dropdown_*) echo "sticky=on locked=on state=floating hidden=on rectangle=$DROPDOWN_RECTANGLE" ;;
 
+    info_calendar) echo "sticky=on state=floating rectangle=$CALENDAR_RECTANGLE" ;;
     info_dictionary) echo "state=floating rectangle=$DICTIONARY_RECTANGLE" ;;
     info_*) echo "state=floating rectangle=$INFO_RECTANGLE" ;;
 
-    Sxiv|mpv|Zathura) echo "state=fullscreen" ;;
+    Sxiv|mpv|Zathura) echo "state=floating rectangle=$MEDIA_RECTANGLE" ;;
 esac
 

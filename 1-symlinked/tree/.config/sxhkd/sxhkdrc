@@ -36,6 +36,10 @@ super + d
 super + a
     man.sh
 
+# calendar.sh
+super + minus
+    calendar.sh
+
 # program launcher
 super + Return
     xkb-switch -s us; \

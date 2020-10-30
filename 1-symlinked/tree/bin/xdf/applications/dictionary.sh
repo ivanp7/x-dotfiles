@@ -13,5 +13,5 @@ INPUT=$(tac "$HISTORY_FILE" | uniq | dmenu -p "$DMENU_PROMPT" -l $DMENU_LINES -g
 OUTPUT_FILE=$(mktemp -p /tmp dictionary.XXXXXXXX)
 dict.sh -n "$INPUT" > "$OUTPUT_FILE"
 
-tabbed-st.sh info_dictionary -e less -mr "$OUTPUT_FILE"
+tabbed-st.sh info_dictionary -t "dictionary: $INPUT" -e less -mr "$OUTPUT_FILE"
 

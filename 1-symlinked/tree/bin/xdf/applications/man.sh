@@ -10,7 +10,7 @@ touch "$HISTORY_FILE"
 INPUT=$(tac "$HISTORY_FILE" | uniq | dmenu.sh -p "$DMENU_PROMPT" -l $DMENU_LINES -g $DMENU_COLUMNS)
 [ -z "$INPUT" ] && exit
 
-tabbed-st.sh info_man -e man $INPUT
+tabbed-st.sh info_man -t "man $INPUT" -e man $INPUT
 
 { grep -Fv "$INPUT" "$HISTORY_FILE"; echo "$INPUT"; } | sponge "$HISTORY_FILE"
 
