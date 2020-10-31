@@ -46,9 +46,9 @@ super + minus
     calendar.sh
 
 # ipaddr.sh
-super + n
+super + v
     ipaddr.sh
-super + Cyrillic_te
+super + Cyrillic_em
     ipaddr.sh
 
 # }}}
@@ -90,6 +90,18 @@ super + ctrl + {m,x,y,z}
     bspc node -g {marked,locked,sticky,private}
 super + ctrl + {Cyrillic_softsign,Cyrillic_che,Cyrillic_en,Cyrillic_ya}
     bspc node -g {marked,locked,sticky,private}
+
+# hide window
+super + ctrl + n
+    hide-window.sh
+super + ctrl + Cyrillic_te
+    hide-window.sh
+
+# unhide window
+super + n
+    unhide-window.sh
+super + Cyrillic_te
+    unhide-window.sh
 
 # }}}
 # focus/swap {{{
