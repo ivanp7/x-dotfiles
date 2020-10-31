@@ -7,7 +7,7 @@ DMENU_COLUMNS=10
 HISTORY_FILE="$SDCV_HISTFILE"
 touch "$HISTORY_FILE"
 
-INPUT=$(tac "$HISTORY_FILE" | uniq | dmenu -p "$DMENU_PROMPT" -l $DMENU_LINES -g $DMENU_COLUMNS)
+INPUT=$(tac "$HISTORY_FILE" | uniq | dmenu -p "$DMENU_PROMPT" -l $DMENU_LINES -g $DMENU_COLUMNS | head -1)
 [ -z "$INPUT" ] && exit
 
 OUTPUT_FILE=$(mktemp -p /tmp dictionary.XXXXXXXX)

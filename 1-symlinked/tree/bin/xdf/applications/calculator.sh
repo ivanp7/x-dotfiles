@@ -9,7 +9,7 @@ NOTIFY_TIME=3000
 HISTORY_FILE=$XDG_CACHE_HOME/calculator-history
 touch "$HISTORY_FILE"
 
-INPUT=$(tac "$HISTORY_FILE" | dmenu.sh -p "$DMENU_PROMPT" -l $DMENU_LINES -g $DMENU_COLUMNS)
+INPUT=$(tac "$HISTORY_FILE" | dmenu.sh -p "$DMENU_PROMPT" -l $DMENU_LINES -g $DMENU_COLUMNS | head -1)
 [ -z "$INPUT" ] && exit
 
 TYPE="normal"
