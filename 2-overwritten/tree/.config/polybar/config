@@ -261,11 +261,11 @@ format-prefix-foreground = ${colors.foreground-alt}
 type = internal/date
 interval = 1
 
-date = " %Y-%b-%d %a"
-date-alt = " %Y-%m-%d"
-
+date = %Y-%b-%d %a
 time = %H:%M:%S
-time-alt = %H:%M
+
+date-alt = 
+time-alt = Epoch %s
 
 format-prefix-foreground = ${colors.foreground-alt}
 
