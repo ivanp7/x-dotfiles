@@ -1,5 +1,10 @@
 # launch programs {{{
 
+# program launcher
+super + Return
+    xkb-switch -s us; \
+    dmenu_run
+
 # terminal emulator
 super + ctrl + grave
     tabbed-st.sh
@@ -40,10 +45,11 @@ super + a
 super + minus
     calendar.sh
 
-# program launcher
-super + Return
-    xkb-switch -s us; \
-    dmenu_run
+# ipaddr.sh
+super + n
+    ipaddr.sh
+super + Cyrillic_te
+    ipaddr.sh
 
 # }}}
 # bspwm & sxhkd hotkeys {{{
