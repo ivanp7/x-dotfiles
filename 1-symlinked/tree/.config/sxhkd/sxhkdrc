@@ -41,9 +41,10 @@ super + d
 super + a
     man.sh
 
-# calendar.sh
 super + minus
-    calendar.sh
+    scratchpad.sh dropdown_calendar
+super + Insert
+    scratchpad.sh dropdown_clock
 
 # ipaddr.sh
 super + v
