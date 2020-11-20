@@ -259,7 +259,7 @@ super + Home
 
 # power control
 super + Pause
-    lock-screen.sh loginctl suspend
+    lock-screen.sh suspend.sh
 
 # make screenshot
 {_,ctrl + }{_,shift + } Print
