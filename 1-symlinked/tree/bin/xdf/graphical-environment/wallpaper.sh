@@ -17,7 +17,7 @@ set_classic_wallpaper ()
 start_animated_wallpaper ()
 {
     [ -z "$2" ] && RAND=$(shuf -i 0-99 -n 1) || RAND=$(($2 % 100))
-    MPV_OPTIONS="--osc=no --osd-level=0 --no-input-default-bindings --vo=gpu --hwdec=auto --loop=inf --start=$RAND%"
+    MPV_OPTIONS="--osc=no --osd-level=0 --no-input-default-bindings --vo=gpu --hwdec=auto --mute=yes --loop=inf --start=$RAND%"
 
     command -v prime-run > /dev/null && PRIME_RUN="prime-run" || PRIME_RUN=""
     # dependency: shantz-xwinwrap-bzr from AUR
