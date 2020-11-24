@@ -1,13 +1,13 @@
 #!/bin/sh
 
-# kill animated wallpaper, if it is displayed
-pkill xwinwrap
-
 FILE=$1
 MODE=$2
 START=$3
 
 [ -n "$FILE" ] || exit 1
+
+# kill animated wallpaper, if it is displayed
+pkill xwinwrap
 
 set_classic_wallpaper ()
 {
