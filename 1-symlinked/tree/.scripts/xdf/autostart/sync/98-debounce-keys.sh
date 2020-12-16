@@ -1,5 +1,5 @@
 #!/bin/sh
 
-xset r off
-# xkbset bouncekeys 60
+# xset r off
+xkbset bouncekeys 60
 
