@@ -270,8 +270,8 @@ super + {_,shift + }{_,ctrl + } Print
     capture-async.sh {screen,screen/mic} {"#","+"}
 
 # make mic record
-alt + Scroll_Lock
-    capture-async.sh mic
+# alt + Scroll_Lock
+#     capture-async.sh mic
 
 # change wallpaper
 super + {_,shift + }KP_Enter
