@@ -242,9 +242,9 @@ super + {KP_Add,KP_Subtract}
     gaps.sh {up,down}
 
 # volume control
-{XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
-    volume-notify.sh {up,down,toggle}
-ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
+{XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute,XF86Tools}
+    volume-notify.sh {up,down,toggle,toggle}
+ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute,XF86Tools}
     volume-notify.sh
 
 # monitor brightness control (needs sudoers permission on brightness.sh)
@@ -266,7 +266,7 @@ super + Pause
     screenshot.sh { ,-s -u} {| clip.sh image/png, }
 
 # make screencast
-alt + {_,shift + }{_,ctrl + } Print
+super + {_,shift + }{_,ctrl + } Print
     capture-async.sh {screen,screen/mic} {"#","+"}
 
 # make mic record
