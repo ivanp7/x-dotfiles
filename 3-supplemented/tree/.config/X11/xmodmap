@@ -10,6 +10,7 @@ clear shift
 keycode 107 = Shift_R Shift_R Shift_R Shift_R
 add shift = Shift_L Shift_R
 
+keycode 179 = XF86AudioMute NoSymbol XF86AudioMute
 keycode 173 = Prior NoSymbol Prior
 keycode 171 = Next NoSymbol Next
 keycode 172 = Pause Break Pause Break
