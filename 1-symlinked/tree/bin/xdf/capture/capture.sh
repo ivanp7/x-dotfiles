@@ -46,6 +46,9 @@ case $TYPE in
     *mic)
         AUDIO_FLAGS="-f alsa -i hw:0 -acodec aac -strict -2 -ac 1"
         ;;
+    *)
+        AUDIO_FLAGS="-f pulse -i 0 -acodec aac"
+        ;;
 esac
 
 case $TYPE in
