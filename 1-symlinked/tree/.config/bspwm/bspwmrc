@@ -6,7 +6,10 @@ SCRIPTS_DIR="$HOME/.scripts/xdf"
 # Bspwm configuration
 #
 
-desktops.sh 3
+for m in $(bspc query -M)
+do
+    desktops.sh 3 $m
+done
 
 bspc config border_width        2
 bspc config window_gap          10

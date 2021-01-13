@@ -173,7 +173,7 @@ super + {Cyrillic_shcha,Cyrillic_sha}
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
+    bspc {desktop -f,node -d} 'focused:^{1-9,10}'
 
 # }}}
 # flip/rotate {{{

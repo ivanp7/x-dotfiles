@@ -13,8 +13,12 @@ case $TYPE in
 
         case $AREA in
             "#")
-                SIZE=$(resolution.sh)
-                DISPL=""
+                SCREEN=$(monitor-info.sh | head -2)
+                SCREEN_SIZE=$(echo "$SCREEN" | head -1)
+                SCREEN_DISPL=$(echo "$SCREEN" | tail -1)
+
+                SIZE="${SCREEN_SIZE% *}x${SCREEN_SIZE#* }"
+                DISPL="+${SCREEN_DISPL% *},${SCREEN_DISPL#* }"
 
                 DIRECTORY="screencast/full"
                 ;;
@@ -34,7 +38,8 @@ case $TYPE in
         then VIDEO_CODEC=h264_nvenc
         fi
 
-        VIDEO_FLAGS="-f x11grab -r 30 -s $SIZE -i :0.0$DISPL -vcodec ${VIDEO_CODEC:-libx264}"
+        VIDEO_FLAGS="-f x11grab -r 30 -s $SIZE -i ${DISPLAY}${DISPL} -vcodec ${VIDEO_CODEC:-libx264}"
+        echo "$VIDEO_FLAGS"
         ;;
 
     mic)

@@ -1,6 +1,8 @@
 #!/bin/sh
 
-N=$(xdotool get_num_desktops)
+MONITOR=$2
+
+N=$(bspc query -D -m $MONITOR | wc -l)
 
 to_name ()
 {
@@ -9,8 +11,8 @@ to_name ()
 
 case $1 in
     "") echo $N ;;
-    inc) [ "$N" -lt 10 ] && bspc monitor -d $(seq $(($N + 1)) | to_name) ;;
-    dec) [ "$N" -gt 1 ] && bspc monitor -d $(seq $(($N - 1)) | to_name) ;;
-    *) bspc monitor -d $(seq $1 | to_name) ;;
+    inc) [ "$N" -lt 10 ] && bspc monitor $MONITOR -d $(seq $(($N + 1)) | to_name) ;;
+    dec) [ "$N" -gt 1 ] && bspc monitor $MONITOR -d $(seq $(($N - 1)) | to_name) ;;
+    *) bspc monitor $MONITOR -d $(seq $1 | to_name) ;;
 esac
 

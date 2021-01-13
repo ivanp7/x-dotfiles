@@ -21,7 +21,7 @@ start_animated_wallpaper ()
 
     command -v prime-run > /dev/null && PRIME_RUN="prime-run" || PRIME_RUN=""
     # dependency: shantz-xwinwrap-bzr from AUR
-    [ -f "$1" ] && exec $PRIME_RUN xwinwrap -ov -fs -- mpv -wid WID $MPV_OPTIONS "$1" > /dev/null 2>&1 &
+    [ -f "$1" ] && exec $PRIME_RUN xwinwrap -ov -g "$(monitor-info.sh slop | head -1)" -- mpv -wid WID $MPV_OPTIONS "$1" > /dev/null 2>&1 &
 }
 
 if [ -z "$MODE" ]

@@ -6,17 +6,22 @@ INSTANCE_NAME=$3
 shift 3
 CONSEQUENCES=$@
 
-SCREEN_DIMENSIONS=$(xdpyinfo | grep dimensions | awk '{print $2}')
-SCREEN_WIDTH=$(echo "$SCREEN_DIMENSIONS" | cut -d'x' -f1)
-SCREEN_HEIGHT=$(echo "$SCREEN_DIMENSIONS" | cut -d'x' -f2)
+SCREEN=$(monitor-info.sh | head -2)
+SCREEN_SIZE=$(echo "$SCREEN" | head -1)
+SCREEN_DISPL=$(echo "$SCREEN" | tail -1)
+
+SCREEN_WIDTH=${SCREEN_SIZE% *}
+SCREEN_HEIGHT=${SCREEN_SIZE#* }
+SCREEN_X=${SCREEN_DISPL% *}
+SCREEN_Y=${SCREEN_DISPL#* }
 
 central_rectangle ()
 {
     local width=$1
     local height=$2
 
-    local x=$((($SCREEN_WIDTH - $width) / 2))
-    local y=$((($SCREEN_HEIGHT - $height) / 2))
+    local x=$(($SCREEN_X + ($SCREEN_WIDTH - $width) / 2))
+    local y=$(($SCREEN_Y + ($SCREEN_HEIGHT - $height) / 2))
 
     echo "${width}x${height}+${x}+${y}"
 }
