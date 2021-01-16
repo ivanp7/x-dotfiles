@@ -6,6 +6,9 @@ shift 1
 VIDEO_FLAGS=""
 AUDIO_FLAGS=""
 
+SOUND_FLAGS="-f pulse -i 0 -acodec aac"
+MIC_FLAGS="-f alsa -i hw:0 -acodec aac -strict -2 -ac 1"
+
 case $TYPE in
     screen*)
         AREA=$1
@@ -32,6 +35,7 @@ case $TYPE in
                 DIRECTORY="screencast/area"
         esac
 
+        FILENAME_PREFIX="screencast"
         FILENAME_EXT="mp4"
 
         if command -v nvidia-smi > /dev/null && [ "$(nvidia-smi -L | wc -l)" -gt 0 ]
@@ -39,29 +43,28 @@ case $TYPE in
         fi
 
         VIDEO_FLAGS="-f x11grab -r 30 -s $SIZE -i ${DISPLAY}${DISPL} -vcodec ${VIDEO_CODEC:-libx264}"
-        echo "$VIDEO_FLAGS"
+
+        case $TYPE in
+            *mic)
+                AUDIO_FLAGS="$MIC_FLAGS"
+                DIRECTORY="$DIRECTORY/mic"
+                ;;
+            *)
+                AUDIO_FLAGS="$SOUND_FLAGS"
+                DIRECTORY="$DIRECTORY/sound"
+                ;;
+        esac
         ;;
 
     mic)
         DIRECTORY="microphone"
+
+        FILENAME_PREFIX="record"
         FILENAME_EXT="aac"
-esac
 
-case $TYPE in
-    *mic)
-        AUDIO_FLAGS="-f alsa -i hw:0 -acodec aac -strict -2 -ac 1"
-        ;;
-    *)
-        AUDIO_FLAGS="-f pulse -i 0 -acodec aac"
+        AUDIO_FLAGS="$MIC_FLAGS"
         ;;
 esac
-
-case $TYPE in
-    screen) FILENAME_PREFIX="screencast" ;;
-    screen*mic) FILENAME_PREFIX="screencast_mic" ;;
-    mic) FILENAME_PREFIX="record" ;;
-esac
-
 
 FILENAME="${FILENAME_PREFIX}_$(date "+%F_%T").${FILENAME_EXT}"
 
