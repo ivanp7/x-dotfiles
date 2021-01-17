@@ -3,6 +3,7 @@
 [ -f "$XDG_CONFIG_HOME/X11/xprofile" ] && . $XDG_CONFIG_HOME/X11/xprofile
 
 xrandr --auto
+[ -z "$PRIMARY_MONITOR" ] || xrandr --output "$PRIMARY_MONITOR" --primary
 
 # set keymap
 xset r rate 500 20
