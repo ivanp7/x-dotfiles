@@ -6,8 +6,11 @@ shift 1
 VIDEO_FLAGS=""
 AUDIO_FLAGS=""
 
-SOUND_FLAGS="-f pulse -i 0 -acodec aac"
-MIC_FLAGS="-f alsa -i hw:0 -acodec aac -strict -2 -ac 1"
+SOURCE_SOUND=$(pactl list short sources | grep alsa_output | head -1 | sed 's/\s.*//')
+SOURCE_MIC=$(pactl list short sources | grep alsa_input | head -1 | sed 's/\s.*//')
+
+[ -z "$SOURCE_SOUND" ] || SOUND_FLAGS="-f pulse -i $SOURCE_SOUND -acodec aac"
+[ -z "$SOURCE_MIC" ] || MIC_FLAGS="-f pulse -i $SOURCE_MIC -acodec aac"
 
 case $TYPE in
     screen*)
