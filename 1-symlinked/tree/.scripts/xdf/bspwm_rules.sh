@@ -66,6 +66,7 @@ CLOCK_RECTANGLE="${CLOCK_WIDTH}x${CLOCK_HEIGHT}+${CLOCK_X}+${CLOCK_Y}"
 
 case $CLASS_NAME in
     Sxiv|mpv|Zathura) echo "state=floating rectangle=$MEDIA_RECTANGLE" ;;
+    Pavucontrol) echo "state=floating rectangle=$INFO_RECTANGLE" ;;
 
     dropdown_clock) echo "sticky=on locked=on state=floating hidden=on rectangle=$CLOCK_RECTANGLE" ;;
     dropdown_calendar) echo "sticky=on locked=on state=floating hidden=on rectangle=$CALENDAR_RECTANGLE" ;;
