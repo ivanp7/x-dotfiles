@@ -71,7 +71,7 @@ font-0 = ${env:FONT}
 
 modules-left = tty bspwm
 modules-center = xwindow
-modules-right = battery battery2 alsa xkeyboard typespeed date
+modules-right = battery battery2 pulseaudio xkeyboard typespeed date
 
 tray-position = ${env:TRAY_POS}
 tray-padding = 2
@@ -208,9 +208,12 @@ battery = BAT1
 format-charging-prefix = "Battery #2 "
 
 ; }}}
-; module/alsa {{{
-[module/alsa]
-type = internal/alsa
+; module/pulseaudio {{{
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = true
+interval = 3
 
 format-volume = <label-volume> <bar-volume>
 label-volume = %percentage%%
@@ -219,7 +222,7 @@ format-volume-prefix = "Volume "
 format-volume-prefix-foreground = ${colors.foreground-alt}
 
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = muted
+label-muted = %percentage%% muted
 format-muted-prefix = ${self.format-volume-prefix}
 format-muted-prefix-foreground = ${colors.foreground-alt}
 
@@ -236,6 +239,10 @@ bar-volume-indicator = |
 bar-volume-fill = ─
 bar-volume-empty = ─
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
+; Right and Middle click
+click-right = pavucontrol
+; click-middle =
 
 ; }}}
 ; module/xkeyboard {{{
