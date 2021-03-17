@@ -2,7 +2,7 @@
 
 set_layout ()
 {
-    setxkbmap -layout "us,ru" -variant "$1,winkeys" -option "grp:win_space_toggle"
+    setxkbmap -layout "us,ru" -variant "$1,winkeys" -option "grp:win_space_toggle" -option "caps:none"
 }
 
 CURRENT_LAYOUT=$(setxkbmap -query | grep -q "^variant:.*colemak.*" && echo "colemak" || echo "qwerty")
