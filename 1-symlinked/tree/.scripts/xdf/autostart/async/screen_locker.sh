@@ -17,8 +17,7 @@ do
     if [ ! -f "$STATUS_FILE" -a "$(xssstate -t)" -eq 0 ]
     then
         date >> /tmp/screen-lock_$USER.log
-        xkb-switch -s us
-        slock
+        lock-screen.sh
     fi
 done
 

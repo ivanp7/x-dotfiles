@@ -253,7 +253,7 @@ blacklist-0 = num lock
 format-prefix = "Language "
 format-prefix-foreground = ${colors.foreground-alt}
 
-label-layout = %name:0:7%
+label-layout = %name%
 
 ; }}}
 ; module/typespeed {{{
@@ -274,7 +274,7 @@ interval = 1
 date = %Y-%b-%d %a
 time = %H:%M:%S
 
-date-alt = 
+date-alt =
 time-alt = Epoch %s
 
 format-prefix-foreground = ${colors.foreground-alt}

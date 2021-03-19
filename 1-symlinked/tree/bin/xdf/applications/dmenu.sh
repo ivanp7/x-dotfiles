@@ -1,5 +1,5 @@
 #!/bin/sh
 
-xkb-switch -s us
+kbd-language.sh english
 exec dmenu "$@"
 

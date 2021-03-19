@@ -2,7 +2,7 @@
 
 # program launcher
 super + Return
-    xkb-switch -s us; \
+    kbd-language.sh english; \
     dmenu_run
 
 # terminal emulator
