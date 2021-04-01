@@ -244,12 +244,14 @@ super + {KP_Add,KP_Subtract}
 # volume control
 {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
     volume-notify.sh {up,down,toggle}
-shift + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
-    volume-notify.sh
 ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume}
     volume-notify.sh {next,prev}
 ctrl + XF86AudioMute
+    volume-notify.sh
+shift + XF86AudioMute
     pavucontrol
+shift + XF86AudioLowerVolume
+    paprefs
 
 # monitor brightness control (needs sudoers permission on brightness.sh)
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
