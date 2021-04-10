@@ -57,7 +57,8 @@ super + Cyrillic_em
 
 # make sxhkd reload its configuration files:
 super + Escape
-    pkill -USR1 -x sxhkd
+    pkill -USR1 -x sxhkd; \
+    notify-send -t 1000 'sxhkd' 'Reloaded!'
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -244,10 +245,14 @@ super + {KP_Add,KP_Subtract}
 # volume control
 {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
     volume-notify.sh {up,down,toggle}
-ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume}
-    volume-notify.sh {next,prev}
-ctrl + XF86AudioMute
-    volume-notify.sh
+super + {button4,button5,button2}
+    volume-notify.sh {up,down,toggle}
+
+ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
+    volume-notify.sh {next,prev, }
+super + ctrl + {button4,button5,button2}
+    volume-notify.sh {next,prev, }
+
 shift + XF86AudioMute
     pavucontrol
 shift + XF86AudioLowerVolume
