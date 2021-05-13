@@ -224,7 +224,7 @@ super + alt + shift + {Cyrillic_er,Cyrillic_o,Cyrillic_el,Cyrillic_de}
     bspc node -z {left 20 0,bottom 0 -20,top 0 20,right -20 0}
 
 # move a floating window
-super + {Left,Down,Up,Right}
+super + shift + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # make split ratios equal
@@ -236,6 +236,21 @@ super + ctrl + minus
     bspc node @/ --balance
 
 # }}}
+# mouse emulation {{{
+
+# move a mouse quickly
+super + alt + {Left,Down,Up,Right}
+    xdotool mousemove_relative --clearmodifiers -- {-100 0,0 100,0 -100,100 0}
+
+# move a mouse slowly
+super + {Left,Down,Up,Right}
+    xdotool mousemove_relative --clearmodifiers -- {-10 0,0 10,0 -10,10 0}
+
+# click a mouse
+super + ctrl + {Left,Down,Up,Right}
+    xdotool click --clearmodifiers {1,5,4,3}
+
+# }}}
 # miscellaneous {{{
 
 # gap control
@@ -245,12 +260,7 @@ super + {KP_Add,KP_Subtract}
 # volume control
 {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
     volume-notify.sh {up,down,toggle}
-super + {button4,button5,button2}
-    volume-notify.sh {up,down,toggle}
-
 ctrl + {XF86AudioRaiseVolume,XF86AudioLowerVolume,XF86AudioMute}
-    volume-notify.sh {next,prev, }
-super + ctrl + {button4,button5,button2}
     volume-notify.sh {next,prev, }
 
 shift + XF86AudioMute
