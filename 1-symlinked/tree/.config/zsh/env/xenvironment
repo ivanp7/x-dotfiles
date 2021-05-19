@@ -1,13 +1,15 @@
 # X11
 
-export XINITRC=$XDG_CONFIG_HOME/X11/xinitrc
-export XSERVERRC=$XDG_CONFIG_HOME/X11/xserverrc
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 
 # default applications
 
-export TERMINAL=/usr/bin/st
-export VIEWER=/usr/bin/sxiv
-export PDFVIEWER=/usr/bin/zathura
-export BROWSER=$HOME/bin/xdf/applications/tabbed/tabbed-surf.sh
+export TERMINAL="/usr/bin/st"
+
+export VIEWER="$HOME/.scripts/xdf/viewer.sh"
+export PLAYER="$HOME/.scripts/xdf/player.sh"
+export BROWSER="$HOME/.scripts/xdf/browser.sh"
+export PDFVIEWER="$HOME/.scripts/xdf/pdfviewer.sh"
 
 # vim: ft=zsh:
