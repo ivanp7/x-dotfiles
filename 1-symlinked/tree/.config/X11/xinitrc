@@ -28,5 +28,7 @@ fi
 
 [ -f "$XDG_CONFIG_HOME/X11/xprofile" ] && . "$XDG_CONFIG_HOME/X11/xprofile"
 
+echo "$DISPLAY" > "$TMPDIR/x_desktop/$(cat /sys/class/tty/tty0/active)"
+
 exec bspwm
 
