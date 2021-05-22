@@ -4,7 +4,7 @@ DMENU_PROMPT="Man page"
 DMENU_LINES=10
 DMENU_COLUMNS=10
 
-HISTORY_FILE=$XDG_CACHE_HOME/man-history
+HISTORY_FILE="$XDG_CACHE_HOME/man-history"
 touch "$HISTORY_FILE"
 
 INPUT=$(tac "$HISTORY_FILE" | uniq | dmenu.sh -p "$DMENU_PROMPT" -l $DMENU_LINES -g $DMENU_COLUMNS | head -1)

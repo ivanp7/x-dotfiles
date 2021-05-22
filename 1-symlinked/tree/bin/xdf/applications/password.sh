@@ -4,7 +4,7 @@ DMENU_PROMPT=Password
 DMENU_LINES=10
 DMENU_COLUMNS=3
 
-cd $PASSWORD_STORE_DIR
+cd -- "$PASSWORD_STORE_DIR"
 
 export PINENTRY_USER_DATA=X
 find . -path "./.git" -prune -o -type f -name "*.gpg" -print |

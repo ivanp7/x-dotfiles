@@ -6,7 +6,7 @@ DMENU_COLUMNS=4
 
 NOTIFY_TIME=3000
 
-HISTORY_FILE=$XDG_CACHE_HOME/calculator-history
+HISTORY_FILE="$XDG_CACHE_HOME/calculator-history"
 touch "$HISTORY_FILE"
 
 INPUT=$(tac "$HISTORY_FILE" | dmenu.sh -p "$DMENU_PROMPT" -l $DMENU_LINES -g $DMENU_COLUMNS | head -1)
