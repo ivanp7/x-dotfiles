@@ -57,6 +57,9 @@ super + ctrl + v
 super + ctrl + Cyrillic_ve
     X-clipboard-to-tmux.sh
 
+super + alt + c
+    clip-prim.sh
+
 # ipaddr.sh
 super + v
     ipaddr.sh
