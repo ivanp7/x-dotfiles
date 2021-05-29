@@ -17,7 +17,7 @@ STATUS_FILE="/tmp/no-screen-lock_$USER"
 case "$1" in
     -on) rm $STATUS_FILE ;;
     -off) touch $STATUS_FILE ;;
-    -force) lock_screen & ;;
+    -force) shift 1; lock_screen & $@ ;;
     -*) [ -f "$STATUS_FILE" ] && echo disabled || echo enabled ;;
     *) [ -f "$STATUS_FILE" ] || lock_screen & $@
 esac

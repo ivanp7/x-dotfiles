@@ -290,7 +290,7 @@ ctrl + {XF86MonBrightnessUp,XF86MonBrightnessDown}
 
 # lock screen
 super + Home
-    lock-screen.sh
+    lock-screen.sh -force
 
 # power control
 super + Pause
