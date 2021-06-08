@@ -11,17 +11,16 @@ pkill xwinwrap
 
 set_classic_wallpaper ()
 {
-    feh --no-fehbg --bg-scale "$1" 
+    feh --no-fehbg --bg-scale "$1"
 }
 
 start_animated_wallpaper ()
 {
     [ -z "$2" ] && RAND=$(shuf -i 0-99 -n 1) || RAND=$(($2 % 100))
-    MPV_OPTIONS="--osc=no --osd-level=0 --no-input-default-bindings --vo=gpu --hwdec=auto --mute=yes --loop=inf --start=$RAND%"
+    MPV_OPTS="$MPV_OPTIONS --osc=no --osd-level=0 --no-input-default-bindings --mute=yes --loop=inf --start=$RAND%"
 
-    command -v prime-run > /dev/null && PRIME_RUN="prime-run" || PRIME_RUN=""
     # dependency: shantz-xwinwrap-bzr from AUR
-    [ -f "$1" ] && exec $PRIME_RUN xwinwrap -ov -g "$(monitor-info.sh slop | head -1)" -- mpv -wid WID $MPV_OPTIONS "$1" > /dev/null 2>&1 &
+    [ -f "$1" ] && exec $VIDEO_ACCELERATOR xwinwrap -ov -g "$(monitor-info.sh slop | head -1)" -- mpv -wid WID $MPV_OPTS "$1" > /dev/null 2>&1 &
 }
 
 if [ -z "$MODE" ]
