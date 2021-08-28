@@ -25,7 +25,7 @@ rotate()
 
 case "$1" in
     "C-54") # C-c
-        xargs -r realpath | xclip -r -in -selection clipboard
+        xclip -r -in -selection clipboard
         notify-send -t 1000 "Path to the image(s) has been copied to clipboard."
         ;;
 
