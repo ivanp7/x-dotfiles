@@ -71,6 +71,6 @@ esac
 
 FILENAME="${FILENAME_PREFIX}_$(date "+%F_%T").${FILENAME_EXT}"
 
-mkdir -p "$HOME/capture/$DIRECTORY"
+mkdir -p -- "$HOME/capture/$DIRECTORY"
 ffmpeg -y "$@" $AUDIO_FLAGS $VIDEO_FLAGS "$HOME/capture/$DIRECTORY/$FILENAME"
 

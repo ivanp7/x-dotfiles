@@ -1,6 +1,6 @@
 #!/bin/sh
 
-XDG_DOWNLOAD_DIR=$HOME/Downloads
+XDG_DOWNLOAD_DIR="$HOME/Downloads"
 
 echo "
 XDG_DOWNLOAD_DIR=\"$XDG_DOWNLOAD_DIR\"

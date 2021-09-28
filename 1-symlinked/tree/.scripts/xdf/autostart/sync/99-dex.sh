@@ -1,4 +1,4 @@
 #!/bin/sh
 
-exec dex -a
+command -v dex > /dev/null && exec dex -a
 

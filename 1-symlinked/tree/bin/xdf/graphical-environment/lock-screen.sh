@@ -1,5 +1,7 @@
 #!/bin/sh
 
+command -v slock 2> /dev/null || exit 1
+
 lock_screen ()
 {
     # switch keyboard to the default state

@@ -8,7 +8,7 @@ SCRIPTS_DIR="$HOME/.scripts/xdf"
 
 for m in $(bspc query -M)
 do
-    desktops.sh 3 $m
+    desktops.sh 4 $m
 done
 
 bspc config border_width        2

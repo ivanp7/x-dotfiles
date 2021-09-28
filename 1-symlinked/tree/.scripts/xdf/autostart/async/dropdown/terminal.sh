@@ -2,7 +2,7 @@
 
 WINDOW_TITLE="dropdown terminal"
 
-cd ~
+cd
 
 xidfile=$(mktemp "/tmp/dropdown-st-XXXXXX.xid")
 runtabbed() {
@@ -10,7 +10,7 @@ runtabbed() {
 }
 
 while xhost > /dev/null 2>&1
-do 
+do
     if [ ! -r "$xidfile" ];
     then runtabbed
     else
