@@ -1,6 +1,7 @@
 #!/bin/sh
 
-XDG_DOWNLOAD_DIR="$HOME/Downloads"
+: ${XDG_CONFIG_HOME:="$HOME/.config"}
+: ${XDG_DOWNLOAD_DIR:="$HOME/Downloads"}
 
 echo "
 XDG_DOWNLOAD_DIR=\"$XDG_DOWNLOAD_DIR\"
@@ -11,5 +12,5 @@ XDG_VIDEOS_DIR=\"$XDG_DOWNLOAD_DIR/Videos\"
 XDG_DOCUMENTS_DIR=\"$XDG_DOWNLOAD_DIR/Documents\"
 XDG_PUBLICSHARE_DIR=\"$XDG_DOWNLOAD_DIR/Public\"
 XDG_TEMPLATES_DIR=\"$XDG_DOWNLOAD_DIR/Templates\"
-" > $XDG_CONFIG_HOME/user-dirs.dirs
+" > "$XDG_CONFIG_HOME/user-dirs.dirs"
 
