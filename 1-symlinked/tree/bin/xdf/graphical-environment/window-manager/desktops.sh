@@ -15,15 +15,26 @@ N=$(bspc query -D -m $MONITOR | wc -l)
 : ${DESKTOP_9:="IX"}
 : ${DESKTOP_10:="X"}
 
-to_name ()
+desktops ()
 {
-    sed "s/10/${DESKTOP_10}/;s/1/${DESKTOP_1}/;s/2/${DESKTOP_2}/;s/3/${DESKTOP_3}/;s/4/${DESKTOP_4}/;s/5/${DESKTOP_5}/;s/6/${DESKTOP_6}/;s/7/${DESKTOP_7}/;s/8/${DESKTOP_8}/;s/9/${DESKTOP_9}/"
+    case $1 in
+        0|1) echo "$DESKTOP_1" ;;
+        2) echo "$DESKTOP_1 $DESKTOP_2" ;;
+        3) echo "$DESKTOP_1 $DESKTOP_2 $DESKTOP_3" ;;
+        4) echo "$DESKTOP_1 $DESKTOP_2 $DESKTOP_3 $DESKTOP_4" ;;
+        5) echo "$DESKTOP_1 $DESKTOP_2 $DESKTOP_3 $DESKTOP_4 $DESKTOP_5" ;;
+        6) echo "$DESKTOP_1 $DESKTOP_2 $DESKTOP_3 $DESKTOP_4 $DESKTOP_5 $DESKTOP_6" ;;
+        7) echo "$DESKTOP_1 $DESKTOP_2 $DESKTOP_3 $DESKTOP_4 $DESKTOP_5 $DESKTOP_6 $DESKTOP_7" ;;
+        8) echo "$DESKTOP_1 $DESKTOP_2 $DESKTOP_3 $DESKTOP_4 $DESKTOP_5 $DESKTOP_6 $DESKTOP_7 $DESKTOP_8" ;;
+        9) echo "$DESKTOP_1 $DESKTOP_2 $DESKTOP_3 $DESKTOP_4 $DESKTOP_5 $DESKTOP_6 $DESKTOP_7 $DESKTOP_8 $DESKTOP_9" ;;
+        10|*) echo "$DESKTOP_1 $DESKTOP_2 $DESKTOP_3 $DESKTOP_4 $DESKTOP_5 $DESKTOP_6 $DESKTOP_7 $DESKTOP_8 $DESKTOP_9 $DESKTOP_10" ;;
+    esac
 }
 
 case $1 in
     "") echo $N ;;
-    inc) [ "$N" -lt 10 ] && bspc monitor $MONITOR -d $(seq $(($N + 1)) | to_name) ;;
-    dec) [ "$N" -gt 1 ] && bspc monitor $MONITOR -d $(seq $(($N - 1)) | to_name) ;;
-    *) bspc monitor $MONITOR -d $(seq $1 | to_name) ;;
+    inc) [ "$N" -lt 10 ] && bspc monitor $MONITOR -d $(desktops $(($N + 1))) ;;
+    dec) [ "$N" -gt 1 ] && bspc monitor $MONITOR -d $(desktops $(($N - 1))) ;;
+    *) bspc monitor $MONITOR -d $(desktops $1) ;;
 esac
 
